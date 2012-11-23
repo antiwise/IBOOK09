@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+    <page>
+        <h1>CP3 Book</h1>
+        <h2>Programming flash @ howest</h2>
+        <paragraph1>Decaestecker</paragraph1>
+        <page>1</page>
+    </page>
+    <page>
+        <h2>An introductory guide to CP3</h2>
+        <paragraph>Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur.</paragraph>
+        <page>2</page>
+    </page>
+</book>

@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book>
     <page>
-        <h1>CP3 Book</h1>
-        <h2>Programming flash @ howest</h2>
-        <paragraph1>Decaestecker</paragraph1>
-        <page>1</page>
+        <title>
+            <h1>CP3 Book</h1>
+            <xpos>0</xpos>
+            <ypos>0</ypos>
+        </title>
+
+        <title>
+            <h2>Programming flash @ howest</h2>
+            <xpos>0</xpos>
+            <ypos>100</ypos>
+        </title>
+
+        <paragraph>
+            <text>Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.</text>
+            <xpos>0</xpos>
+            <ypos>200</ypos>
+            <width>300</width>
+        </paragraph>
+
+        <image>
+            <link>"link to image"</link>
+            <xpos>200</xpos>
+            <ypos>500</ypos>
+        </image>
+
+        <background>"link to background image"</background>
+        <pageNumber>1</pageNumber>
     </page>
     <page>
-        <h2>An introductory guide to CP3</h2>
-        <paragraph>Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur.</paragraph>
-        <page>2</page>
+        <title>
+            <h1>BIG FUCKING TITLE</h1>
+            <xpos>center</xpos>
+            <ypos>0</ypos>
+        </title>
+        <pageNumber>2</pageNumber>
     </page>
 </book>

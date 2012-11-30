@@ -5,13 +5,23 @@
  * Time: 11:24
  * To change this template use File | Settings | File Templates.
  */
+
+
+
 package be.devine.cp3.style
 {
-    public class PageStyle
+import starling.text.BitmapFont;
+import starling.text.TextField;
+
+public class PageStyle
     {
+
+
+
+
         public function PageStyle()
         {
-
+           // var h1:
         }
     }
 }

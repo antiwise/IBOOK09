@@ -13,8 +13,11 @@ import be.devine.cp3.view.Page;
 import flash.events.Event;
 
 import starling.display.Sprite;
+import starling.text.TextField;
+import starling.utils.HAlign;
+import starling.utils.VAlign;
 
-    public class IBook extends Sprite
+public class IBook extends Sprite
     {
         private var _appModel:AppModel;
 
@@ -23,7 +26,10 @@ import starling.display.Sprite;
            _appModel = AppModel.getInstance();
            _appModel.loadBook();
 
-           _appModel.addEventListener(AppModel.XML_LOADED, XMLLoadedHandler)
+           _appModel.addEventListener(AppModel.XML_LOADED, XMLLoadedHandler) ;
+
+
+
 
 
 

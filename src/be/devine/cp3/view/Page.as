@@ -8,6 +8,7 @@
 package be.devine.cp3.view
 {
 import be.devine.cp3.model.AppModel;
+import be.devine.cp3.util.style.Style;
 
 import flash.display.Bitmap;
 
@@ -20,7 +21,10 @@ import starling.display.Image;
 
 
 import starling.display.Sprite;
+import starling.text.TextField;
 import starling.textures.Texture;
+import starling.utils.HAlign;
+import starling.utils.VAlign;
 
 public class Page extends Sprite
     {
@@ -48,6 +52,16 @@ public class Page extends Sprite
             var texture:Texture = Texture.fromBitmap(loadedBitmap);
             var img:Image = new Image(texture);
             addChild(img);
+
+            var starlingTextField:starling.text.TextField = Style.makeTextfield("Hallo Wereld","h1");
+            addChild(starlingTextField);
+
+
+          /*  var starlingTextField:starling.text.TextField = new starling.text.TextField
+                    (480,50,"Lorem ipsum dolor sit amet","Bitter-Bold",12,0x182C49,false);
+            starlingTextField.hAlign = HAlign.LEFT;
+            starlingTextField.vAlign = VAlign.TOP;
+            addChild(starlingTextField);           */
 
           /*  var image:Image = new Image(Texture.fromBitmap(_imageLoader as Bitmap));
             addChild(image);*/

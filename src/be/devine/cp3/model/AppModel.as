@@ -18,6 +18,11 @@ public class AppModel extends EventDispatcher
     {
         private static var instance:AppModel;
         private var _xmlLoader:URLLoader;
+        private var _arrPages:Array;
+
+        public static const XML_LOADED:String = "XML_Loaded";
+
+
 
         public function AppModel(e:Enforcer)
         {
@@ -41,23 +46,21 @@ public class AppModel extends EventDispatcher
             _xmlLoader = new URLLoader();
             _xmlLoader.addEventListener(Event.COMPLETE, xmlLoaderCompleteHandler);
             _xmlLoader.load(new URLRequest("assets/xml/book.xml"));
-            //var songsXMLLoader:URLLoader = new URLLoader();
-            /*songsXMLLoader.addEventListener(Event.COMPLETE, songsXMLLoaderCompleteHandler);
-            songsXMLLoader.load(new URLRequest("assets/xml/songs.xml"));*/
+
         }
 
         private function xmlLoaderCompleteHandler(event:Event):void
         {
             var bookXML:XML = new XML(event.target.data);
-            var pages:Array = new Array();
+            //var pages:Array = new Array();
+            _arrPages = new Array();
+
             for each(var page:Object in bookXML.page)
             {
                 var pageVO:PageVO = new PageVO();
                 pageVO.page =  page.pageNumber.@page;
+                pageVO.image = page.image;
                 pageVO.template = page.@template;
-
-               // trace(pageVO.page);
-                //trace(pageVO.template);
 
                 if(page.@template == 2)
                 {
@@ -72,14 +75,21 @@ public class AppModel extends EventDispatcher
 
 
 
-                    trace(page.title);
+                    //trace(page.image);
                 }
 
-                pages.push(pageVO);
+                _arrPages.push(pageVO);
 
             }
+
+            dispatchEvent(new Event(XML_LOADED,true));
         }
+
+
+    public function get arrPages():Array {
+        return _arrPages;
     }
+}
 }
 
 internal class Enforcer{};

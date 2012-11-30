@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+    <page template="1">
+        <background>"link to background image (grote bg img)"</background>
+        <pageNumber page="1">1</pageNumber>
+    </page>
+
+    <page template="2">
+        <title size="h1">This could be a very important H1 title</title>
+        <title size="h2" >We also have h2's</title>
+
+        <column position="left">
+            <paragraph type="italic">
+                Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.
+            </paragraph>
+            <paragraph type="normal">
+                Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.
+            </paragraph>
+        </column>
+
+
+        <column position="right">
+            <paragraph type="normal">
+                Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.
+            </paragraph>
+            <paragraph type="normal">
+                Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.
+            </paragraph>
+        </column>
+        <pageNumber page="2">2</pageNumber>
+    </page>
+
+</book>

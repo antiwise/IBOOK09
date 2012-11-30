@@ -8,7 +8,11 @@
 package be.devine.cp3.ibook
 {
     import be.devine.cp3.model.AppModel;
-    import starling.display.Sprite;
+import be.devine.cp3.view.Page;
+
+import flash.events.Event;
+
+import starling.display.Sprite;
 
     public class IBook extends Sprite
     {
@@ -17,7 +21,18 @@ package be.devine.cp3.ibook
         public function IBook()
         {
            _appModel = AppModel.getInstance();
-            _appModel.loadBook();
+           _appModel.loadBook();
+
+           _appModel.addEventListener(AppModel.XML_LOADED, XMLLoadedHandler)
+
+
+
+        }
+
+        private function XMLLoadedHandler(event:Event):void
+        {
+            var page:Page = new Page();
+            addChild(page);
         }
     }
 }

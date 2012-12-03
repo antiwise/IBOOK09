@@ -8,7 +8,7 @@
 package be.devine.cp3.view
 {
 import be.devine.cp3.model.AppModel;
-import be.devine.cp3.util.style.Style;
+
 
 import flash.display.Bitmap;
 
@@ -35,9 +35,10 @@ public class Page extends Sprite
         {
             _appModel = AppModel.getInstance();
 
-            _imageLoader = new Loader();
+           _imageLoader = new Loader();
             _imageLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, completeEventHandler)
-            _imageLoader.load(new URLRequest("assets/images/"+_appModel.arrPages[0].image));
+           // _imageLoader.load(new URLRequest("assets/images/"+_appModel.arrPages[0].image));
+            _imageLoader.load(new URLRequest("assets/images/image_01.jpg"));
 
            // var texture:Texture = Texture.fromBitmapData()
 
@@ -53,8 +54,8 @@ public class Page extends Sprite
             var img:Image = new Image(texture);
             addChild(img);
 
-            var starlingTextField:starling.text.TextField = Style.makeTextfield("Hallo Wereld","h1");
-            addChild(starlingTextField);
+           // var starlingTextField:starling.text.TextField = Style.makeTextfield("Hallo Wereld","h1");
+           // addChild(starlingTextField);
 
 
           /*  var starlingTextField:starling.text.TextField = new starling.text.TextField

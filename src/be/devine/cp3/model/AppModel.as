@@ -17,11 +17,6 @@ import be.devine.cp3.vo.PageVO;
 public class AppModel extends EventDispatcher
     {
         private static var instance:AppModel;
-        private var _xmlLoader:URLLoader;
-        private var _arrPages:Array;
-
-        public static const XML_LOADED:String = "XML_Loaded";
-
 
 
         public function AppModel(e:Enforcer)
@@ -41,55 +36,7 @@ public class AppModel extends EventDispatcher
             return instance;
         }
 
-        public function loadBook():void
-        {
-            _xmlLoader = new URLLoader();
-            _xmlLoader.addEventListener(Event.COMPLETE, xmlLoaderCompleteHandler);
-            _xmlLoader.load(new URLRequest("assets/xml/book.xml"));
-
-        }
-
-        private function xmlLoaderCompleteHandler(event:Event):void
-        {
-            var bookXML:XML = new XML(event.target.data);
-            //var pages:Array = new Array();
-            _arrPages = new Array();
-
-            for each(var page:Object in bookXML.page)
-            {
-                var pageVO:PageVO = new PageVO();
-                pageVO.page =  page.pageNumber.@page;
-                pageVO.image = page.image;
-                pageVO.template = page.@template;
-
-                if(page.@template == 2)
-                {
-                    if(page.title.@size == 1)
-                    {
-                        pageVO.h1 = page.title;
-                    }
-                    if(page.title.@size == 2)
-                    {
-                        pageVO.h2 = page.title;
-                    }
-
-
-
-                    //trace(page.image);
-                }
-
-                _arrPages.push(pageVO);
-
-            }
-
-            dispatchEvent(new Event(XML_LOADED,true));
-        }
-
-
-    public function get arrPages():Array {
-        return _arrPages;
     }
-}
 }
 
 internal class Enforcer{};

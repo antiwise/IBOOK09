@@ -8,6 +8,7 @@
 package be.devine.cp3.ibook
 {
     import be.devine.cp3.model.AppModel;
+import be.devine.cp3.service.BookService;
 import be.devine.cp3.view.Page;
 
 import flash.events.Event;
@@ -19,19 +20,16 @@ import starling.utils.VAlign;
 
 public class IBook extends Sprite
     {
-        private var _appModel:AppModel;
+        private var _appModel:AppModel,
+                    bookService:BookService;
 
         public function IBook()
         {
            _appModel = AppModel.getInstance();
-           _appModel.loadBook();
 
-           _appModel.addEventListener(AppModel.XML_LOADED, XMLLoadedHandler) ;
-
-
-
-
-
+            bookService = new BookService();
+            bookService.addEventListener(Event.COMPLETE, XMLLoadedHandler) ;
+            bookService.loadBook();
 
         }
 

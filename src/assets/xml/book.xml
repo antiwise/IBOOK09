@@ -7,11 +7,12 @@
         <description>Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</description>
     </bookinfo>
     <page template="1">
-        <image>image_01.jpg</image>
-        <pageNumber page="1">1</pageNumber>
+        <element type="image">image_01.jpg</element>
+        <element type="pageNumber">1</element>
     </page>
 
     <page template="2">
+
         <title size="h1">This could be a very important H1 title</title>
         <title size="h2" >We also have h2's</title>
 

@@ -1,13 +1,27 @@
-/**
- * Created with IntelliJ IDEA.
- * User: TatsBookPro
- * Date: 3/12/12
- * Time: 11:56
- * To change this template use File | Settings | File Templates.
- */
-package be.devine.cp3.factory.vo {
-public class ElementVOFactory {
-    public function ElementVOFactory() {
+package be.devine.cp3.factory.vo
+{
+import be.devine.cp3.vo.ImageElementVO;
+
+public class ElementVOFactory
+    {
+        public static function createElementVOFromXML(elementXML:XML)
+        {
+            //trace(elementXML.@type);
+
+            switch("" + elementXML.@type)
+            {
+                case "image":
+                    createImageElementVO(elementXML);
+                    break;
+
+            }
+        }
+
+        public static function createImageElementVO(elementXML:XML)
+        {
+            var elementVO:ImageElementVO = new ImageElementVO();
+           // elementVO.url = elementXML.url
+            //elementVO.
+        }
     }
-}
 }

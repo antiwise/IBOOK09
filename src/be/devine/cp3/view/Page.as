@@ -1,12 +1,6 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Ducaluk
- * Date: 30/11/12
- * Time: 10:11
- * To change this template use File | Settings | File Templates.
- */
 package be.devine.cp3.view
 {
+import be.devine.cp3.factory.view.TextFieldFactory;
 import be.devine.cp3.model.AppModel;
 
 
@@ -15,6 +9,7 @@ import flash.display.Bitmap;
 
 import flash.display.Loader;
 import flash.events.Event;
+import flash.geom.Rectangle;
 import flash.net.URLRequest;
 
 import starling.display.Image;
@@ -56,6 +51,17 @@ public class Page extends Sprite
             var img:Image = new Image(texture);
             addChild(img);
 
+            addChild(TextFieldFactory.createTextField({
+                    text: "Lorem ipsum dolor sit amet",
+                    fontName: "Bitter-Bold",
+                    size: 12,
+                    color: "0x182C49"
+
+                    }
+            ))
+
+
+           // addChild(new Rectangle(0,0,200,200));
            // var starlingTextField:starling.text.TextField = Style.makeTextfield("Hallo Wereld","h1");
            // addChild(starlingTextField);
 

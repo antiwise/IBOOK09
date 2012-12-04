@@ -21,6 +21,8 @@ import starling.textures.Texture;
 import starling.utils.HAlign;
 import starling.utils.VAlign;
 
+
+
 public class Page extends Sprite
     {
         private var _appModel:AppModel;
@@ -72,6 +74,13 @@ public class Page extends Sprite
           /*  var image:Image = new Image(Texture.fromBitmap(_imageLoader as Bitmap));
             addChild(image);*/
 
+
+
+
         }
+
+
     }
+
+
 }

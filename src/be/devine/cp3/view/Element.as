@@ -6,8 +6,16 @@
  * To change this template use File | Settings | File Templates.
  */
 package be.devine.cp3.view {
-public class Element {
-    public function Element() {
+import be.devine.cp3.vo.ElementVO;
+
+import starling.display.Sprite;
+
+public class Element extends Sprite{
+
+    protected var _elementVO:ElementVO;
+
+    public function Element(elementVO:ElementVO) {
+        _elementVO = elementVO;
     }
 }
 }

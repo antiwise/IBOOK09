@@ -6,7 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 package be.devine.cp3.vo {
-public class TextElementVO {
+public class TextElementVO extends ElementVO  {
+
+    public var text:String,
+               textType:String;
+
     public function TextElementVO() {
     }
 }

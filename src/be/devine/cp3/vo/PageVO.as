@@ -1,10 +1,3 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Ducaluk
- * Date: 29/11/12
- * Time: 19:47
- * To change this template use File | Settings | File Templates.
- */
 package be.devine.cp3.vo
 {
     public class PageVO
@@ -14,11 +7,12 @@ package be.devine.cp3.vo
         public var h2:String;
         public var page:Number;
         public var image:String;
+        public var elements:Array;
 
 
         public function PageVO()
         {
-
+            elements = new Array();
         }
     }
 }

@@ -1,12 +1,7 @@
-/**
- * Created with IntelliJ IDEA.
- * User: TatsBookPro
- * Date: 3/12/12
- * Time: 11:58
- * To change this template use File | Settings | File Templates.
- */
 package be.devine.cp3.service {
 
+
+import be.devine.cp3.factory.vo.PageVOFactory;
 
 import flash.events.Event;
 import flash.events.EventDispatcher;
@@ -20,10 +15,8 @@ public class BookService extends EventDispatcher {
     private var _xmlLoader:URLLoader;
     public static const XML_LOADED:String = "xmlLoaded";
 
-    public function BookService() {
-    }
-
-
+    public function BookService()
+    {}
 
     public function loadBook():void
     {
@@ -39,9 +32,11 @@ public class BookService extends EventDispatcher {
     {
         var bookXML:XML = new XML(event.target.data);
         var pages:Array = new Array();
-        for each(var page:Object in bookXML.page)
+        for each(var pageXML:XML in bookXML.page)
         {
-            var pageVO:PageVO = new PageVO();
+            pages.push(PageVOFactory.createPageVOFromXML(pageXML));
+
+           /* var pageVO:PageVO = new PageVO();
             pageVO.page =  page.pageNumber.@page;
             pageVO.template = page.@template;
 
@@ -64,7 +59,7 @@ public class BookService extends EventDispatcher {
                 trace(page.title);
             }
 
-            pages.push(pageVO);
+            pages.push(pageVO);     */
 
         }
 

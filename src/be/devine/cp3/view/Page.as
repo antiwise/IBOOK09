@@ -54,7 +54,6 @@ public class Page extends Sprite
                     fontName: "Bitter-Bold",
                     size: 12,
                     color: "0x182C49"
-
                     }
             ))
 

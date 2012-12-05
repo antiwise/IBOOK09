@@ -81,7 +81,7 @@ public class Page extends Sprite
 
 
             var textFieldH2:TextField = TextFieldFactory.createTextField({
-                        //hierin teksttype meegeven
+
                         text: "Dit is een h2",
                         fontFormat: "h2"
                     }
@@ -94,7 +94,7 @@ public class Page extends Sprite
 
 
             var textFieldH3:TextField = TextFieldFactory.createTextField({
-                        //hierin teksttype meegeven
+
                         text: "Dit is een h3",
                         fontFormat: "h3"
                     }

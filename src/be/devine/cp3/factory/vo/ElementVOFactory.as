@@ -23,5 +23,9 @@ public class ElementVOFactory
            // elementVO.url = elementXML.url
             //elementVO.
         }
+
+    //TODO: createTextElementVO type + tekst meegeven
+    //  var textElementVO:TextElementVO = new TextElementVO();
+        // textElementVO.text = elementXML.text()
     }
 }

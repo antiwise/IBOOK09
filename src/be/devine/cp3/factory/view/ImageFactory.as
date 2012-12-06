@@ -15,7 +15,7 @@ package be.devine.cp3.factory.view
                     var container:Sprite = new Sprite();
                     var img:Image = new Image(config.texture);
 
-                    var q:Quad = new Quad( 443,  262, 0xFFFFFF)
+                    var q:Quad = new Quad( 443,  262, 0xFFFFFF);
                     container.addChild(q);
                     container.addChild(img)
                     img.x = 25;
@@ -30,7 +30,7 @@ package be.devine.cp3.factory.view
                     var container:Sprite = new Sprite();
                     var img:Image = new Image(config.texture);
 
-                    var q:Quad = new Quad( 238,  318, 0xFFFFFF)
+                    var q:Quad = new Quad( 238,  318, 0xFFFFFF);
                     container.addChild(q);
                     container.addChild(img)
                     img.x = 25;

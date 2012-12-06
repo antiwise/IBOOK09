@@ -50,7 +50,7 @@ import be.devine.cp3.vo.TextElementVO;
                 textElementVO.type = "text";
                 textElementVO.text = elementXML.text();
                 textElementVO.textType = elementXML.@textType;
-                textElementVO.column = elementXML.@column;
+                //textElementVO.column = elementXML.@column;
 
                 return textElementVO;
             }

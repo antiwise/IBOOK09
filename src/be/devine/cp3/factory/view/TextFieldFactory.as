@@ -27,7 +27,8 @@ import starling.text.TextField;
                     var q:Quad = new Quad( 100,  8, 0x182C49)
                         q.y = starlingTextFieldh1.height ;
 
-                    container.addChild(starlingTextFieldh1)
+
+                    container.addChild(starlingTextFieldh1);
                     container.addChild(q);
 
                     return(container);
@@ -40,7 +41,7 @@ import starling.text.TextField;
                     starlingTextFieldh2.vAlign = VAlign.TOP;
 
                     starlingTextFieldh2.height = starlingTextFieldh2.textBounds.height + 20;
-                    container.addChild(starlingTextFieldh2)
+                    container.addChild(starlingTextFieldh2);
                     return(container);
 
                 case "h3":
@@ -50,7 +51,7 @@ import starling.text.TextField;
                     starlingTextFieldh3.hAlign = HAlign.LEFT;
                     starlingTextFieldh3.vAlign = VAlign.TOP;
                     starlingTextFieldh3.height = starlingTextFieldh3.textBounds.height +20;
-                    container.addChild(starlingTextFieldh3)
+                    container.addChild(starlingTextFieldh3);
                     return(container);
 
                 case "p-italic":

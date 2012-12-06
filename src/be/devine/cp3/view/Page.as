@@ -14,19 +14,18 @@ import be.devine.cp3.vo.ElementVO;
     public class Page extends Sprite
     {
         private var _appModel:AppModel,
-                    _imageLoader:Loader,
-                    _imageLoader2:Loader,
-                    pageVO:PageVO;
+                    _pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
         {
 
-            this.pageVO = pageVO;
+            this._pageVO = pageVO;
 
             _appModel = AppModel.getInstance();
 
             var xPos:int = 25;
-            var yPos:int = 25;
+            //var yPos:int = 25;
+            var yPos:int = 0;
 
             for each(var elementVO:ElementVO in pageVO.elements)
             {
@@ -62,7 +61,6 @@ import be.devine.cp3.vo.ElementVO;
 
         private function createColumn(columnElementVO:ColumnElementVO):Element {
             var columnElement:ColumnElement = new ColumnElement(columnElementVO);
-            trace("in createColumn");
             if(columnElementVO.position == "left"){
                 columnElement.x = 25;
                 columnElement.y = 20;
@@ -81,7 +79,7 @@ import be.devine.cp3.vo.ElementVO;
 
             var imageElement:ImageElement = new ImageElement(imageElementVO);
 
-            switch (pageVO.template){
+            switch (_pageVO.template){
 
                 case 1:
                     imageElement.x = 0;
@@ -95,7 +93,7 @@ import be.devine.cp3.vo.ElementVO;
                     break;
                 case 4:
                     imageElement.x = 25;
-
+                    imageElement.y = 25;
                     break;
                 case 5:
                     imageElement.x = 25;
@@ -122,34 +120,31 @@ import be.devine.cp3.vo.ElementVO;
         private function createText(textElementVO:TextElementVO):TextElement
         {
             var textElement:TextElement = new TextElement(textElementVO);
-            trace("in createText")
-            trace(pageVO.template)
-            switch (pageVO.template){
+            switch (_pageVO.template){
 
                 case 2:
-                    if (textElementVO.textType == "h1"){
-                        textElement.x = 25
-
-                    trace("we zitten met een h1")
+                    if (textElementVO.textType == "h1")
+                    {
+                        textElement.x = 25;
                     }
-                    if (textElementVO.textType == "h2"){
-
+                    if (textElementVO.textType == "h2")
+                    {
                         textElement.x = 25;
                         textElement.y = 20;
-
-                        trace("we zitten met een h2")
                     }
 
                     break;
                 case 3:
-                    if (textElementVO.textType == "h1"){
+                    if (textElementVO.textType == "h1")
+                    {
                         textElement.x = 25;
                         textElement.y = 300;
                     }
 
                     break;
                 case 4:
-                    if (textElementVO.textType == "h1"){
+                    if (textElementVO.textType == "h1")
+                    {
                         textElement.x = 25;
                         textElement.y = 270;
                     }
@@ -159,11 +154,10 @@ import be.devine.cp3.vo.ElementVO;
                 case 6:
                     break;
                 case 7:
-                    if (textElementVO.textType == "h1"){
+                    if (textElementVO.textType == "h1")
+                    {
                         textElement.x = 25;
-
                     }
-
                     break;
                 case 8:
                     break;

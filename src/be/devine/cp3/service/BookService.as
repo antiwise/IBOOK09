@@ -29,10 +29,10 @@ package be.devine.cp3.service
         private function xmlLoaderCompleteHandler(event:Event):void
         {
             var bookXML:XML = new XML(event.target.data);
-            _appModel.pages = new Array();
+            _appModel.pageVOS = new Array();
             for each(var pageXML:XML in bookXML.page)
             {
-                _appModel.pages.push(PageVOFactory.createPageVOFromXML(pageXML));
+                _appModel.pageVOS.push(PageVOFactory.createPageVOFromXML(pageXML));
             }
             dispatchEvent(new Event(XML_LOADED));
         }

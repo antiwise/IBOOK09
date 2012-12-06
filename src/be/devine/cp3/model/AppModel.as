@@ -1,22 +1,12 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Ducaluk
- * Date: 23/11/12
- * Time: 11:20
- * To change this template use File | Settings | File Templates.
- */
 package be.devine.cp3.model
 {
+    import flash.events.EventDispatcher;
 
-import flash.events.Event;
-import flash.events.EventDispatcher;
-import flash.net.URLLoader;
-import flash.net.URLRequest;
-import be.devine.cp3.vo.PageVO;
-
-public class AppModel extends EventDispatcher
+    public class AppModel extends EventDispatcher
     {
         private static var instance:AppModel;
+        public var pages:Array;
+
 
 
         public function AppModel(e:Enforcer)

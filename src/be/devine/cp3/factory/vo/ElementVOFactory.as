@@ -1,31 +1,42 @@
 package be.devine.cp3.factory.vo
 {
+import be.devine.cp3.vo.ElementVO;
 import be.devine.cp3.vo.ImageElementVO;
+import be.devine.cp3.vo.TextElementVO;
 
-public class ElementVOFactory
-    {
-        public static function createElementVOFromXML(elementXML:XML)
+    public class ElementVOFactory
         {
-            //trace(elementXML.@type);
-
-            switch("" + elementXML.@type)
+            public static function createElementVOFromXML(elementXML:XML):ElementVO
             {
-                case "image":
-                    createImageElementVO(elementXML);
-                    break;
-
+                switch("" + elementXML.@type)
+                {
+                    case "text": return createTextElementVO(elementXML);
+                    case "image": return createImageElementVO(elementXML);
+                }
+                return null;
             }
-        }
 
-        public static function createImageElementVO(elementXML:XML)
-        {
-            var elementVO:ImageElementVO = new ImageElementVO();
-           // elementVO.url = elementXML.url
-            //elementVO.
-        }
+            public static function createImageElementVO(elementXML:XML):ImageElementVO
+            {
+                trace("[ELEMENTVOFACTORY] create imageElementVO");
+                var imageElementVO:ImageElementVO = new ImageElementVO();
+                imageElementVO.type = "image";
+                imageElementVO.style = elementXML.@style;
+                imageElementVO.url = elementXML.text();
 
-    //TODO: createTextElementVO type + tekst meegeven
-    //  var textElementVO:TextElementVO = new TextElementVO();
-        // textElementVO.text = elementXML.text()
-    }
+                return imageElementVO;
+            }
+
+            public static function createTextElementVO(elementXML:XML):TextElementVO
+            {
+                trace("[ELEMENTVOFACTORY] create textElementVO");
+                var textElementVO:TextElementVO = new TextElementVO();
+                textElementVO.type = "text";
+                textElementVO.text = elementXML.text();
+                textElementVO.textType = elementXML.@size;
+
+                return textElementVO;
+            }
+
+        }
 }

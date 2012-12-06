@@ -9,8 +9,7 @@ package be.devine.cp3.vo {
 public class ImageElementVO extends ElementVO {
 
     public var url:String,
-            width:Number,
-            height:Number;
+                style:String;
 
 
     public function ImageElementVO() {

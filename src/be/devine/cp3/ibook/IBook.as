@@ -1,17 +1,14 @@
 package be.devine.cp3.ibook
 {
     import be.devine.cp3.model.AppModel;
-import be.devine.cp3.service.BookService;
-import be.devine.cp3.view.Page;
+    import be.devine.cp3.service.BookService;
+    import be.devine.cp3.view.Page;
+    import be.devine.cp3.vo.PageVO;
 
-import flash.events.Event;
+    import flash.events.Event;
 
-import starling.display.Sprite;
-import starling.text.TextField;
-import starling.utils.HAlign;
-import starling.utils.VAlign;
-
-public class IBook extends Sprite
+    import starling.display.Sprite;
+    public class IBook extends Sprite
     {
         private var _appModel:AppModel,
                     bookService:BookService;
@@ -21,15 +18,18 @@ public class IBook extends Sprite
            _appModel = AppModel.getInstance();
 
             bookService = new BookService();
-            bookService.addEventListener(Event.COMPLETE, XMLLoadedHandler) ;
+            bookService.addEventListener(BookService.XML_LOADED, XMLLoadedHandler) ;
             bookService.loadBook();
-
         }
 
         private function XMLLoadedHandler(event:Event):void
         {
-            var page:Page = new Page();
-            addChild(page);
+            // CREATE BOOK
+            for each(var pageVO:PageVO in _appModel.pages)
+            {
+                var page:Page = new Page(pageVO);
+                addChild(page);
+            }
         }
     }
 }

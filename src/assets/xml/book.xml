@@ -8,13 +8,13 @@
     </bookinfo>
     <page template="1">
         <element type="image" style="wide">image_02.jpg</element>
-        <element type="pageNumber">1</element>
+        <!--<element type="pageNumber">1</element>  -->
     </page>
 
     <page template="2">
 
-        <title size="h1">This could be a very important H1 title</title>
-        <title size="h2" >We also have h2's</title>
+        <element type="text" size="h1">This could be a very important H1 title</element>
+        <element type="text" size="h2">We also have h2's</element>
 
         <image>image_01.jpg</image>
         <column position="left">

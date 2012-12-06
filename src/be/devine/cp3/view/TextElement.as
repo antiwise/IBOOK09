@@ -1,13 +1,20 @@
-/**
- * Created with IntelliJ IDEA.
- * User: TatsBookPro
- * Date: 3/12/12
- * Time: 11:54
- * To change this template use File | Settings | File Templates.
- */
-package be.devine.cp3.view {
-public class TextElement {
-    public function TextElement() {
+package be.devine.cp3.view
+{
+    import be.devine.cp3.factory.view.TextFieldFactory;
+    import be.devine.cp3.vo.TextElementVO;
+
+    import starling.text.TextField;
+
+    public class TextElement extends Element
+    {
+        public function TextElement(textElementVO:TextElementVO)
+        {
+            super(textElementVO);
+            var textField:TextField = TextFieldFactory.createTextField({
+                text: textElementVO.text,
+                fontFormat: textElementVO.textType
+            });
+            addChild(textField);
+        }
     }
-}
 }

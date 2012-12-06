@@ -1,5 +1,7 @@
 package be.devine.cp3.factory.vo
 {
+import be.devine.cp3.vo.ColumnElementVO;
+import be.devine.cp3.vo.ColumnElementVO;
 import be.devine.cp3.vo.ElementVO;
 import be.devine.cp3.vo.ImageElementVO;
 import be.devine.cp3.vo.TextElementVO;
@@ -12,8 +14,22 @@ import be.devine.cp3.vo.TextElementVO;
                 {
                     case "text": return createTextElementVO(elementXML);
                     case "image": return createImageElementVO(elementXML);
+                    case "column": return createColumnElementVO(elementXML);
                 }
                 return null;
+            }
+
+            public static function createColumnElementVO(elementXML:XML):ColumnElementVO {
+                trace("[ELEMENTVOFACTORY] create columnElementVO");
+                var columnElementVO:ColumnElementVO = new ColumnElementVO();
+                columnElementVO.position = elementXML.@position;
+                columnElementVO.type = "column";
+
+                for each (var xml:XML in elementXML.element) {
+                    columnElementVO.textElements.push(createTextElementVO(xml));
+                }
+
+                return columnElementVO;
             }
 
             public static function createImageElementVO(elementXML:XML):ImageElementVO
@@ -33,7 +49,8 @@ import be.devine.cp3.vo.TextElementVO;
                 var textElementVO:TextElementVO = new TextElementVO();
                 textElementVO.type = "text";
                 textElementVO.text = elementXML.text();
-                textElementVO.textType = elementXML.@size;
+                textElementVO.textType = elementXML.@textType;
+                textElementVO.column = elementXML.@column;
 
                 return textElementVO;
             }

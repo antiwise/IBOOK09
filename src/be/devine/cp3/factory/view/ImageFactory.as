@@ -20,6 +20,9 @@ package be.devine.cp3.factory.view
                     container.addChild(img)
                     img.x = 25;
                     img.y = 25;
+                    img.width = 393;
+                    img.height = 212;
+
 
                     return container;
 
@@ -33,6 +36,13 @@ package be.devine.cp3.factory.view
                     img.x = 25;
                     img.y = 25;
 
+
+                    return container;
+
+                case "fullscreen":
+                    var container:Sprite = new Sprite();
+                    var img:Image = new Image(config.texture);
+                    container.addChild(img)
                     return container;
             }
             return null;

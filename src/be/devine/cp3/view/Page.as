@@ -2,7 +2,8 @@ package be.devine.cp3.view
 {
     import be.devine.cp3.factory.view.TextFieldFactory;
     import be.devine.cp3.model.AppModel;
-    import be.devine.cp3.vo.ElementVO;
+import be.devine.cp3.vo.ColumnElementVO;
+import be.devine.cp3.vo.ElementVO;
     import be.devine.cp3.vo.ImageElementVO;
     import be.devine.cp3.vo.PageVO;
     import be.devine.cp3.vo.TextElementVO;
@@ -12,42 +13,164 @@ package be.devine.cp3.view
 
     public class Page extends Sprite
     {
-        private var _appModel:AppModel;
-        private var _imageLoader:Loader;
-        private var _imageLoader2:Loader;
+        private var _appModel:AppModel,
+                    _imageLoader:Loader,
+                    _imageLoader2:Loader,
+                    pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
         {
+
+            this.pageVO = pageVO;
+
             _appModel = AppModel.getInstance();
 
-            for each(var element:ElementVO in pageVO.elements)
+            var xPos:int = 25;
+            var yPos:int = 25;
+
+            for each(var elementVO:ElementVO in pageVO.elements)
             {
-                switch(element.type)
+                var element:Element;
+                var updatePositions:Boolean = true;
+
+                switch(elementVO.type)
                 {
                     case "image":
-                        createImage(element as ImageElementVO);
+                        element = createImage(elementVO as ImageElementVO);
                         break;
                     case "text":
-                        createText(element as TextElementVO);
+                        element = createText(elementVO as TextElementVO);
                         break;
+
+                    case "column":
+                        var vo:ColumnElementVO = elementVO as ColumnElementVO;
+                        element =  createColumn(vo);
+                        updatePositions = (vo.position !== "left");
+                        break;
+                }
+
+                addChild(element);
+                element.y = element.y + yPos;
+
+
+                if (updatePositions) {
+                    yPos = element.y + element.height;
+
                 }
             }
         }
 
-        private function createImage(imageElementVO:ImageElementVO)
-        {
-            var imageElement:ImageElement = new ImageElement(imageElementVO);
+        private function createColumn(columnElementVO:ColumnElementVO):Element {
+            var columnElement:ColumnElement = new ColumnElement(columnElementVO);
+            trace("in createColumn");
+            if(columnElementVO.position == "left"){
+                columnElement.x = 25;
+                columnElement.y = 20;
+            }
+            if(columnElementVO.position == "right"){
+                columnElement.x = 275;
+                columnElement.y = 20;
+            }
+            return columnElement;
 
-            // deze positie moet nog aangepast worden afhankelijk van de template
-            addChild(imageElement);
         }
 
-        private function createText(textElementVO:TextElementVO)
+        private function createImage(imageElementVO:ImageElementVO):ImageElement
+        {
+
+
+            var imageElement:ImageElement = new ImageElement(imageElementVO);
+
+            switch (pageVO.template){
+
+                case 1:
+                    imageElement.x = 0;
+                    imageElement.y = 0;
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    imageElement.x = 25;
+                    imageElement.y = 25;
+                    break;
+                case 4:
+                    imageElement.x = 25;
+
+                    break;
+                case 5:
+                    imageElement.x = 25;
+                    break;
+                case 6:
+                    if (imageElementVO.style == "portrait"){
+                        imageElement.x = 25;
+                    }
+                    if (imageElementVO.style == "wide"){
+                        imageElement.x = 25;
+                        imageElement.y = 20;
+                    }
+                    break;
+                case 7:
+                    imageElement.x = 25;
+                    imageElement.y = 25;
+                    break;
+
+            }
+
+            return imageElement;
+        }
+
+        private function createText(textElementVO:TextElementVO):TextElement
         {
             var textElement:TextElement = new TextElement(textElementVO);
+            trace("in createText")
+            trace(pageVO.template)
+            switch (pageVO.template){
 
-            // deze positie moet nog aangepast worden afhankelijk van de template
-            addChild(textElement);
+                case 2:
+                    if (textElementVO.textType == "h1"){
+                        textElement.x = 25
+
+                    trace("we zitten met een h1")
+                    }
+                    if (textElementVO.textType == "h2"){
+
+                        textElement.x = 25;
+                        textElement.y = 20;
+
+                        trace("we zitten met een h2")
+                    }
+
+                    break;
+                case 3:
+                    if (textElementVO.textType == "h1"){
+                        textElement.x = 25;
+                        textElement.y = 300;
+                    }
+
+                    break;
+                case 4:
+                    if (textElementVO.textType == "h1"){
+                        textElement.x = 25;
+                        textElement.y = 270;
+                    }
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    if (textElementVO.textType == "h1"){
+                        textElement.x = 25;
+
+                    }
+
+                    break;
+                case 8:
+                    break;
+            }
+
+
+            return textElement;
         }
     }
 }

@@ -2,12 +2,13 @@ package be.devine.cp3.vo
 {
     public class PageVO
     {
-        public var template:Number;
+        public var template:uint;
         public var elements:Vector.<ElementVO>;
 
-        public function PageVO()
+        public function PageVO(template:uint)
         {
             elements = new Vector.<ElementVO>();
+            this.template = template;
         }
     }
 }

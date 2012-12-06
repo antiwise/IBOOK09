@@ -6,7 +6,8 @@ package be.devine.cp3.factory.vo
     {
         public static function createPageVOFromXML(pageXML:XML):PageVO
         {
-            var pageVO:PageVO = new PageVO();
+
+            var pageVO:PageVO = new PageVO(pageXML.@template);
             for each(var elementXML:XML in pageXML.element)
             {
                 pageVO.elements.push(ElementVOFactory.createElementVOFromXML(elementXML));

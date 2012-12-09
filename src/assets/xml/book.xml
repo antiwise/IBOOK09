@@ -119,14 +119,14 @@
 
 
     <page template="1">
-        <element type="image" style="fullscreen">image_01.jpg</element>
+        <element type="image" style="fullscreen">image_09.png</element>
 
     </page>
 
 
     <page template="3">
 
-        <element type="image" style="wide">image_02.jpg</element>
+        <element type="image" style="wide">image_10.png</element>
 
         <element type="text" textType="p-normal">   </element>
         <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -142,19 +142,10 @@
 
     </page>
 
-    <page template="6">
+    <page template="1">
+        <element type="image" style="fullscreen">image_11.png</element>
 
-        <element type="image" style="portrait">image_05.jpg</element>
-        <element type="text" textType="p-normal">   </element>
-
-        <element type="column" position="right">
-            <element type="text" textType="h3">Your h3 has the width of the column</element>
-            <element type="text" textType="p-normal">Lorem ipsum dolor sit amet, consecte- tur adipiscing elit. Vivamus sed libero sit amet tellus iaculis porta. Sed nec tellus et dui ullamcorper ultrices eget ut felis.</element>
-            <element type="text" textType="p-normal">Lorem ipsum dolor sit amet, consecte- tur adipiscing elit. Vivamus sed libero sit amet tellus iaculis porta. Sed nec tellus et dui ullamcorper ultrices eget ut felis.</element>
-        </element>
-        <element type="image" style="wide">image_06.jpg</element>
     </page>
-
 
     <page template="7">
         <element type="text" textType="p-normal">   </element>

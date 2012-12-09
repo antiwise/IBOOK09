@@ -28,6 +28,7 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 
 
+
 public class IBook extends Sprite
     {
         private var appModel:AppModel,
@@ -57,7 +58,8 @@ public class IBook extends Sprite
             addChild(navigationBar);
 
 
-            thumbnailContainerHolder = new Sprite()
+            thumbnailContainerHolder = new Sprite();
+
             thumbnailContainerHolder.addEventListener(TouchEvent.TOUCH, showThumbnails);
 
 

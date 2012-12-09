@@ -14,9 +14,11 @@ import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFormat;
 
+
+
 import starling.core.Starling;
 
-    [SWF(frameRate=60,  backgroundColor="#e9eaeb")]
+[SWF(frameRate=60,  backgroundColor="#e9eaeb")]
     public class Main extends Sprite
     {
         [Embed(source='assets/fonts/Bitter-Bold/Bitter-Bold.ttf', fontName="Bitter-Bold", mimeType="application/x-font-truetype", embedAsCFF=false)]

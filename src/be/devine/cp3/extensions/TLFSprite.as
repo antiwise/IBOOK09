@@ -1,6 +1,6 @@
 // =================================================================================================
 //
-//  based on starling.text.TextField
+//  based on be.devine.cp3.starling.text.TextField
 //  modified to use text layout framework engine for rendering text
 //
 // =================================================================================================
@@ -33,7 +33,7 @@ import starling.textures.TextureSmoothing;
 /** A TLFSprite displays text, using standard open type or true type fonts.
 	 * 
 	 * Rendering is done with a backing of the text layout framework engine as opposed
-	 * to the classic flash.text.TextField as the standard starling.text.TextField employs.
+	 * to the classic flash.text.TextField as the standard be.devine.cp3.starling.text.TextField employs.
 	 * 
 	 * If relying on embedded font use ensure TextLayoutFormat.fontLookup is set to FontLookup.EMBEDDED_CFF,
 	 * this defaults to FontLookup.DEVICE, expecting device fonts.
@@ -370,7 +370,7 @@ import starling.textures.TextureSmoothing;
 		
 		/** The smoothing filter that is used for the image texture. 
 		 *   @default bilinear
-		 *   @see starling.textures.TextureSmoothing */ 
+		 *   @see be.devine.cp3.starling.textures.TextureSmoothing */
 		public function get smoothing():String { return mSmoothing; }
 		public function set smoothing(value:String):void 
 		{

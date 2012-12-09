@@ -13,7 +13,7 @@ import be.devine.cp3.vo.ElementVO;
 
     public class Page extends Sprite
     {
-        private var _appModel:AppModel,
+        private var appModel:AppModel,
                     _pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
@@ -21,10 +21,9 @@ import be.devine.cp3.vo.ElementVO;
 
             this._pageVO = pageVO;
 
-            _appModel = AppModel.getInstance();
+            appModel = AppModel.getInstance();
 
-            var xPos:int = 25;
-            //var yPos:int = 25;
+
             var yPos:int = 0;
 
             for each(var elementVO:ElementVO in pageVO.elements)
@@ -59,7 +58,7 @@ import be.devine.cp3.vo.ElementVO;
             }
         }
 
-        private function createColumn(columnElementVO:ColumnElementVO):Element {
+        private static function createColumn(columnElementVO:ColumnElementVO):Element {
             var columnElement:ColumnElement = new ColumnElement(columnElementVO);
             if(columnElementVO.position == "left"){
                 columnElement.x = 25;
@@ -96,11 +95,13 @@ import be.devine.cp3.vo.ElementVO;
                     imageElement.y = 25;
                     break;
                 case 5:
+                    imageElement.y = 25;
                     imageElement.x = 25;
                     break;
                 case 6:
                     if (imageElementVO.style == "portrait"){
                         imageElement.x = 25;
+                        imageElement.y = 25;
                     }
                     if (imageElementVO.style == "wide"){
                         imageElement.x = 25;
@@ -138,7 +139,7 @@ import be.devine.cp3.vo.ElementVO;
                     if (textElementVO.textType == "h1")
                     {
                         textElement.x = 25;
-                        textElement.y = 300;
+                        textElement.y = 270;
                     }
 
                     break;

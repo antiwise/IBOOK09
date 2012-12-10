@@ -136,7 +136,7 @@ package be.devine.cp3.extensions
 		
 		private function drawRenderTextures() : void
 		{
-			//_renderTexture.draw(this);
+			_renderTexture.draw(this);
 			_renderTexture.draw(_maskImage);
 		}
 		

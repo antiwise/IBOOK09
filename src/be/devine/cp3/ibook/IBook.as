@@ -1,12 +1,15 @@
 package be.devine.cp3.ibook
 {
-    import be.devine.cp3.model.AppModel;
+import be.devine.cp3.extensions.ClippedSprite;
+import be.devine.cp3.extensions.PixelMaskDisplayObject;
+import be.devine.cp3.model.AppModel;
     import be.devine.cp3.service.BookService;
 import be.devine.cp3.view.NavigationBar;
 import be.devine.cp3.view.Page;
     import be.devine.cp3.vo.PageVO;
 
 import flash.display.Shape;
+import flash.geom.Rectangle;
 import flash.ui.Keyboard;
 
 import starling.animation.Transitions;
@@ -168,7 +171,7 @@ public class IBook extends Sprite
 
         }
 
-
+        // EENMAAL RUNNEN EN DAN SHOW HIDE IPV OPNIEUW GENERENEN.
         thumbnails();
 
 
@@ -210,6 +213,7 @@ public class IBook extends Sprite
             thumbpage.useHandCursor = true;
             var pageNumber:uint = appModel.thumbnailPages.indexOf(thumbpage);
 
+
             // TODO: dit zou eigenlijk op de thumbnailsprite moeten, maar dan weet ik niet hoe je het pagenumber ophaalt
             thumbpage.addEventListener(TouchEvent.TOUCH,thumbnailClicked);
             thumbnailSprite.x = xPos;
@@ -223,9 +227,16 @@ public class IBook extends Sprite
 
         }
 
+        var sprite:ClippedSprite = new ClippedSprite();
+        addChild(sprite);
 
+    // the sprite works like you're used to
+            sprite.addChild(thumbnailContainerHolder);
+            //sprite.addChild(anotherObject);
 
-        //  thumbnailContainer.mask = thumbnailContainerMask;
+    // set the mask rectangle in stage coordinates
+            sprite.clipRect = new Rectangle(50, 550, 800, 150);
+
 
     }
     public function showThumbnails(e:TouchEvent):void{

@@ -32,7 +32,8 @@ import starling.core.Starling;
         private var _iBook:IBook,
                helveticaNeueContainer:HelveticaNeueContainer,
                 _starling:Starling,
-               preloader:Preloader;
+               preloader:Preloader,
+                myDelay:Timer;
 
         public function Main()
         {
@@ -58,7 +59,7 @@ import starling.core.Starling;
             _starling = new Starling(IBook,stage);
 
 
-            var myDelay:Timer = new Timer(7500);
+            myDelay = new Timer(7500);
             myDelay.addEventListener(TimerEvent.TIMER, startStarling);
             myDelay.start();
 
@@ -77,6 +78,7 @@ import starling.core.Starling;
     private function startStarling(event:TimerEvent):void{
         trace ("in timer");
         removeChild(preloader);
+        myDelay.removeEventListener(TimerEvent.TIMER, startStarling);
         _starling.start();
     }
     }

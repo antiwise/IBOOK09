@@ -19,6 +19,10 @@ import flash.utils.setInterval;
 
 
 import starling.core.Starling;
+import starling.display.Image;
+import starling.textures.Texture;
+import starling.textures.TextureAtlas;
+
 [SWF(frameRate=60,  backgroundColor="#dd464e", width="1024", height="768")]
 
     public class Main extends Sprite
@@ -27,6 +31,8 @@ import starling.core.Starling;
         private static const BitterBold:Class;
         [Embed(source='assets/fonts/Bitter-Italic/Bitter-Italic.ttf', fontName="Bitter-Italic", mimeType="application/x-font-truetype", embedAsCFF=false)]
         private static const BitterItalic:Class;
+
+
 
 
         private var _iBook:IBook,
@@ -39,6 +45,8 @@ import starling.core.Starling;
         {
             stage.align = StageAlign.TOP_LEFT;
             stage.scaleMode = StageScaleMode.NO_SCALE;
+
+
 
             preloader = new Preloader();
 
@@ -58,28 +66,18 @@ import starling.core.Starling;
 
             _starling = new Starling(IBook,stage);
 
-
             myDelay = new Timer(7500);
             myDelay.addEventListener(TimerEvent.TIMER, startStarling);
             myDelay.start();
 
-
-
-
             addChild(preloader);
-
-
-
-
         }
 
-
-
-    private function startStarling(event:TimerEvent):void{
-        trace ("in timer");
-        removeChild(preloader);
-        myDelay.removeEventListener(TimerEvent.TIMER, startStarling);
-        _starling.start();
-    }
+        private function startStarling(event:TimerEvent):void
+        {
+            removeChild(preloader);
+            myDelay.removeEventListener(TimerEvent.TIMER, startStarling);
+            _starling.start();
+        }
     }
 }

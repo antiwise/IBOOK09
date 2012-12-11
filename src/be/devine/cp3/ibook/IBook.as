@@ -171,6 +171,9 @@ public class IBook extends Sprite
 
         }
 
+
+
+
         // EENMAAL RUNNEN EN DAN SHOW HIDE IPV OPNIEUW GENERENEN.
         thumbnails();
 
@@ -214,9 +217,13 @@ public class IBook extends Sprite
             var pageNumber:uint = appModel.thumbnailPages.indexOf(thumbpage);
 
 
+
+
             // TODO: dit zou eigenlijk op de thumbnailsprite moeten, maar dan weet ik niet hoe je het pagenumber ophaalt
             thumbpage.addEventListener(TouchEvent.TOUCH,thumbnailClicked);
             thumbnailSprite.x = xPos;
+
+            // TODO: active thumbnail aanduiden
 
 
             if (spriteArray.indexOf(thumbnailSprite)%2 == 1){

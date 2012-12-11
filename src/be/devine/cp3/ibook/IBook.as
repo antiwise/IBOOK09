@@ -9,6 +9,7 @@ import be.devine.cp3.view.Page;
     import be.devine.cp3.vo.PageVO;
 
 import flash.display.Shape;
+import flash.display.StageDisplayState;
 import flash.geom.Rectangle;
 import flash.ui.Keyboard;
 
@@ -26,11 +27,12 @@ import starling.display.Quad;
 
 import starling.display.Sprite;
 import starling.events.KeyboardEvent;
+import starling.events.ResizeEvent;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 
-
+[SWF(frameRate=60,  backgroundColor="#e9eaeb", width="1024", height="768")]
 
 public class IBook extends Sprite
     {
@@ -39,16 +41,20 @@ public class IBook extends Sprite
                     pageContainer:Sprite,
                     navigationBar:NavigationBar,
                     thumbnailContainerHolder:Sprite,
-                    thumbnailContainer:Sprite;
+                    thumbnailContainer:Sprite,
+                    bgQuad:Quad;
 
 
 
         public function IBook()
         {
            appModel = AppModel.getInstance();
+           // Starling.current.viewPort = new Rectangle(0, 0, 1024, 768);
+            bgQuad = new Quad(1024, 768, 0xe9eaeb);
+            addChild(bgQuad)
 
             Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler)
-
+            Starling.current.nativeStage.addEventListener(ResizeEvent.RESIZE,resizeHandler)
 
             bookService = new BookService();
             bookService.addEventListener(BookService.XML_LOADED, XMLLoadedHandler) ;
@@ -66,6 +72,7 @@ public class IBook extends Sprite
             thumbnailContainerHolder.addEventListener(TouchEvent.TOUCH, showThumbnails);
 
 
+
             pageContainer = new Sprite();
             addChild(pageContainer);
 
@@ -73,7 +80,12 @@ public class IBook extends Sprite
 
             appModel.addEventListener(AppModel.PAGE_CHANGED,pageChangedHandler);
 
+
             setChildIndex(navigationBar,numChildren-1);
+
+
+
+
 
         }
 
@@ -95,6 +107,7 @@ public class IBook extends Sprite
             appModel.amountOfPages = countPages;
             appModel.currentPage = 0;
             thumbnails();
+
         }
 
     private function pageChangedHandler(event:Event):void
@@ -219,6 +232,7 @@ public class IBook extends Sprite
 
 
 
+
             // TODO: dit zou eigenlijk op de thumbnailsprite moeten, maar dan weet ik niet hoe je het pagenumber ophaalt
             thumbpage.addEventListener(TouchEvent.TOUCH,thumbnailClicked);
             thumbnailSprite.x = xPos;
@@ -268,6 +282,8 @@ public class IBook extends Sprite
     }
 
     private function keyboardHandler(event:KeyboardEvent):void {
+
+        trace (event.keyCode);
         switch (event.keyCode)
         {
             case Keyboard.LEFT:
@@ -278,8 +294,34 @@ public class IBook extends Sprite
                 trace ("next")
                 appModel.nextPage();
                 break;
+            case Keyboard.F:
+                trace ("fullscreen")
+                //appModel.nextPage();
+                    if( Starling.current.nativeStage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE){
+                        Starling.current.nativeStage.displayState = StageDisplayState.NORMAL;
+
+                    }else {
+                        Starling.current.nativeStage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+
+                    }
+
+                break;
 
         }
+
+    }
+
+
+    private function resizeHandler(event:Event):void {
+
+        var x = (Starling.current.nativeStage.stageWidth - Starling.current.stage.stageWidth) >> 1;
+        var y = (Starling.current.nativeStage.stageHeight - Starling.current.stage.stageHeight) >> 1;
+        var currentStageHeight = Starling.current.stage.stageHeight;
+        var currentStageWidth = Starling.current.stage.stageWidth;
+
+        Starling.current.viewPort = new Rectangle(x, y, 1024, currentStageHeight);
+        bgQuad.width = currentStageWidth;
+        bgQuad.height = currentStageHeight;
 
     }
 }

@@ -23,7 +23,7 @@ public class NavigationBar extends Sprite
             public function NavigationBar()
             {
 
-                var bg:Quad = new Quad(1024,30,0x182c49);
+                var bg:Quad = new Quad(1024,50,0x182c49);
                 addChild(bg);
 
                 _appModel = AppModel.getInstance();

@@ -17,8 +17,8 @@ import flash.text.TextFormat;
 
 
 import starling.core.Starling;
+[SWF(frameRate=60,  backgroundColor="#dd464e", width="1024", height="768")]
 
-[SWF(frameRate=60,  backgroundColor="#e9eaeb")]
     public class Main extends Sprite
     {
         [Embed(source='assets/fonts/Bitter-Bold/Bitter-Bold.ttf', fontName="Bitter-Bold", mimeType="application/x-font-truetype", embedAsCFF=false)]
@@ -52,6 +52,7 @@ import starling.core.Starling;
 
             _starling = new Starling(IBook,stage);
             _starling.start();
+
         }
     }
 }

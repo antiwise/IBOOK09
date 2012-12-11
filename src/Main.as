@@ -9,11 +9,13 @@ import flash.display.Screen;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
+import flash.events.TimerEvent;
 import flash.text.Font;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFormat;
-
+import flash.utils.Timer;
+import flash.utils.setInterval;
 
 
 import starling.core.Starling;
@@ -29,12 +31,15 @@ import starling.core.Starling;
 
         private var _iBook:IBook,
                helveticaNeueContainer:HelveticaNeueContainer,
-                _starling:Starling;
+                _starling:Starling,
+               preloader:Preloader;
 
         public function Main()
         {
             stage.align = StageAlign.TOP_LEFT;
             stage.scaleMode = StageScaleMode.NO_SCALE;
+
+            preloader = new Preloader();
 
             var fonts:Array = Font.enumerateFonts();
             for each(var f:Font in fonts)
@@ -51,8 +56,28 @@ import starling.core.Starling;
             stage.nativeWindow.y = (Screen.mainScreen.bounds.height - 768)*0.5;
 
             _starling = new Starling(IBook,stage);
-            _starling.start();
+
+
+            var myDelay:Timer = new Timer(7500);
+            myDelay.addEventListener(TimerEvent.TIMER, startStarling);
+            myDelay.start();
+
+
+
+
+            addChild(preloader);
+
+
+
 
         }
+
+
+
+    private function startStarling(event:TimerEvent):void{
+        trace ("in timer");
+        removeChild(preloader);
+        _starling.start();
+    }
     }
 }

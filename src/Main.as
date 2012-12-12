@@ -59,14 +59,14 @@ import starling.core.Starling;
             _starling = new Starling(IBook,stage);
 
 
+
+            addChild(preloader);
+
             myDelay = new Timer(7500);
             myDelay.addEventListener(TimerEvent.TIMER, startStarling);
             myDelay.start();
 
 
-
-
-            addChild(preloader);
 
 
 

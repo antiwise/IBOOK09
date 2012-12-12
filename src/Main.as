@@ -32,9 +32,6 @@ import starling.textures.TextureAtlas;
         [Embed(source='assets/fonts/Bitter-Italic/Bitter-Italic.ttf', fontName="Bitter-Italic", mimeType="application/x-font-truetype", embedAsCFF=false)]
         private static const BitterItalic:Class;
 
-
-
-
         private var _iBook:IBook,
                helveticaNeueContainer:HelveticaNeueContainer,
                 _starling:Starling,

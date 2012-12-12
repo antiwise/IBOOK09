@@ -2,7 +2,10 @@ package be.devine.cp3.view
 {
     import be.devine.cp3.factory.view.TextFieldFactory;
     import be.devine.cp3.model.AppModel;
-    import starling.core.Starling;
+
+import flash.events.Event;
+
+import starling.core.Starling;
     import starling.display.Quad;
     import starling.events.Touch;
     import starling.events.TouchEvent;
@@ -17,6 +20,8 @@ package be.devine.cp3.view
 
         [Embed(source="/assets/images/sprite.png")]
         public static const ButtonTexture:Class;
+
+
 
         private var _appModel:AppModel,
                     buttonPrev:Button,
@@ -50,9 +55,10 @@ package be.devine.cp3.view
             buttonNext.x = buttonPrev.width + 200;
 
             _buttonContainer.x = this.width/2 - _buttonContainer.width/2;
-            _buttonContainer.y = 5;
+            _buttonContainer.y = 7;
 
             setPageNumber();
+
         }
 
         private function previous(event:TouchEvent):void
@@ -112,5 +118,7 @@ package be.devine.cp3.view
                 pageNumberTextfield.x = Starling.current.stage.stageWidth - 100;
                 addChild(pageNumberTextfield);
         }
+
+
     }
 }

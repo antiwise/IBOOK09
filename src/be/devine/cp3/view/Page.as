@@ -18,11 +18,9 @@ import be.devine.cp3.vo.ElementVO;
 
         public function Page(pageVO:PageVO)
         {
-
             this._pageVO = pageVO;
 
             appModel = AppModel.getInstance();
-
 
             var yPos:int = 0;
 

@@ -43,8 +43,6 @@ import starling.textures.TextureAtlas;
             stage.align = StageAlign.TOP_LEFT;
             stage.scaleMode = StageScaleMode.NO_SCALE;
 
-
-
             preloader = new Preloader();
 
             var fonts:Array = Font.enumerateFonts();

@@ -358,7 +358,7 @@ public class IBook extends Sprite
         var currentStageHeight = Starling.current.stage.stageHeight;
         var currentStageWidth = Starling.current.stage.stageWidth;
 
-        Starling.current.viewPort = new Rectangle(x, y, 1024, currentStageHeight);
+        Starling.current.viewPort = new Rectangle(x, y, currentStageWidth, currentStageHeight);
         bgQuad.width = currentStageWidth;
         bgQuad.height = currentStageHeight;
 

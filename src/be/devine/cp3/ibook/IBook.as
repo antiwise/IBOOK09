@@ -158,7 +158,7 @@ public class IBook extends Sprite
                 tweenPageContainer.animate("x", 1024);
                 tweenPageContainer.onComplete = onTweenComplete;
                 tweenPageContainer.onCompleteArgs = [pageContainer];
-                Starling.juggler.add(tweenPageContainer)
+                Starling.juggler.add(tweenPageContainer);
 
             }
             pageContainer = new Sprite();
@@ -171,7 +171,7 @@ public class IBook extends Sprite
             pageContainer.addChild(leftPage);
             var tweenPageLeft:Tween = new Tween(leftPage, .5, Transitions.EASE_IN);
             tweenPageLeft.animate("x", 0);
-            Starling.juggler.add(tweenPageLeft)
+            Starling.juggler.add(tweenPageLeft);
 
             if(rightPage != null)
             {
@@ -179,7 +179,7 @@ public class IBook extends Sprite
                 pageContainer.addChild(rightPage);
                 var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
                 tweenPageRight.animate("x", 512);
-                Starling.juggler.add(tweenPageRight)
+                Starling.juggler.add(tweenPageRight);
             }
 
         }

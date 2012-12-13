@@ -36,14 +36,14 @@ import flash.events.EventDispatcher;
             return instance;
         }
 
-        public function get currentPage():uint {
+        public function get currentPage():uint
+        {
             return _currentPage;
         }
 
-        public function set currentPage(value:uint):void {
+        public function set currentPage(value:uint):void
+        {
             _currentPage = value;
-            trace ("currentPage is " + _currentPage)
-
             dispatchEvent(new Event(PAGE_CHANGED));
         }
 
@@ -54,6 +54,8 @@ import flash.events.EventDispatcher;
                 currentPage += 2;
 
             }
+
+            //showTimeline = true;
 
         }
 
@@ -76,7 +78,7 @@ import flash.events.EventDispatcher;
                 direction = "prev";
             }
 
-            trace ("goto Page")
+
                 currentPage = pageNumber;
             if (currentPage%2 != 0){
                 currentPage = currentPage -1;
@@ -107,12 +109,18 @@ import flash.events.EventDispatcher;
         }
 
         public function set showTimeline(value:Boolean):void {
+            if (value != _showTimeline)
+            {
+                _showTimeline = value;
+                trace("[AppModel] showTimeLine? " + _showTimeline);
+                dispatchEvent(new Event(TIMELINE_CHANGED));
+            }
 
-            if (value != _showTimeline){
+           /* if (value != _showTimeline){
                 _showTimeline = value;
                 trace(_showTimeline);
                 dispatchEvent(new Event(TIMELINE_CHANGED));
-            }
+            }   */
 
         }
     }

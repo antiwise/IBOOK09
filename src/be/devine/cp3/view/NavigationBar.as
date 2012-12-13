@@ -6,11 +6,13 @@ package be.devine.cp3.view
 import flash.events.Event;
 
 import starling.core.Starling;
-    import starling.display.Quad;
+import starling.display.DisplayObject;
+import starling.display.Quad;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.display.Sprite;
-    import starling.textures.Texture;
+import starling.events.TouchPhase;
+import starling.textures.Texture;
     import starling.textures.TextureAtlas;
 
     public class NavigationBar extends Sprite
@@ -23,7 +25,7 @@ import starling.core.Starling;
 
 
 
-        private var _appModel:AppModel,
+        private var appModel:AppModel,
                     buttonPrev:Button,
                     buttonNext:Button,
                     _buttonContainer:Sprite,
@@ -31,7 +33,7 @@ import starling.core.Starling;
 
         public function NavigationBar()
         {
-            _appModel = AppModel.getInstance();
+            appModel = AppModel.getInstance();
 
             var bg:Quad = new Quad(1024,50,0x182c49);
             addChild(bg);
@@ -59,6 +61,12 @@ import starling.core.Starling;
 
             setPageNumber();
 
+
+
+            this.addEventListener(TouchEvent.TOUCH,TouchEventHandler);
+
+
+
         }
 
         private function previous(event:TouchEvent):void
@@ -67,13 +75,13 @@ import starling.core.Starling;
 
             if(touch.phase == "began")
             {
-                _appModel.previousPage();
+                appModel.previousPage();
             }
         }
 
         public function checkNextPrevious():void
         {
-            if(_appModel.currentPage +2 >= _appModel.amountOfPages)
+            if(appModel.currentPage +2 >= appModel.amountOfPages)
             {
                 buttonNext.visible = false;
             }
@@ -81,7 +89,7 @@ import starling.core.Starling;
             {
                 buttonNext.visible = true;
             }
-            if(_appModel.currentPage == 0)
+            if(appModel.currentPage == 0)
             {
                 buttonPrev.visible = false;
             }
@@ -97,7 +105,7 @@ import starling.core.Starling;
 
             if(touch.phase == "began")
             {
-                _appModel.nextPage();
+                appModel.nextPage();
             }
         }
 
@@ -108,8 +116,8 @@ import starling.core.Starling;
                 this.removeChild(pageNumberTextfield);
             }
 
-                var pageLeft:uint = _appModel.currentPage + 1
-                var pageRight:uint = _appModel.currentPage + 2;
+                var pageLeft:uint = appModel.currentPage + 1
+                var pageRight:uint = appModel.currentPage + 2;
                 pageNumberTextfield = TextFieldFactory.createTextField({
                     text: "Page  " + pageLeft.toString() + " - " + pageRight.toString() ,
                     fontFormat: "p-normal-white"
@@ -121,5 +129,17 @@ import starling.core.Starling;
         }
 
 
+        private function TouchEventHandler(event:TouchEvent):void
+        {
+            event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appModel.showTimeline = true :  appModel.showTimeline = false;
+            /*var touch:Touch = event.getTouch(stage);
+
+            if(touch.phase == "hover")
+            {
+                trace("[NavigationBar] hoverOVer");
+                appModel.showTimeline = true;
+            }  */
+
+        }
     }
 }

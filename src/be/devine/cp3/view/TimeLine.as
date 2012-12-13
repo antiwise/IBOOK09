@@ -70,13 +70,14 @@ public class TimeLine extends Sprite
 
             buttonPrev = new Button(textureAtlas,"arrow_left.png");
             buttonPrev.addEventListener(TouchEvent.TOUCH,previous);
+            //buttonPrev.addEventListener(TouchEvent.TOUCH, showTimeLine);
             buttonPrev.y = this.height/2;
             buttonPrev.x = 10;
             addChild(buttonPrev);
 
             buttonNext = new Button(textureAtlas,"arrow_right.png");
             buttonNext.addEventListener(TouchEvent.TOUCH,next);
-            buttonNext.addEventListener(TouchEvent.TOUCH, showTimeLine);
+            //buttonNext.addEventListener(TouchEvent.TOUCH, showTimeLine);
             buttonNext.x = this.width - 10 - buttonNext.width;
             buttonNext.y = this.height/2;
             addChild(buttonNext);
@@ -110,8 +111,6 @@ public class TimeLine extends Sprite
             var xPos:uint = 0;
             for(var i:uint = 0; i<6;i++)
             {
-
-               // var thumbnail:Thumbnail = arrThumbnails[appmodel.currentPage + i];
                 var thumbnail:Thumbnail = arrThumbnails[_posTimeline + i];
                 if(thumbnail != null)
                 {
@@ -132,7 +131,7 @@ public class TimeLine extends Sprite
             _thumbnailContainer.x = this.width/2 - _thumbnailContainer.width/2;
             _thumbnailContainer.y = this.height/2 - _thumbnailContainer.height/2;
 
-                    addChild(_thumbnailContainer);
+            addChild(_thumbnailContainer);
             checkNextPrevious();
         }
 
@@ -142,32 +141,18 @@ public class TimeLine extends Sprite
 
         if(touch.phase == "began")
         {
-            trace(touch.phase);
-            trace("kliklik");
-
             var pageNumber:uint = arrThumbnails.indexOf(event.currentTarget as Thumbnail);
             if(pageNumber != appmodel.currentPage)
             {
                 appmodel.gotoPage(pageNumber);
             }
-
-
         }
-
-
-
-
-
-        /*if(touch.phase == "ended");
-        {
-            trace("kliklik");
-            //appmodel.gotoPage(arrThumbnails.indexOf(event.currentTarget as Thumbnail))
-        }     */
     }
 
     private function previous(event:TouchEvent):void
     {
-        trace(_posTimeline);
+
+
         var touch:Touch = event.getTouch(stage);
 
         if(touch.phase == "began")
@@ -183,8 +168,9 @@ public class TimeLine extends Sprite
 
     private function next(event:TouchEvent):void
     {
+
         var touch:Touch = event.getTouch(stage);
-        trace(_posTimeline);
+
 
         if(touch.phase == "began")
         {
@@ -237,18 +223,23 @@ public class TimeLine extends Sprite
 
     private function showTimeLine(event:TouchEvent):void
     {
+        //event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appmodel.showTimeline = true :  appmodel.showTimeline = false;
 
-        event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  this.visible = true :  appmodel.showTimeline  = false;
+        //event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appmodel.showTimeline = true :  appmodel.showTimeline  = false;
 
         var touch:Touch = event.getTouch(stage);
-        if(touch.phase == "began")
+
+        if(touch.phase == "hover")
         {
-            appmodel.showTimeline = true
+            trace("[TimeLine] hover");
+            appmodel.showTimeline = true;
 
         }
+
     }
 
     private function timeLineHandler(event:flash.events.Event):void {
+
 
         if (appmodel.showTimeline == true){
             this.visible = true;

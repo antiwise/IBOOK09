@@ -13,8 +13,10 @@ import be.devine.cp3.vo.PageVO;
 
 import flash.display.Shape;
 import flash.display.StageDisplayState;
+import flash.events.TimerEvent;
 import flash.geom.Rectangle;
 import flash.ui.Keyboard;
+import flash.utils.Timer;
 
 import starling.animation.Transitions;
 
@@ -44,7 +46,8 @@ public class IBook extends Sprite
                     pageContainer:Sprite,
                     navigationBar:NavigationBar,
                     timeLine:TimeLine,
-                    bgQuad:Quad;
+                    bgQuad:Quad,
+                    myDelay:Timer;
 
 
 
@@ -83,6 +86,7 @@ public class IBook extends Sprite
             appModel.addEventListener(AppModel.PAGE_CHANGED,pageChangedHandler);
 
 
+
             setChildIndex(navigationBar,numChildren-1);
 
 ;
@@ -116,8 +120,7 @@ public class IBook extends Sprite
 
             timeLine= new TimeLine();
             timeLine.x = Starling.current.stage.stageWidth/2 - timeLine.width/2;
-            timeLine.y = Starling.current.stage.stageHeight - timeLine.height - 25;
-            timeLine.visible = true;
+            timeLine.y = Starling.current.stage.stageHeight - timeLine.height - 27;
 
 
 
@@ -367,9 +370,32 @@ public class IBook extends Sprite
     private function showTimeLine(event:TouchEvent):void
     {
 
-       // event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  timeLine.visible = true :  timeLine.visible = false;
+       //event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appModel.showTimeline = true :  appModel.showTimeline = false;
 
+        myDelay = new Timer(2000);
 
+        if (event.getTouch(event.target as DisplayObject, TouchPhase.HOVER))
+        {
+            appModel.showTimeline = true
+
+        }
+        else
+        {
+
+            myDelay.addEventListener(TimerEvent.TIMER_COMPLETE, hideTimeline);
+            myDelay.start();
+        }
+
+        if (event.getTouch(this, TouchPhase.ENDED))
+        {
+            // click code goes here
+        }
+
+    }
+
+    private function hideTimeline(event:TimerEvent):void {
+        appModel.showTimeline = false
+        myDelay.stop();
     }
 }
 }

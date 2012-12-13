@@ -116,6 +116,7 @@ import starling.core.Starling;
                 });
 
                 pageNumberTextfield.x = Starling.current.stage.stageWidth - 100;
+            pageNumberTextfield.y = 3;
                 addChild(pageNumberTextfield);
         }
 

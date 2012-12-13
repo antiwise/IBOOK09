@@ -29,6 +29,7 @@ package be.devine.cp3.service
         private function xmlLoaderCompleteHandler(event:Event):void
         {
             var bookXML:XML = new XML(event.target.data);
+            trace(bookXML);
             _appModel.pageVOS = new Array();
             for each(var pageXML:XML in bookXML.page)
             {

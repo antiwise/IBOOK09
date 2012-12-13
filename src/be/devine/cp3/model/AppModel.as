@@ -12,8 +12,10 @@ import flash.events.EventDispatcher;
         private var _currentPage:uint;
         private var _amountOfPages:uint;
         private var _direction:String = "next";
+        private var _showTimeline:Boolean = false;
 
         public static const PAGE_CHANGED:String = "PageChanged";
+        public static const TIMELINE_CHANGED:String = "TimelineChanged";
 
 
 
@@ -97,6 +99,21 @@ import flash.events.EventDispatcher;
 
         public function set direction(value:String):void {
             _direction = value;
+        }
+
+
+        public function get showTimeline():Boolean {
+            return _showTimeline;
+        }
+
+        public function set showTimeline(value:Boolean):void {
+
+            if (value != _showTimeline){
+                _showTimeline = value;
+                trace(_showTimeline);
+                dispatchEvent(new Event(TIMELINE_CHANGED));
+            }
+
         }
     }
 }

@@ -6,7 +6,10 @@ import be.devine.cp3.model.AppModel;
     import be.devine.cp3.service.BookService;
 import be.devine.cp3.view.NavigationBar;
 import be.devine.cp3.view.Page;
-    import be.devine.cp3.vo.PageVO;
+import be.devine.cp3.view.TableOfContents;
+import be.devine.cp3.view.Thumbnail;
+import be.devine.cp3.view.TimeLine;
+import be.devine.cp3.vo.PageVO;
 
 import flash.display.Shape;
 import flash.display.StageDisplayState;
@@ -40,8 +43,7 @@ public class IBook extends Sprite
                     bookService:BookService,
                     pageContainer:Sprite,
                     navigationBar:NavigationBar,
-                    thumbnailContainerHolder:Sprite,
-                    thumbnailContainer:Sprite,
+                    timeLine:TimeLine,
                     bgQuad:Quad;
 
 
@@ -62,14 +64,14 @@ public class IBook extends Sprite
 
             navigationBar = new NavigationBar();
             navigationBar.y = 718;
-            navigationBar.addEventListener(TouchEvent.TOUCH, showThumbnails);
+            navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
 
             addChild(navigationBar);
 
 
-            thumbnailContainerHolder = new Sprite();
+          /*  thumbnailContainerHolder = new Sprite();
 
-            thumbnailContainerHolder.addEventListener(TouchEvent.TOUCH, showThumbnails);
+            thumbnailContainerHolder.addEventListener(TouchEvent.TOUCH, showThumbnails);  */
 
 
 
@@ -83,8 +85,7 @@ public class IBook extends Sprite
 
             setChildIndex(navigationBar,numChildren-1);
 
-
-
+;
 
 
         }
@@ -95,18 +96,48 @@ public class IBook extends Sprite
             appModel.pages = new Array();
             appModel.thumbnailPages = new Array();
 
+
+           /* _tableOfContents = new TableOfContents();
+            addChild(_tableOfContents);
+                                         */
+
+
             var countPages:uint = 0;
             for each(var pageVO:PageVO in appModel.pageVOS)
             {
                 var page:Page = new Page(pageVO);
-                var thumbpage:Page = new Page(pageVO);
+                var thumbnailPage:Page = new Page(pageVO);
                 appModel.pages.push(page);
-                appModel.thumbnailPages.push(thumbpage)
+                appModel.thumbnailPages.push(thumbnailPage);
                 countPages++;
             }
+
+
+
+            timeLine= new TimeLine();
+            timeLine.x = Starling.current.stage.stageWidth/2 - timeLine.width/2;
+            timeLine.y = Starling.current.stage.stageHeight - timeLine.height - 25;
+            timeLine.visible = true;
+
+
+
+            addChild(timeLine);
+            timeLine.addEventListener(TouchEvent.TOUCH,showTimeLine);
+
+            //timeLine.addEventListener(TimeLine.THUMBNAIL_CLICKED, thumbNailClickedHandler)
+
             appModel.amountOfPages = countPages;
             appModel.currentPage = 0;
-            thumbnails();
+            //thumbnails();
+
+
+
+
+
+
+           // appModel.pages.push(_tableOfContents);
+
+
 
         }
 
@@ -115,6 +146,10 @@ public class IBook extends Sprite
         updatePageView();
         navigationBar.checkNextPrevious();
         navigationBar.setPageNumber();
+        //timeLine.posTimeline = appModel.currentPage;
+        timeLine.updateThumbnails();
+
+       setChildIndex(timeLine,numChildren-1);
     }
 
     private function updatePageView():void
@@ -188,7 +223,7 @@ public class IBook extends Sprite
 
 
         // EENMAAL RUNNEN EN DAN SHOW HIDE IPV OPNIEUW GENERENEN.
-        thumbnails();
+       // thumbnails();
 
 
     }
@@ -198,6 +233,7 @@ public class IBook extends Sprite
     }
 
 
+      /*
     public function thumbnails():void{
 
      addChild(thumbnailContainerHolder);
@@ -281,6 +317,8 @@ public class IBook extends Sprite
         }
     }
 
+    */
+
     private function keyboardHandler(event:KeyboardEvent):void {
 
         trace (event.keyCode);
@@ -291,6 +329,7 @@ public class IBook extends Sprite
                     appModel.previousPage();
                 break;
             case Keyboard.RIGHT:
+            case Keyboard.SPACE:
                 trace ("next")
                 appModel.nextPage();
                 break;
@@ -322,6 +361,14 @@ public class IBook extends Sprite
         Starling.current.viewPort = new Rectangle(x, y, currentStageWidth, currentStageHeight);
         bgQuad.width = currentStageWidth;
         bgQuad.height = currentStageHeight;
+
+    }
+
+    private function showTimeLine(event:TouchEvent):void
+    {
+
+       // event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  timeLine.visible = true :  timeLine.visible = false;
+
 
     }
 }

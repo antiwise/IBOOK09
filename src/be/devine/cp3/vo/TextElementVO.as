@@ -4,7 +4,6 @@ package be.devine.cp3.vo
     {
         public var text:String,
                    textType:String;
-                //column:String;
 
         public function TextElementVO()
         {

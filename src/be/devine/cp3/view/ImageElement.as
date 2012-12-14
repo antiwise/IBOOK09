@@ -16,16 +16,16 @@ package be.devine.cp3.view
     {
 
         private var ldr:Loader;
-        private var _imageElementVO:ImageElementVO;
+        private var imageElementVO:ImageElementVO;
 
         public function ImageElement(imageElementVO:ImageElementVO)
         {
             super(imageElementVO);
-            this._imageElementVO = imageElementVO;
+            this.imageElementVO = imageElementVO;
 
             ldr = new Loader();
             ldr.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoadedHandler);
-            ldr.load(new URLRequest("assets/images/"+_imageElementVO.url));
+            ldr.load(new URLRequest("assets/images/"+imageElementVO.url));
         }
 
         private function imageLoadedHandler(e:Event)
@@ -34,7 +34,7 @@ package be.devine.cp3.view
 
             var texture:Texture = Texture.fromBitmap(loadedBitmap);
             var img:Sprite =  ImageFactory.createImage({
-                style: _imageElementVO.style,
+                style: imageElementVO.style,
                 texture: texture
             });
             addChild(img);

@@ -23,7 +23,7 @@ import starling.display.Image;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
 
-[SWF(frameRate=60,  backgroundColor="#dd464e", width="1024", height="768")]
+    [SWF(frameRate=60,  backgroundColor="#dd464e", width="1024", height="768")]
 
     public class Main extends Sprite
     {

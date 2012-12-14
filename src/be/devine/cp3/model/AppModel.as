@@ -1,21 +1,27 @@
 package be.devine.cp3.model
 {
-import flash.events.Event;
-import flash.events.EventDispatcher;
+    import flash.events.Event;
+    import flash.events.EventDispatcher;
 
     public class AppModel extends EventDispatcher
     {
         private static var instance:AppModel;
-        public var pageVOS:Array;
-        public var pages:Array;
-        public var thumbnailPages:Array;
-        private var _currentPage:uint;
-        private var _amountOfPages:uint;
-        private var _direction:String = "next";
-        private var _showTimeline:Boolean = false;
+        public var pageVOS:Array,
+                   pages:Array,
+                   thumbnailPages:Array,
+                   bookVOS:Array,
+                   books:Array;
+        private var _currentPage:uint,
+                _amountOfPages:uint,
+                _direction:String = "next",
+                _showTimeline:Boolean = false,
+                _showBookPreview:Boolean = true,
+                _showPages:Boolean = false;
 
         public static const PAGE_CHANGED:String = "PageChanged";
         public static const TIMELINE_CHANGED:String = "TimelineChanged";
+        public static const BOOKPREVIEW_CHANGED:String = "BookPreviewChanged";
+        public static const SHOWPAGES_CHANGED:String = "ShowPagesChanged";
 
 
 
@@ -54,74 +60,102 @@ import flash.events.EventDispatcher;
                 currentPage += 2;
 
             }
-
-            //showTimeline = true;
-
         }
 
         public function previousPage():void
         {
-
             if(currentPage != 0 )
             {
                 direction = "prev";
                 currentPage -= 2;
-
             }
         }
 
         public function gotoPage(pageNumber:uint):void
         {
-            if (currentPage < pageNumber){
+            if (currentPage < pageNumber)
+            {
                 direction = "next";
-            }else{
+            }
+            else
+            {
                 direction = "prev";
             }
 
+            currentPage = pageNumber;
 
-                currentPage = pageNumber;
-            if (currentPage%2 != 0){
+            if (currentPage%2 != 0)
+            {
                 currentPage = currentPage -1;
             }
-
         }
 
 
-        public function get amountOfPages():uint {
+        public function get amountOfPages():uint
+        {
             return _amountOfPages;
         }
 
-        public function set amountOfPages(value:uint):void {
+        public function set amountOfPages(value:uint):void
+        {
             _amountOfPages = value;
         }
 
-        public function get direction():String {
+        public function get direction():String
+        {
             return _direction;
         }
 
-        public function set direction(value:String):void {
+        public function set direction(value:String):void
+        {
             _direction = value;
         }
 
 
-        public function get showTimeline():Boolean {
+        public function get showTimeline():Boolean
+        {
             return _showTimeline;
         }
 
-        public function set showTimeline(value:Boolean):void {
+        public function set showTimeline(value:Boolean):void
+        {
             if (value != _showTimeline)
             {
                 _showTimeline = value;
-                trace("[AppModel] showTimeLine? " + _showTimeline);
                 dispatchEvent(new Event(TIMELINE_CHANGED));
             }
+        }
 
-           /* if (value != _showTimeline){
-                _showTimeline = value;
-                trace(_showTimeline);
-                dispatchEvent(new Event(TIMELINE_CHANGED));
-            }   */
+        public function get showBookPreview():Boolean {
+            return _showBookPreview;
+        }
 
+        public function set showBookPreview(value:Boolean):void {
+            trace("showBooKPreview " + value);
+            if (value != _showBookPreview)
+            {
+                _showBookPreview = value;
+                _showBookPreview != _showPages;
+                dispatchEvent(new Event(BOOKPREVIEW_CHANGED));
+            }
+        }
+
+        public function get showPages():Boolean {
+            return _showPages;
+        }
+
+        public function set showPages(value:Boolean):void {
+            trace("showpages " + value);
+            if (value != _showPages)
+            {
+                trace ("in appmodel: showpages")
+                _showPages = value;
+                _showPages != _showBookPreview;
+                dispatchEvent(new Event(SHOWPAGES_CHANGED));
+
+
+
+            }
         }
     }
 }

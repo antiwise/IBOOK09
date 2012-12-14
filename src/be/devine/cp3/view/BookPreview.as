@@ -27,7 +27,7 @@ public class BookPreview extends Sprite{
     public function BookPreview() {
 
         appModel = AppModel.getInstance();
-        var xPos:uint = 20;
+        var yPos:uint = 20;
         appModel.books = new Array();
         for each(var bookVO:BookVO in appModel.bookVOS)
         {
@@ -37,8 +37,8 @@ public class BookPreview extends Sprite{
 
 
             addChild(book);
-            book.x = xPos;
-            xPos += book.width + 30;
+            book.y = yPos;
+            yPos += book.height + 30;
             book.useHandCursor = true;
             book.addEventListener(TouchEvent.TOUCH, bookClickedHandler)
         }

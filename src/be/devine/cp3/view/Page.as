@@ -52,7 +52,7 @@ package be.devine.cp3.view
             }
         }
 
-        private static function createColumn(columnElementVO:ColumnElementVO):Element
+        private  function createColumn(columnElementVO:ColumnElementVO):Element
         {
             var columnElement:ColumnElement = new ColumnElement(columnElementVO);
             if(columnElementVO.position == "left"){
@@ -62,6 +62,20 @@ package be.devine.cp3.view
             if(columnElementVO.position == "right"){
                 columnElement.x = 275;
                 columnElement.y = 20;
+            }
+
+            switch (pageVO.template)
+            {
+                case 5:
+                    columnElement.y = 0;
+                 break;
+                case 6:
+                    columnElement.y = -5;
+                    break;
+                case 7:
+                    columnElement.y = 0;
+                    break;
+
             }
             return columnElement;
         }
@@ -102,7 +116,7 @@ package be.devine.cp3.view
                     if (imageElementVO.style == "wide")
                     {
                         imageElement.x = 25;
-                        imageElement.y = 20;
+                        imageElement.y = 50;
                     }
                     break;
                 case 7:
@@ -124,6 +138,7 @@ package be.devine.cp3.view
                     if (textElementVO.textType == "h1")
                     {
                         textElement.x = 25;
+                        textElement.y = 25;
                     }
                     if (textElementVO.textType == "h2")
                     {
@@ -135,24 +150,35 @@ package be.devine.cp3.view
                     if (textElementVO.textType == "h1")
                     {
                         textElement.x = 25;
-                        textElement.y = 270;
+                        textElement.y = 290;
                     }
                     break;
                 case 4:
                     if (textElementVO.textType == "h1")
                     {
                         textElement.x = 25;
-                        textElement.y = 270;
+                        textElement.y = 290;
                     }
                     break;
                 case 5:
+                    if (textElementVO.textType == "h2")
+                    {
+
+                        textElement.y = 0;
+                    }
                     break;
                 case 6:
+                    if (textElementVO.textType == "h3")
+                    {
+
+                        textElement.y = 0;
+                    }
                     break;
                 case 7:
                     if (textElementVO.textType == "h1")
                     {
                         textElement.x = 25;
+                        textElement.y = 25;
                     }
                     break;
                 case 8:

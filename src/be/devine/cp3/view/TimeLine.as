@@ -87,7 +87,7 @@ import starling.textures.Texture;
             {
                 var thumbnail:Thumbnail = arrThumbnails[_posTimeline + i];
 
-                trace(appmodel.currentPage);
+
                 if(arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i]  )
                 {
                     thumbnail.hoverEffect.visible = true;

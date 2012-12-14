@@ -61,7 +61,8 @@ import starling.textures.TextureAtlas;
 
             _starling = new Starling(IBook,stage);
 
-            myDelay = new Timer(7500);
+            //myDelay = new Timer(7500);
+            myDelay = new Timer(1);
             myDelay.addEventListener(TimerEvent.TIMER, startStarling);
             myDelay.start();
 

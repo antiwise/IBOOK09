@@ -131,7 +131,7 @@ package be.devine.cp3.model
         }
 
         public function set showBookPreview(value:Boolean):void {
-            trace("showBooKPreview " + value);
+            //trace("showBooKPreview " + value);
             if (value != _showBookPreview)
             {
                 _showBookPreview = value;
@@ -145,10 +145,10 @@ package be.devine.cp3.model
         }
 
         public function set showPages(value:Boolean):void {
-            trace("showpages " + value);
+            //trace("showpages " + value);
             if (value != _showPages)
             {
-                trace ("in appmodel: showpages")
+               // trace ("in appmodel: showpages")
                 _showPages = value;
                 _showPages != _showBookPreview;
                 dispatchEvent(new Event(SHOWPAGES_CHANGED));

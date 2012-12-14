@@ -11,6 +11,7 @@ package be.devine.cp3.view
     public class Page extends Sprite
     {
         private var appModel:AppModel,
+                    _rendered:Boolean = false,
                     pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
@@ -19,8 +20,44 @@ package be.devine.cp3.view
 
             appModel = AppModel.getInstance();
 
+            /*
             var yPos:int = 0;
 
+
+            for each(var elementVO:ElementVO in pageVO.elements)
+            {
+                var element:Element;
+                var updatePositions:Boolean = true;
+
+                switch(elementVO.type)
+                {
+                    case "image":
+                        element = createImage(elementVO as ImageElementVO);
+                        break;
+                    case "text":
+                        element = createText(elementVO as TextElementVO);
+                        break;
+
+                    case "column":
+                        var vo:ColumnElementVO = elementVO as ColumnElementVO;
+                        element =  createColumn(vo);
+                        updatePositions = (vo.position !== "left");
+                        break;
+                }
+
+                addChild(element);
+                element.y = element.y + yPos;
+
+                if (updatePositions)
+                {
+                    yPos = element.y + element.height;
+                }
+            }  */
+        }
+
+        public function renderPage()
+        {
+            var yPos:int = 0;
             for each(var elementVO:ElementVO in pageVO.elements)
             {
                 var element:Element;
@@ -159,6 +196,16 @@ package be.devine.cp3.view
                     break;
             }
             return textElement;
+        }
+
+        public function get rendered():Boolean {
+            return _rendered;
+        }
+
+        public function set rendered(value:Boolean):void
+        {
+            _rendered = value;
+            renderPage();
         }
     }
 }

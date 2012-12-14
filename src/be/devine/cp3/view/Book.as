@@ -29,7 +29,7 @@ public class Book extends Sprite{
 
         addChild(title);
 
-        trace ("book");
+
     }
 }
 }

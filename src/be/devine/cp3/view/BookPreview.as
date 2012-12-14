@@ -34,7 +34,7 @@ public class BookPreview extends Sprite{
             book = new Book(bookVO);
             appModel.books.push(book);
 
-            trace ("maak boek aan");
+
 
             addChild(book);
             book.x = xPos;
@@ -50,7 +50,6 @@ public class BookPreview extends Sprite{
 
         var touch:Touch = event.getTouch(stage);
         var book:Book = event.currentTarget as Book;
-        trace(book.bookVo.edition);
         _bookClicked = book;
 
         if(touch.phase == "began")

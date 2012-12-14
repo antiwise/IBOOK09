@@ -138,12 +138,16 @@ import starling.textures.Texture;
 
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch != null)
             {
-                trace('back home');
-                appModel.showPages = false;
+                if(touch.phase == "began")
+                {
+                    appModel.showPages = false;
 
+                }
             }
+
+
         }
     }
 }

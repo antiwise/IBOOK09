@@ -46,7 +46,7 @@ import starling.textures.Texture;
             var xml:XML = XML(new ButtonXml());
             var textureAtlas:TextureAtlas = new TextureAtlas(texture, xml);
 
-            var q:Quad = new Quad( 700,  180, 0xdd464e);
+            var q:Quad = new Quad( 730,  180, 0xdd464e);
             addChild(q);
 
             buttonPrev = new Button(textureAtlas,"arrow_left.png");

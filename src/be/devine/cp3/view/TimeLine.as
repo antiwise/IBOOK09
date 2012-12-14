@@ -1,12 +1,17 @@
 package be.devine.cp3.view
 {
     import be.devine.cp3.model.AppModel;
-    import flash.events.Event;
-    import starling.display.Quad;
+import be.devine.cp3.view.Thumbnail;
+
+import flash.events.Event;
+
+import starling.display.DisplayObject;
+import starling.display.Quad;
     import starling.display.Sprite;
     import starling.events.Touch;
     import starling.events.TouchEvent;
-    import starling.textures.Texture;
+import starling.events.TouchPhase;
+import starling.textures.Texture;
     import starling.textures.TextureAtlas;
 
     public class TimeLine extends Sprite
@@ -18,6 +23,7 @@ package be.devine.cp3.view
         public static const ButtonTexture:Class;
 
         private var appmodel:AppModel,
+
                     _thumbnailContainer:Sprite,
                     _posTimeline:uint,
                     arrThumbnails:Array,
@@ -80,9 +86,21 @@ package be.devine.cp3.view
             for(var i:uint = 0; i<6;i++)
             {
                 var thumbnail:Thumbnail = arrThumbnails[_posTimeline + i];
+
+                trace(appmodel.currentPage);
+                if(arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i]  )
+                {
+                    thumbnail.hoverEffect.visible = true;
+                }
+                else
+                {
+                    thumbnail.hoverEffect.visible = false;
+                }
+
                 if(thumbnail != null)
                 {
                     thumbnail.x = xPos;
+
 
                     _thumbnailContainer.addChild(thumbnail);
                     if (arrThumbnails.indexOf(thumbnail)%2 == 1)
@@ -111,11 +129,15 @@ package be.devine.cp3.view
             if(touch.phase == "began")
             {
                 var pageNumber:uint = arrThumbnails.indexOf(event.currentTarget as Thumbnail);
+                var thumbNail:Thumbnail = event.currentTarget as Thumbnail;
+
                 if(pageNumber != appmodel.currentPage)
                 {
                     appmodel.gotoPage(pageNumber);
                 }
             }
+
+
         }
 
         private function previous(event:TouchEvent):void

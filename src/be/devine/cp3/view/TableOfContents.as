@@ -1,38 +1,28 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Ducaluk
- * Date: 12/12/12
- * Time: 07:28
- * To change this template use File | Settings | File Templates.
- */
 package be.devine.cp3.view
 {
-import be.devine.cp3.factory.view.TextFieldFactory;
-import be.devine.cp3.model.AppModel;
-import be.devine.cp3.vo.ColumnElementVO;
-import be.devine.cp3.vo.ElementVO;
-import be.devine.cp3.vo.PageVO;
-import be.devine.cp3.vo.TextElementVO;
 
-import flashx.textLayout.elements.TabElement;
+    import be.devine.cp3.model.AppModel;
+    import be.devine.cp3.vo.ColumnElementVO;
+    import be.devine.cp3.vo.ElementVO;
+    import be.devine.cp3.vo.PageVO;
+    import be.devine.cp3.vo.TextElementVO;
+    import starling.display.Sprite;
 
-import starling.display.Sprite;
-
-public class TableOfContents extends Sprite
+    public class TableOfContents extends Sprite
     {
-        private var _appModel:AppModel,
+        private var appModel:AppModel,
                     arrH1:Array,
                     arrH2:Array,
                     arrH3:Array;
 
         public function TableOfContents()
         {
-            _appModel = AppModel.getInstance();
+            appModel = AppModel.getInstance();
             arrH1 = new Array();
             arrH2 = new Array();
             arrH3 = new Array();
 
-            for each(var pageVO:PageVO in _appModel.pageVOS)
+            for each(var pageVO:PageVO in appModel.pageVOS)
             {
                 for each(var elementVO:ElementVO in pageVO.elements)
                 {

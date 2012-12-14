@@ -1,10 +1,10 @@
 package be.devine.cp3.factory.vo
 {
-import be.devine.cp3.vo.ColumnElementVO;
-import be.devine.cp3.vo.ColumnElementVO;
-import be.devine.cp3.vo.ElementVO;
-import be.devine.cp3.vo.ImageElementVO;
-import be.devine.cp3.vo.TextElementVO;
+
+    import be.devine.cp3.vo.ColumnElementVO;
+    import be.devine.cp3.vo.ElementVO;
+    import be.devine.cp3.vo.ImageElementVO;
+    import be.devine.cp3.vo.TextElementVO;
 
     public class ElementVOFactory
         {
@@ -19,13 +19,14 @@ import be.devine.cp3.vo.TextElementVO;
                 return null;
             }
 
-            public static function createColumnElementVO(elementXML:XML):ColumnElementVO {
-                trace("[ELEMENTVOFACTORY] create columnElementVO");
+            public static function createColumnElementVO(elementXML:XML):ColumnElementVO
+            {
                 var columnElementVO:ColumnElementVO = new ColumnElementVO();
                 columnElementVO.position = elementXML.@position;
                 columnElementVO.type = "column";
 
-                for each (var xml:XML in elementXML.element) {
+                for each (var xml:XML in elementXML.element)
+                {
                     columnElementVO.textElements.push(createTextElementVO(xml));
                 }
 
@@ -34,7 +35,6 @@ import be.devine.cp3.vo.TextElementVO;
 
             public static function createImageElementVO(elementXML:XML):ImageElementVO
             {
-                trace("[ELEMENTVOFACTORY] create imageElementVO");
                 var imageElementVO:ImageElementVO = new ImageElementVO();
                 imageElementVO.type = "image";
                 imageElementVO.style = elementXML.@style;
@@ -45,12 +45,10 @@ import be.devine.cp3.vo.TextElementVO;
 
             public static function createTextElementVO(elementXML:XML):TextElementVO
             {
-                trace("[ELEMENTVOFACTORY] create textElementVO");
                 var textElementVO:TextElementVO = new TextElementVO();
                 textElementVO.type = "text";
                 textElementVO.text = elementXML.text();
                 textElementVO.textType = elementXML.@textType;
-                //textElementVO.column = elementXML.@column;
 
                 return textElementVO;
             }

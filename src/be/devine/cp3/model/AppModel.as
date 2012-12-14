@@ -1,7 +1,7 @@
 package be.devine.cp3.model
 {
-import flash.events.Event;
-import flash.events.EventDispatcher;
+    import flash.events.Event;
+    import flash.events.EventDispatcher;
 
     public class AppModel extends EventDispatcher
     {
@@ -54,74 +54,70 @@ import flash.events.EventDispatcher;
                 currentPage += 2;
 
             }
-
-            //showTimeline = true;
-
         }
 
         public function previousPage():void
         {
-
             if(currentPage != 0 )
             {
                 direction = "prev";
                 currentPage -= 2;
-
             }
         }
 
         public function gotoPage(pageNumber:uint):void
         {
-            if (currentPage < pageNumber){
+            if (currentPage < pageNumber)
+            {
                 direction = "next";
-            }else{
+            }
+            else
+            {
                 direction = "prev";
             }
 
+            currentPage = pageNumber;
 
-                currentPage = pageNumber;
-            if (currentPage%2 != 0){
+            if (currentPage%2 != 0)
+            {
                 currentPage = currentPage -1;
             }
-
         }
 
 
-        public function get amountOfPages():uint {
+        public function get amountOfPages():uint
+        {
             return _amountOfPages;
         }
 
-        public function set amountOfPages(value:uint):void {
+        public function set amountOfPages(value:uint):void
+        {
             _amountOfPages = value;
         }
 
-        public function get direction():String {
+        public function get direction():String
+        {
             return _direction;
         }
 
-        public function set direction(value:String):void {
+        public function set direction(value:String):void
+        {
             _direction = value;
         }
 
 
-        public function get showTimeline():Boolean {
+        public function get showTimeline():Boolean
+        {
             return _showTimeline;
         }
 
-        public function set showTimeline(value:Boolean):void {
+        public function set showTimeline(value:Boolean):void
+        {
             if (value != _showTimeline)
             {
                 _showTimeline = value;
-                trace("[AppModel] showTimeLine? " + _showTimeline);
                 dispatchEvent(new Event(TIMELINE_CHANGED));
             }
-
-           /* if (value != _showTimeline){
-                _showTimeline = value;
-                trace(_showTimeline);
-                dispatchEvent(new Event(TIMELINE_CHANGED));
-            }   */
-
         }
     }
 }

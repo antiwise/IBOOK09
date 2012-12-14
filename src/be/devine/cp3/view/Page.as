@@ -1,24 +1,21 @@
 package be.devine.cp3.view
 {
-    import be.devine.cp3.factory.view.TextFieldFactory;
     import be.devine.cp3.model.AppModel;
-import be.devine.cp3.vo.ColumnElementVO;
-import be.devine.cp3.vo.ElementVO;
+    import be.devine.cp3.vo.ColumnElementVO;
+    import be.devine.cp3.vo.ElementVO;
     import be.devine.cp3.vo.ImageElementVO;
     import be.devine.cp3.vo.PageVO;
     import be.devine.cp3.vo.TextElementVO;
-    import flash.display.Loader;
     import starling.display.Sprite;
-    import starling.text.TextField;
 
     public class Page extends Sprite
     {
         private var appModel:AppModel,
-                    _pageVO:PageVO;
+                    pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
         {
-            this._pageVO = pageVO;
+            this.pageVO = pageVO;
 
             appModel = AppModel.getInstance();
 
@@ -48,15 +45,15 @@ import be.devine.cp3.vo.ElementVO;
                 addChild(element);
                 element.y = element.y + yPos;
 
-
-                if (updatePositions) {
+                if (updatePositions)
+                {
                     yPos = element.y + element.height;
-
                 }
             }
         }
 
-        private static function createColumn(columnElementVO:ColumnElementVO):Element {
+        private static function createColumn(columnElementVO:ColumnElementVO):Element
+        {
             var columnElement:ColumnElement = new ColumnElement(columnElementVO);
             if(columnElementVO.position == "left"){
                 columnElement.x = 25;
@@ -67,17 +64,14 @@ import be.devine.cp3.vo.ElementVO;
                 columnElement.y = 20;
             }
             return columnElement;
-
         }
 
         private function createImage(imageElementVO:ImageElementVO):ImageElement
         {
-
-
             var imageElement:ImageElement = new ImageElement(imageElementVO);
 
-            switch (_pageVO.template){
-
+            switch (pageVO.template)
+            {
                 case 1:
                     imageElement.x = 0;
                     imageElement.y = 0;
@@ -97,11 +91,13 @@ import be.devine.cp3.vo.ElementVO;
                     imageElement.x = 25;
                     break;
                 case 6:
-                    if (imageElementVO.style == "portrait"){
+                    if (imageElementVO.style == "portrait")
+                    {
                         imageElement.x = 25;
                         imageElement.y = 25;
                     }
-                    if (imageElementVO.style == "wide"){
+                    if (imageElementVO.style == "wide")
+                    {
                         imageElement.x = 25;
                         imageElement.y = 20;
                     }
@@ -119,8 +115,8 @@ import be.devine.cp3.vo.ElementVO;
         private function createText(textElementVO:TextElementVO):TextElement
         {
             var textElement:TextElement = new TextElement(textElementVO);
-            switch (_pageVO.template){
-
+            switch (pageVO.template)
+            {
                 case 2:
                     if (textElementVO.textType == "h1")
                     {
@@ -131,7 +127,6 @@ import be.devine.cp3.vo.ElementVO;
                         textElement.x = 25;
                         textElement.y = 20;
                     }
-
                     break;
                 case 3:
                     if (textElementVO.textType == "h1")
@@ -139,7 +134,6 @@ import be.devine.cp3.vo.ElementVO;
                         textElement.x = 25;
                         textElement.y = 270;
                     }
-
                     break;
                 case 4:
                     if (textElementVO.textType == "h1")
@@ -161,8 +155,6 @@ import be.devine.cp3.vo.ElementVO;
                 case 8:
                     break;
             }
-
-
             return textElement;
         }
     }

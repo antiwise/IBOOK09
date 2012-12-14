@@ -11,12 +11,12 @@ package be.devine.cp3.service
     public class BookService extends EventDispatcher
     {
         private var _xmlLoader:URLLoader,
-                    _appModel:AppModel;
+                    appModel:AppModel;
         public static const XML_LOADED:String = "xmlLoaded";
 
         public function BookService()
         {
-            _appModel = AppModel.getInstance();
+            appModel = AppModel.getInstance();
         }
 
         public function loadBook():void
@@ -29,11 +29,10 @@ package be.devine.cp3.service
         private function xmlLoaderCompleteHandler(event:Event):void
         {
             var bookXML:XML = new XML(event.target.data);
-            trace(bookXML);
-            _appModel.pageVOS = new Array();
+            appModel.pageVOS = new Array();
             for each(var pageXML:XML in bookXML.page)
             {
-                _appModel.pageVOS.push(PageVOFactory.createPageVOFromXML(pageXML));
+                appModel.pageVOS.push(PageVOFactory.createPageVOFromXML(pageXML));
             }
             dispatchEvent(new Event(XML_LOADED));
         }

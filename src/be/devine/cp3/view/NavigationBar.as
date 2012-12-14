@@ -23,12 +23,10 @@ import starling.textures.Texture;
         [Embed(source="/assets/images/sprite.png")]
         public static const ButtonTexture:Class;
 
-
-
         private var appModel:AppModel,
                     buttonPrev:Button,
                     buttonNext:Button,
-                    _buttonContainer:Sprite,
+                    buttonContainer:Sprite,
                     pageNumberTextfield:Sprite;
 
         public function NavigationBar()
@@ -38,9 +36,9 @@ import starling.textures.Texture;
             var bg:Quad = new Quad(1024,50,0x182c49);
             addChild(bg);
 
-            _buttonContainer = new Sprite();
+            buttonContainer = new Sprite();
 
-            addChild(_buttonContainer);
+            addChild(buttonContainer);
 
             var texture:Texture = Texture.fromBitmap(new ButtonTexture);
             var xml:XML = XML(new ButtonXml());
@@ -48,25 +46,20 @@ import starling.textures.Texture;
 
             buttonPrev = new Button(textureAtlas,"arrow_left.png");
             buttonPrev.addEventListener(TouchEvent.TOUCH,previous);
-            _buttonContainer.addChild(buttonPrev);
+            buttonContainer.addChild(buttonPrev);
 
             buttonNext = new Button(textureAtlas,"arrow_right.png");
             buttonNext.addEventListener(TouchEvent.TOUCH,next);
-            _buttonContainer.addChild(buttonNext);
+            buttonContainer.addChild(buttonNext);
 
             buttonNext.x = buttonPrev.width + 200;
 
-            _buttonContainer.x = this.width/2 - _buttonContainer.width/2;
-            _buttonContainer.y = 7;
+            buttonContainer.x = this.width/2 - buttonContainer.width/2;
+            buttonContainer.y = 7;
 
             setPageNumber();
 
-
-
             this.addEventListener(TouchEvent.TOUCH,TouchEventHandler);
-
-
-
         }
 
         private function previous(event:TouchEvent):void
@@ -119,12 +112,12 @@ import starling.textures.Texture;
                 var pageLeft:uint = appModel.currentPage + 1
                 var pageRight:uint = appModel.currentPage + 2;
                 pageNumberTextfield = TextFieldFactory.createTextField({
-                    text: "Page  " + pageLeft.toString() + " - " + pageRight.toString() ,
+                    text: "Page  " + pageLeft.toString() + " - " + pageRight.toString(),
                     fontFormat: "p-normal-white"
                 });
 
                 pageNumberTextfield.x = Starling.current.stage.stageWidth - 100;
-            pageNumberTextfield.y = 3;
+                pageNumberTextfield.y = 3;
                 addChild(pageNumberTextfield);
         }
 
@@ -132,14 +125,6 @@ import starling.textures.Texture;
         private function TouchEventHandler(event:TouchEvent):void
         {
             event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appModel.showTimeline = true :  appModel.showTimeline = false;
-            /*var touch:Touch = event.getTouch(stage);
-
-            if(touch.phase == "hover")
-            {
-                trace("[NavigationBar] hoverOVer");
-                appModel.showTimeline = true;
-            }  */
-
         }
     }
 }

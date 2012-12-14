@@ -1,6 +1,8 @@
 package be.devine.cp3.model
 {
-    import flash.events.Event;
+import be.devine.cp3.view.Book;
+
+import flash.events.Event;
     import flash.events.EventDispatcher;
 
     public class AppModel extends EventDispatcher
@@ -10,6 +12,7 @@ package be.devine.cp3.model
                    pages:Array,
                    thumbnailPages:Array,
                    bookVOS:Array,
+                    selectedBook:Book,
                    books:Array;
         private var _currentPage:uint,
                 _amountOfPages:uint,

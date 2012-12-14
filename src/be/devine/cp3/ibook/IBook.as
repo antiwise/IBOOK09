@@ -37,7 +37,6 @@ import be.devine.cp3.vo.PageVO;
                     navigationBar:NavigationBar,
                     timeLine:TimeLine,
                     bgQuad:Quad,
-                    book:Book,
                     bookPreview:BookPreview;
 
         public function IBook()
@@ -81,112 +80,24 @@ import be.devine.cp3.vo.PageVO;
 
     private function pageChangedHandler(event:Event):void
     {
-        renderPagesToView();
-       // maaksetjePages();
         updatePageView();
 
         navigationBar.checkNextPrevious();
         navigationBar.setPageNumber();
-        //timeLine.updateThumbnails();
+        timeLine.updateThumbnails();
 
         setChildIndex(timeLine,numChildren-1);
     }
 
-    private function renderPagesToView()
-    {
-        if(appModel.currentPage%3 == 0)
-        {
-            /*for(var i:uint = 0; i < 6; i++)
-            {  */
-                //trace("[Ibook]"+ i);
-                /*var lpThumbnail:Page = appModel.thumbnailPages[appModel.currentPage ];
-                lpThumbnail.renderPage();
 
-                var rpThumbnail:Page = appModel.thumbnailPages[appModel.currentPage+1];
-                rpThumbnail.renderPage();*/
-           // }
-
-        }
-
-
-
-        var lp:Page = appModel.pages[appModel.currentPage];
-        if(!lp.rendered)
-        {
-            lp.rendered = true;
-            //lp.renderPage();
-        }
-
-
-        var rp:Page = appModel.pages[appModel.currentPage+1];
-        if(!rp.rendered)
-        {
-            rp.rendered = true;
-            //  rp.renderPage();
-        }
-
-    }
-    private function maaksetjePages()
-    {
-        var book:Book = bookPreview.bookClicked;
-        appModel.pages = new Array();
-        appModel.thumbnailPages = new Array();
-
-
-
-
-        //if()
-
-
-        trace("[IBook] appModel.currentPage "+appModel.currentPage);
-        for(var i:uint = 0 ; i < 6; i++)
-        {
-
-            var pageVO:PageVO = book.bookVo.pages[i];
-            var page:Page = new Page(pageVO);
-            var thumbnailPage:Page = new Page(pageVO);
-            appModel.pages.push(page);
-            appModel.thumbnailPages.push(thumbnailPage);
-        }
-
-    }
 
     private function updatePageView():void
     {
-
-       /* for(var i:uint = 0 ; i < 6; i++)
-        {
-            var pageVO:PageVO = book.bookVo.pages[appModel.currentPage + i];
-            var page:Page = new Page(pageVO);
-            var thumbnailPage:Page = new Page(pageVO);
-            appModel.pages.push(page);
-            appModel.thumbnailPages.push(thumbnailPage);
-            countPages++;
-        } */
-
-       /* appModel.pages.length = 0;
-        appModel.thumbnailPages.length = 0;
-
-        for(var i:uint = 0 ; i < 6; i++)
-        {
-            var pageVO:PageVO = book.bookVo.pages[appModel.currentPage + i];
-            var page:Page = new Page(pageVO);
-            var thumbnailPage:Page = new Page(pageVO);
-            appModel.pages.push(page);
-            appModel.thumbnailPages.push(thumbnailPage);
-        }
-           */
-
-
-
-
-
-
-
         if (appModel.direction == "next")
         {
             if(pageContainer.numChildren > 0)
             {
+                //removeChild(pageContainer);
                 var tweenPageContainer:Tween = new Tween(pageContainer, .5, Transitions.EASE_IN);
                 tweenPageContainer.animate("x", -1024);
                 tweenPageContainer.onComplete = onTweenComplete;
@@ -198,10 +109,11 @@ import be.devine.cp3.vo.PageVO;
             addChild(pageContainer);
 
 
+            var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
+            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+            var leftPage:Page = new Page(leftPageVO);
+            var rightPage:Page = new Page(rightPageVO);
 
-
-            var leftPage:Sprite =  appModel.pages[appModel.currentPage];
-            var rightPage:Sprite = appModel.pages[appModel.currentPage+1];
             leftPage.x = 1024;
             pageContainer.addChild(leftPage);
             var tweenPageLeft:Tween = new Tween(leftPage, .5, Transitions.EASE_IN);
@@ -210,6 +122,7 @@ import be.devine.cp3.vo.PageVO;
 
             if(rightPage != null)
             {
+
                 rightPage.x = 1024 + 512;
                 pageContainer.addChild(rightPage);
                 var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
@@ -222,6 +135,7 @@ import be.devine.cp3.vo.PageVO;
         {
             if(pageContainer.numChildren > 0)
             {
+               // pageContainer.removeChildren();
                 var tweenPageContainer:Tween = new Tween(pageContainer, .5, Transitions.EASE_IN);
                 tweenPageContainer.animate("x", 1024);
                 tweenPageContainer.onComplete = onTweenComplete;
@@ -232,8 +146,10 @@ import be.devine.cp3.vo.PageVO;
             pageContainer = new Sprite();
             addChild(pageContainer);
 
-            var leftPage:Sprite =  appModel.pages[appModel.currentPage];
-            var rightPage:Sprite = appModel.pages[appModel.currentPage+1];
+            var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
+            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+            var leftPage:Page = new Page(leftPageVO);
+            var rightPage:Page = new Page(rightPageVO);
 
             leftPage.x = -1024;
             pageContainer.addChild(leftPage);
@@ -318,73 +234,31 @@ import be.devine.cp3.vo.PageVO;
         private function bookClickedHandler(event:starling.events.Event):void
         {
 
-            var book:Book = bookPreview.bookClicked;
+            appModel.selectedBook = bookPreview.bookClicked;
+
+            /*appModel.pages = new Array();
+            appModel.thumbnailPages = new Array(); */
+
+            var countPages:uint = 0;
+
+            appModel.showBookPreview = false;
+            appModel.showPages = true;
 
 
-                 appModel.pages = new Array();
-                 appModel.thumbnailPages = new Array();
-
-                 var countPages:uint = 0;
-
-                appModel.showBookPreview = false;
-                appModel.showPages = true;
-
-
-
-
-                for(var i:uint = 0; i < 2;i++)
-                {
-                    var pageVO:PageVO = book.bookVo.pages[i];
-                    var page:Page = new Page(pageVO);
-                    var thumbnailPage:Page = new Page(pageVO);
-                    appModel.pages.push(page);
-                    appModel.thumbnailPages.push(thumbnailPage);
-                }
-
-
-                /*for each(var pageVO:PageVO in book.bookVo.pages )
-                {
-
-                    countPages++;
-                    if(countPages < 6)
-                    {
-                        var pageVO:PageVO = book.bookVo.pages[countPages];
-                        var page:Page = new Page(pageVO);
-                        var thumbnailPage:Page = new Page(pageVO);
-                        appModel.pages.push(page);
-                        appModel.thumbnailPages.push(thumbnailPage);
-                    }
-
-
-                }    */
-
-
-
-                          //trace("[Ibook] " + countPages );
-
-
-
-
-
-              /*  for each(var pageVO:PageVO in book.bookVo.pages)
-                {
-                   //trace("page");
-                    var page:Page = new Page(pageVO);
-                    var thumbnailPage:Page = new Page(pageVO);
-                    appModel.pages.push(page);
-                    appModel.thumbnailPages.push(thumbnailPage);
-                    countPages++;
-                }      */
-
-
-                 timeLine= new TimeLine();
-                 timeLine.x = Starling.current.stage.stageWidth/2 - timeLine.width/2;
-                 timeLine.y = Starling.current.stage.stageHeight - timeLine.height - 27;
-                 addChild(timeLine);
-
-                 appModel.amountOfPages = countPages;
-                 appModel.currentPage = 0;
+            for each(var pageVO:PageVO in appModel.selectedBook.bookVo.pages )
+            {
+                countPages++;
             }
+            appModel.amountOfPages = countPages;
+
+            timeLine= new TimeLine();
+            timeLine.x = Starling.current.stage.stageWidth/2 - timeLine.width/2;
+            timeLine.y = Starling.current.stage.stageHeight - timeLine.height - 27;
+            addChild(timeLine);
+
+            appModel.amountOfPages = countPages;
+            appModel.currentPage = 0;
+        }
 
         private function showHidePages(event:Event):void {
 

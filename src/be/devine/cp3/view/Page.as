@@ -11,7 +11,6 @@ package be.devine.cp3.view
     public class Page extends Sprite
     {
         private var appModel:AppModel,
-                    _rendered:Boolean = false,
                     pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
@@ -20,7 +19,7 @@ package be.devine.cp3.view
 
             appModel = AppModel.getInstance();
 
-            /*
+
             var yPos:int = 0;
 
 
@@ -52,7 +51,7 @@ package be.devine.cp3.view
                 {
                     yPos = element.y + element.height;
                 }
-            }  */
+            }
         }
 
         public function renderPage()
@@ -222,16 +221,6 @@ package be.devine.cp3.view
                     break;
             }
             return textElement;
-        }
-
-        public function get rendered():Boolean {
-            return _rendered;
-        }
-
-        public function set rendered(value:Boolean):void
-        {
-            _rendered = value;
-            renderPage();
         }
     }
 }

@@ -1,6 +1,8 @@
 package be.devine.cp3.model
 {
-    import flash.events.Event;
+import be.devine.cp3.view.Book;
+
+import flash.events.Event;
     import flash.events.EventDispatcher;
 
     public class AppModel extends EventDispatcher
@@ -10,6 +12,7 @@ package be.devine.cp3.model
                    pages:Array,
                    thumbnailPages:Array,
                    bookVOS:Array,
+                    selectedBook:Book,
                    books:Array;
         private var _currentPage:uint,
                 _amountOfPages:uint,
@@ -131,7 +134,7 @@ package be.devine.cp3.model
         }
 
         public function set showBookPreview(value:Boolean):void {
-            trace("showBooKPreview " + value);
+            //trace("showBooKPreview " + value);
             if (value != _showBookPreview)
             {
                 _showBookPreview = value;
@@ -145,10 +148,10 @@ package be.devine.cp3.model
         }
 
         public function set showPages(value:Boolean):void {
-            trace("showpages " + value);
+            //trace("showpages " + value);
             if (value != _showPages)
             {
-                trace ("in appmodel: showpages")
+               // trace ("in appmodel: showpages")
                 _showPages = value;
                 _showPages != _showBookPreview;
                 dispatchEvent(new Event(SHOWPAGES_CHANGED));

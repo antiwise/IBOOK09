@@ -2,6 +2,7 @@ package be.devine.cp3.view
 {
     import be.devine.cp3.model.AppModel;
 import be.devine.cp3.view.Thumbnail;
+import be.devine.cp3.vo.PageVO;
 
 import flash.events.Event;
 
@@ -61,9 +62,10 @@ import starling.textures.Texture;
             buttonNext.y = this.height/2;
             addChild(buttonNext);
 
-            for each(var thumbnailPreview:Page in appmodel.thumbnailPages)
+            for each(var thumbnailPreview:PageVO in appmodel.selectedBook.bookVo.pages)
             {
-                var thumbnail:Thumbnail = new Thumbnail(thumbnailPreview);
+                var page:Page = new Page(thumbnailPreview);
+                var thumbnail:Thumbnail = new Thumbnail(page);
                 thumbnail.addEventListener(TouchEvent.TOUCH, TouchEventHandler);
                 thumbnail.addEventListener(TouchEvent.TOUCH, showTimeLine);
                 arrThumbnails.push(thumbnail);
@@ -87,7 +89,7 @@ import starling.textures.Texture;
             {
                 var thumbnail:Thumbnail = arrThumbnails[_posTimeline + i];
 
-                trace(appmodel.currentPage);
+
                 if(arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i]  )
                 {
                     thumbnail.hoverEffect.visible = true;

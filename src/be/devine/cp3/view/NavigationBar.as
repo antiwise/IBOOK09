@@ -58,7 +58,7 @@ import starling.textures.Texture;
             buttonContainer.addChild(buttonNext);
 
             buttonNext.x = buttonPrev.width + 200;
-            buttonHome.x = buttonPrev.width + 80;
+            buttonHome.x = buttonPrev.width + 100;
             buttonHome.y = -2;
 
             buttonContainer.x = this.width/2 - buttonContainer.width/2;
@@ -137,10 +137,11 @@ import starling.textures.Texture;
         private function goHome(event:TouchEvent):void {
 
             var touch:Touch = event.getTouch(stage);
-            if (touch != null){
+
+            if(touch != null)
+            {
                 if(touch.phase == "began")
                 {
-                    trace('back home');
                     appModel.showPages = false;
 
                 }

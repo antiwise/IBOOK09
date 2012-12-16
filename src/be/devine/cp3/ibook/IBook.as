@@ -54,11 +54,7 @@ import be.devine.cp3.vo.PageVO;
             bookService.addEventListener(BookService.XML_LOADED, XMLLoadedHandler) ;
             bookService.loadBook();
 
-            navigationBar = new NavigationBar();
-            navigationBar.y = 718;
-            navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
 
-            addChild(navigationBar);
 
             pageContainer = new Sprite();
             addChild(pageContainer);
@@ -66,31 +62,18 @@ import be.devine.cp3.vo.PageVO;
             appModel.addEventListener(AppModel.PAGE_CHANGED,pageChangedHandler);
             appModel.addEventListener(AppModel.SHOWPAGES_CHANGED, showHidePages);
 
-            setChildIndex(navigationBar,numChildren-1);
         }
 
         private function XMLLoadedHandler(event:Event):void
         {
             bookPreview = new BookPreview();
+
+            bookPreview.x = 0;
+            bookPreview.y = 0;
             bookPreview.visible = true;
             addChild(bookPreview);
             bookPreview.addEventListener(BookPreview.BOOK_CLICKED, bookClickedHandler )
 
-      /*      var xPos:uint = 20;
-            appModel.books = new Array();
-            for each(var bookVO:BookVO in appModel.bookVOS)
-            {
-                book = new Book(bookVO);
-                appModel.books.push(book);
-
-                trace ("maak boek aan");
-
-                addChild(book);
-                book.x = xPos;
-                xPos += book.width + 30;
-                book.useHandCursor = true;
-                book.addEventListener(TouchEvent.TOUCH, bookClickedHandler)
-            }*/
 
 
         }
@@ -238,6 +221,14 @@ import be.devine.cp3.vo.PageVO;
 
         private function bookClickedHandler(event:starling.events.Event):void {
 
+            navigationBar = new NavigationBar();
+            navigationBar.y = 718;
+            navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
+
+            addChild(navigationBar);
+
+            setChildIndex(navigationBar,numChildren-1);
+
             var book:Book = bookPreview.bookClicked;
 
                 trace("book clicked");
@@ -285,6 +276,7 @@ import be.devine.cp3.vo.PageVO;
                 if (pageContainer != null){
                     pageContainer.removeChildren();
                     removeChild(timeLine);
+                    removeChild(navigationBar);
                     appModel.showBookPreview = true;
                 }
             }

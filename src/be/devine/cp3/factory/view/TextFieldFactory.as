@@ -19,6 +19,13 @@ public class TextFieldFactory
                 containerh1.addChild(q);
                 return(containerh1);
 
+            case "h1-white":
+                var containerh1:Sprite = setTextfieldSettings(512,100,config.text,"Helvetica",60,0xFFFFFF,false);
+                var q:Quad = new Quad( 100,  6, 0xFFFFFF);
+                q.y = containerh1.height ;
+                containerh1.addChild(q);
+                return(containerh1);
+
             case "h2":
                 var containerh2:starling.display.Sprite = setTextfieldSettings(210,100,config.text,"Helvetica",25,0xdd464e,false);
                 return(containerh2);

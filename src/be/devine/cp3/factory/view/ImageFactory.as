@@ -43,6 +43,19 @@ package be.devine.cp3.factory.view
                     container.addChild(img);
 
                     return container;
+
+                case "cover":
+                    var container:Sprite = new Sprite();
+                    var img:Image = new Image(config.texture);
+                    img.height = 400;
+                    img.width = 285;
+                    img.x = 25;
+                    img.y = 25;
+                    var q:Quad = new Quad( 335,  450, 0xFFFFFF);
+                    container.addChild(q);
+                    container.addChild(img);
+
+                    return container;
             }
             return null;
         }

@@ -11,6 +11,8 @@ import be.devine.cp3.vo.BookVO;
 
 import flash.events.Event;
 
+import starling.display.Quad;
+
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.events.Touch;
@@ -26,11 +28,18 @@ public class BookPreview extends Sprite{
 
     public function BookPreview() {
 
+        var bgQuad = new Quad(1024, 768, 0x182C49);
+        bgQuad.x = 0;
+        bgQuad.y = 0;
+        addChild(bgQuad)
+
         appModel = AppModel.getInstance();
         var yPos:uint = 20;
         appModel.books = new Array();
         for each(var bookVO:BookVO in appModel.bookVOS)
         {
+
+
             book = new Book(bookVO);
             appModel.books.push(book);
 

@@ -173,7 +173,7 @@ import be.devine.cp3.vo.PageVO;
 
     private function onTweenComplete(pageContainer:Sprite):void
     {
-        removeChild(pageContainer);
+        removeChild(pageContainer, true);
     }
 
     private function keyboardHandler(event:KeyboardEvent):void
@@ -267,7 +267,7 @@ import be.devine.cp3.vo.PageVO;
             if( appModel.showPages == false){
                 if (pageContainer != null){
                     pageContainer.removeChildren();
-                    removeChild(timeLine);
+                    removeChild(timeLine, true);
                     appModel.showBookPreview = true;
                 }
             }

@@ -7,15 +7,19 @@ package be.devine.cp3.view
 
     import flash.display.Loader;
     import flash.events.Event;
-    import flash.net.URLRequest;
+import flash.net.URLLoader;
+import flash.net.URLLoaderDataFormat;
+import flash.net.URLRequest;
 
-    import starling.display.Sprite;
+import starling.display.Image;
+
+import starling.display.Sprite;
     import starling.textures.Texture;
 
     public class ImageElement extends Element
     {
 
-        private var ldr:Loader;
+        private var ldr:URLLoader;
         private var imageElementVO:ImageElementVO;
 
         public function ImageElement(imageElementVO:ImageElementVO)
@@ -23,21 +27,33 @@ package be.devine.cp3.view
             super(imageElementVO);
             this.imageElementVO = imageElementVO;
 
-            ldr = new Loader();
-            ldr.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoadedHandler);
+
+            ldr = new URLLoader();
+            ldr.dataFormat = URLLoaderDataFormat.BINARY;
+            ldr.addEventListener(Event.COMPLETE, imageLoadedHandler);
             ldr.load(new URLRequest("assets/images/"+imageElementVO.url));
+
+            trace("assets/images/"+imageElementVO.url);
         }
 
         private function imageLoadedHandler(e:Event)
         {
-            var loadedBitmap:Bitmap = e.currentTarget.loader.content as Bitmap;
+            var texture:Texture = Texture.fromAtfData(ldr.data);
+            var img:Sprite =  ImageFactory.createImage({
+                style: imageElementVO.style,
+                texture: texture
+            });
+            addChild(img);
+
+
+            /*var loadedBitmap:Bitmap = e.currentTarget.loader.content as Bitmap;
 
             var texture:Texture = Texture.fromBitmap(loadedBitmap);
             var img:Sprite =  ImageFactory.createImage({
                 style: imageElementVO.style,
                 texture: texture
             });
-            addChild(img);
+            addChild(img);*/
         }
     }
 }

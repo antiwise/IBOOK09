@@ -10,6 +10,7 @@ package be.devine.cp3.view
 import flash.net.URLLoader;
 import flash.net.URLLoaderDataFormat;
 import flash.net.URLRequest;
+import flash.utils.ByteArray;
 
 import starling.display.Image;
 
@@ -38,7 +39,7 @@ import starling.display.Sprite;
 
         private function imageLoadedHandler(e:Event)
         {
-            var texture:Texture = Texture.fromAtfData(ldr.data);
+            var texture:Texture = Texture.fromAtfData(ldr.data as ByteArray);
             var img:Sprite =  ImageFactory.createImage({
                 style: imageElementVO.style,
                 texture: texture
@@ -46,14 +47,6 @@ import starling.display.Sprite;
             addChild(img);
 
 
-            /*var loadedBitmap:Bitmap = e.currentTarget.loader.content as Bitmap;
-
-            var texture:Texture = Texture.fromBitmap(loadedBitmap);
-            var img:Sprite =  ImageFactory.createImage({
-                style: imageElementVO.style,
-                texture: texture
-            });
-            addChild(img);*/
         }
     }
 }

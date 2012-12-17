@@ -1,11 +1,16 @@
 package be.devine.cp3.factory.view
 {
 
-    import starling.display.Image;
+import be.devine.cp3.extensions.PixelMaskDisplayObject;
+
+import flash.geom.Point;
+
+import starling.display.Image;
     import starling.display.Quad;
     import starling.display.Sprite;
+import starling.textures.Texture;
 
-    public class ImageFactory
+public class ImageFactory
     {
         public static function createImage(config:Object):Sprite
         {
@@ -13,15 +18,22 @@ package be.devine.cp3.factory.view
             {
                 case "wide":
                     var container:Sprite = new Sprite();
+
                     var img:Image = new Image(config.texture);
 
-                    var q:Quad = new Quad( 443,  262, 0xFFFFFF);
+                    var q:Quad = new Quad( 441,  260, 0xFFFFFF);
                     container.addChild(q);
-                    container.addChild(img);
-                    img.x = 25;
-                    img.y = 25;
-                    img.width = 393;
-                    img.height = 212;
+
+
+                        //TODO: in aparte functie best?
+                    var myCustomMaskDisplayObject:Quad = new Quad(393,212);
+                    var maskedDisplayObject:PixelMaskDisplayObject = new PixelMaskDisplayObject();
+                    maskedDisplayObject.addChild(img);
+                    maskedDisplayObject.x = 12;
+                    maskedDisplayObject.y = 12;
+
+                    maskedDisplayObject.mask = myCustomMaskDisplayObject;
+                    container.addChild(maskedDisplayObject);
 
                     return container;
 
@@ -29,31 +41,48 @@ package be.devine.cp3.factory.view
                     var container:Sprite = new Sprite();
                     var img:Image = new Image(config.texture);
 
-                    var q:Quad = new Quad( 238,  318, 0xFFFFFF);
+                    var q:Quad = new Quad( 236,  316, 0xFFFFFF);
                     container.addChild(q);
-                    container.addChild(img);
-                    img.x = 25;
-                    img.y = 25;
 
+
+                    var myCustomMaskDisplayObject:Quad = new Quad(188,268);
+                    var maskedDisplayObject:PixelMaskDisplayObject = new PixelMaskDisplayObject();
+                    maskedDisplayObject.addChild(img);
+                    maskedDisplayObject.x = 12;
+                    maskedDisplayObject.y = 12;
+                   maskedDisplayObject.mask = myCustomMaskDisplayObject;
+                    container.addChild(maskedDisplayObject);
                     return container;
 
                 case "fullscreen":
                     var container:Sprite = new Sprite();
                     var img:Image = new Image(config.texture);
-                    container.addChild(img);
+
+                    var myCustomMaskDisplayObject:Quad = new Quad(512,718);
+                    var maskedDisplayObject:PixelMaskDisplayObject = new PixelMaskDisplayObject();
+                    maskedDisplayObject.addChild(img);
+                    maskedDisplayObject.mask = myCustomMaskDisplayObject;
+                    container.addChild(maskedDisplayObject);
 
                     return container;
 
                 case "cover":
                     var container:Sprite = new Sprite();
                     var img:Image = new Image(config.texture);
-                    img.height = 400;
-                    img.width = 285;
-                    img.x = 25;
-                    img.y = 25;
-                    var q:Quad = new Quad( 335,  450, 0xFFFFFF);
+                    //img.height = 400;
+                    //img.width = 285;
+
+                    var q:Quad = new Quad( 333,  448, 0xFFFFFF);
                     container.addChild(q);
-                    container.addChild(img);
+
+
+                    var myCustomMaskDisplayObject:Quad = new Quad(285,400);
+                    var maskedDisplayObject:PixelMaskDisplayObject = new PixelMaskDisplayObject();
+                    maskedDisplayObject.addChild(img);
+                    maskedDisplayObject.x = 12;
+                    maskedDisplayObject.y = 12;
+                    maskedDisplayObject.mask = myCustomMaskDisplayObject;
+                    container.addChild(maskedDisplayObject);
 
                     return container;
             }

@@ -84,7 +84,7 @@ import be.devine.cp3.vo.PageVO;
 
         navigationBar.checkNextPrevious();
         navigationBar.setPageNumber();
-        timeLine.updateThumbnails();
+       // timeLine.updateThumbnails();
 
         setChildIndex(timeLine,numChildren-1);
     }
@@ -185,6 +185,7 @@ import be.devine.cp3.vo.PageVO;
                 break;
             case Keyboard.RIGHT:
             case Keyboard.SPACE:
+                    //TODO: ervoor zorgen dat deze keyboard events gedisabled worden in bookpreview, anders crasht die!
                 appModel.nextPage();
                 break;
             case Keyboard.F:

@@ -84,9 +84,9 @@ import be.devine.cp3.vo.PageVO;
 
         navigationBar.checkNextPrevious();
         navigationBar.setPageNumber();
-        timeLine.updateThumbnails();
+       /* timeLine.updateThumbnails();
 
-        setChildIndex(timeLine,numChildren-1);
+        setChildIndex(timeLine,numChildren-1); */
     }
 
 

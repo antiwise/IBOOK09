@@ -45,6 +45,9 @@ import starling.display.DisplayObject;
             addChild(_hoverEffect);
             _hoverEffect.visible = false;
 
+            trace(thumbnail.width);
+            trace(thumbnail.height);
+
         }
 
         private function showTimeLine(event:TouchEvent):void

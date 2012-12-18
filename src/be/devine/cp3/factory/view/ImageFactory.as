@@ -67,6 +67,15 @@ public class ImageFactory
 
                     container.addChild(maskedDisplayObject);
                     return container;
+
+                case "thumbnail":
+                     var container:Sprite = new Sprite();
+                     var img:Image = new Image(config.texture);
+                    img.width = 128;
+                    img.height = 128;
+
+                    container.addChild(img);
+                    return container ;
             }
             return null;
         }

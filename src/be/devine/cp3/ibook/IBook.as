@@ -46,7 +46,8 @@ public class IBook extends Sprite
         bgQuad = new Quad(1024, 768, 0xe9eaeb);
         addChild(bgQuad)
 
-        Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
+
+
         Starling.current.nativeStage.addEventListener(ResizeEvent.RESIZE,resizeHandler);
 
         bookService = new BookService();
@@ -56,6 +57,8 @@ public class IBook extends Sprite
         navigationBar = new NavigationBar();
         navigationBar.y = 718;
         navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
+
+        appModel.addEventListener(AppModel.BOOKPREVIEW_CHANGED, bookPreviewChangedHandler);
 
 
 
@@ -74,7 +77,7 @@ public class IBook extends Sprite
         bookPreview = new BookPreview();
         bookPreview.visible = true;
         addChild(bookPreview);
-        bookPreview.addEventListener(BookPreview.BOOK_CLICKED, bookClickedHandler )
+        bookPreview.addEventListener(BookPreview.BOOK_CLICKED, bookClickedHandler );
 
 
     }
@@ -85,7 +88,9 @@ public class IBook extends Sprite
 
         navigationBar.checkNextPrevious();
         navigationBar.setPageNumber();
-        // timeLine.updateThumbnails();
+
+        setChildIndex(navigationBar,numChildren-1);
+         timeLine.updateThumbnails();
 
         setChildIndex(timeLine,numChildren-1);
     }
@@ -94,7 +99,6 @@ public class IBook extends Sprite
 
     private function updatePageView():void
     {
-        trace ("in updatePageView");
         if (appModel.direction == "next")
         {
             if(pageContainer.numChildren > 0)
@@ -246,14 +250,9 @@ public class IBook extends Sprite
 
     private function bookClickedHandler(event:starling.events.Event):void
     {
-
-
         addChild(navigationBar);
         setChildIndex(navigationBar,numChildren-1);
         appModel.selectedBook = bookPreview.bookClicked;
-
-        /*appModel.pages = new Array();
-         appModel.thumbnailPages = new Array(); */
 
         var countPages:uint = 0;
 
@@ -274,26 +273,41 @@ public class IBook extends Sprite
 
         appModel.amountOfPages = countPages;
         appModel.currentPage = 0;
+
+        Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
     }
 
-    private function showHidePages(event:Event):void {
-
-        trace("in showHidePages");
-
-        if( appModel.showPages == false){
-            if (pageContainer != null){
+    private function showHidePages(event:Event):void
+    {
+        if( appModel.showPages == false)
+        {
+            if (pageContainer != null)
+            {
                 pageContainer.removeChildren();
                 appModel.showBookPreview = true;
             }
-            if(timeLine != null){
+            if(timeLine != null)
+            {
                 removeChild(timeLine, true);
             }
-            if(navigationBar != null){
+            if(navigationBar != null)
+            {
                 removeChild(navigationBar, true);
             }
+        }
+    }
+
+    private function bookPreviewChangedHandler(event:Event):void
+    {
+        if(appModel.showBookPreview)
+        {
+            Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
 
         }
-
+        else
+        {
+            Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
+        }
     }
 }
 

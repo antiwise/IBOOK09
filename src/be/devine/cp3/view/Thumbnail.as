@@ -1,6 +1,8 @@
 package be.devine.cp3.view
 {
     import be.devine.cp3.model.AppModel;
+import be.devine.cp3.vo.ImageElementVO;
+import be.devine.cp3.vo.PageVO;
 
 import flash.events.Event;
 
@@ -12,30 +14,48 @@ import starling.display.DisplayObject;
 
     public class Thumbnail extends Sprite
     {
-        private var thumbnail:Page,
+        private var thumbnail:PageVO,
                     _q:Quad,
                     _hoverEffect:Quad,
                     appModel:AppModel;
 
-        public function Thumbnail(thumbnailPreview:Page)
+        public function Thumbnail(thumbnailPreview:PageVO)
         {
             this.appModel = AppModel.getInstance();
-            this.thumbnail = thumbnailPreview;
+           this.thumbnail = thumbnailPreview;
 
-            _q = new Quad(103,143,0xffffff);
-            addChild(_q);
+
+            var imageElementVO:ImageElementVO = new ImageElementVO();
+            imageElementVO.style = "thumbnail";
+            imageElementVO.url = thumbnailPreview.cover;
+            //trace( imageElementVO.url);
+
+            var cover:ImageElement = new ImageElement(imageElementVO);
+            addChild(cover);
+            //cover.scaleX = cover.scaleY = .5;
+
+
+            this.useHandCursor = true;
+
+
+
+           /* _q = new Quad(103,143,0xffffff);
+            addChild(_q);  */
+
+
+           // var textElement:TextElement
 
 
             /*
             var q:Quad = new Quad(100,143,0xffffff);
             addChild(q);
                           */
-            thumbnail.scaleX = thumbnail.scaleY = 0.2;
+           // thumbnail.scaleX = thumbnail.scaleY = 0.2;
 
-            thumbnail.addEventListener(TouchEvent.TOUCH, showTimeLine);
-            _q.addEventListener(TouchEvent.TOUCH, showTimeLine);
+            //cover.addEventListener(TouchEvent.TOUCH, showTimeLine);
+            cover.addEventListener(TouchEvent.TOUCH, showTimeLine);
 
-            addChild(thumbnail);
+           // addChild(cover);
 
             this.useHandCursor = true;
             this.addEventListener(TouchEvent.TOUCH,touchEventHandler);
@@ -45,8 +65,7 @@ import starling.display.DisplayObject;
             addChild(_hoverEffect);
             _hoverEffect.visible = false;
 
-            trace(thumbnail.width);
-            trace(thumbnail.height);
+
 
         }
 

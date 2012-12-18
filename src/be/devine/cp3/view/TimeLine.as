@@ -64,12 +64,16 @@ import starling.textures.Texture;
 
             for each(var thumbnailPreview:PageVO in appmodel.selectedBook.bookVo.pages)
             {
-                var page:Page = new Page(thumbnailPreview);
-                var thumbnail:Thumbnail = new Thumbnail(page);
+                //var page:Page = new Page(thumbnailPreview);
+                trace(thumbnailPreview.cover);
+                var thumbnail:Thumbnail = new Thumbnail(thumbnailPreview);
+                arrThumbnails.push(thumbnail);
                 thumbnail.addEventListener(TouchEvent.TOUCH, TouchEventHandler);
                 thumbnail.addEventListener(TouchEvent.TOUCH, showTimeLine);
-                arrThumbnails.push(thumbnail);
+
             }
+
+            updateThumbnails();
 
             this.addEventListener(TouchEvent.TOUCH, showTimeLine);
             appmodel.addEventListener(AppModel.TIMELINE_CHANGED, timeLineHandler);
@@ -107,10 +111,10 @@ import starling.textures.Texture;
                     _thumbnailContainer.addChild(thumbnail);
                     if (arrThumbnails.indexOf(thumbnail)%2 == 1)
                     {
-                        xPos += thumbnail.width +  20;
+                        xPos += 91+20;
                     }else
                     {
-                        xPos += thumbnail.width;
+                        xPos += 91;
                     }
 
                 }
@@ -131,7 +135,11 @@ import starling.textures.Texture;
             if(touch.phase == "began")
             {
                 var pageNumber:uint = arrThumbnails.indexOf(event.currentTarget as Thumbnail);
-                var thumbNail:Thumbnail = event.currentTarget as Thumbnail;
+
+                if (pageNumber%2 != 0)
+                {
+                    pageNumber = pageNumber -1;
+                }
 
                 if(pageNumber != appmodel.currentPage)
                 {

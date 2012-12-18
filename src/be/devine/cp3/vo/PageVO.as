@@ -4,6 +4,7 @@ package be.devine.cp3.vo
     {
         public var template:uint;
         public var elements:Vector.<ElementVO>;
+        public var cover:String;
 
         public function PageVO(template:uint)
         {

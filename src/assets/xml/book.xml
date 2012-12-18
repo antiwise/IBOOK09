@@ -170,7 +170,7 @@
 
         <page template="2">
 
-            <element type="text" textType="p-normal">   </element>
+
             <element type="text" textType="h1">This could be a very important H1 title</element>
             <element type="text" textType="h2">We also have h2's</element>
 
@@ -281,14 +281,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -305,7 +305,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -435,14 +435,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -459,7 +459,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -589,14 +589,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -613,7 +613,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -743,14 +743,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -767,7 +767,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -897,14 +897,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -921,7 +921,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -1051,14 +1051,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -1075,7 +1075,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -1205,14 +1205,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -1229,7 +1229,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -1359,14 +1359,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -1383,7 +1383,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 
@@ -1513,14 +1513,14 @@
 
 
         <page template="1">
-            <element type="image" style="fullscreen">image_09.png</element>
+            <element type="image" style="fullscreen">image_09.atf</element>
 
         </page>
 
 
         <page template="3">
 
-            <element type="image" style="wide">image_10.png</element>
+            <element type="image" style="wide">image_10.atf</element>
 
             <element type="text" textType="p-normal">   </element>
             <element type="text" textType="h1">This could be a very important H1 title</element>
@@ -1537,7 +1537,7 @@
         </page>
 
         <page template="1">
-            <element type="image" style="fullscreen">image_11.png</element>
+            <element type="image" style="fullscreen">image_11.atf</element>
 
         </page>
 

@@ -11,6 +11,8 @@ import be.devine.cp3.vo.BookVO;
 
 import flash.events.Event;
 
+import starling.core.Starling;
+
 import starling.display.Quad;
 
 import starling.display.Sprite;
@@ -22,7 +24,8 @@ public class BookPreview extends Sprite{
 
     private var appModel:AppModel,
             book:Book,
-            _bookClicked:Book;
+            _bookClicked:Book,
+            coverTimeLine:CoverTimeLine;
 
     public static const BOOK_CLICKED:String = "_bookClicked";
 
@@ -34,25 +37,35 @@ public class BookPreview extends Sprite{
         addChild(bgQuad)
 
         appModel = AppModel.getInstance();
-        var yPos:uint = 20;
-        appModel.books = new Array();
-        for each(var bookVO:BookVO in appModel.bookVOS)
-        {
 
 
-            book = new Book(bookVO);
-            appModel.books.push(book);
-
-
-
-            addChild(book);
-            book.y = yPos;
-            yPos += book.height + 30;
-            book.useHandCursor = true;
-            book.addEventListener(TouchEvent.TOUCH, bookClickedHandler)
-        }
+        appModel.books = new Vector.<Book>();
 
         appModel.addEventListener(AppModel.BOOKPREVIEW_CHANGED, showHideBookPreview);
+        appModel.addEventListener(AppModel.SELECTEDCOVER_CHANGED, coverChangedHandler);
+
+        for each(var bookVO:BookVO in appModel.bookVOS)
+        {
+            book = new Book(bookVO);
+            appModel.books.push(book);
+            book.y = 20;
+            book.useHandCursor = true;
+            book.addEventListener(TouchEvent.TOUCH, bookClickedHandler)
+
+            addChild(book);
+            book.visible = false;
+
+        }
+
+
+
+        coverTimeLine = new CoverTimeLine();
+        addChild(coverTimeLine);
+        coverTimeLine.x = Starling.current.stage.stageWidth - 200;
+        coverTimeLine.y = 25;
+
+        updateBookPreview();
+
     }
 
     private function bookClickedHandler(event:TouchEvent):void {
@@ -85,6 +98,27 @@ public class BookPreview extends Sprite{
         {
             this.visible = false;
         }
+    }
+
+    private function coverChangedHandler(event:flash.events.Event):void {
+
+        trace("selected cover" + appModel.selectedCover);
+        updateBookPreview()
+
+    }
+
+    private function updateBookPreview():void{
+
+        trace(book.bookVo.cover);
+        trace(appModel.selectedCover.bookVO.cover);
+        for each(book in appModel.books){
+            if(book.bookVo.cover == appModel.selectedCover.bookVO.cover){
+                book.visible = true;
+            }else{
+                book.visible = false;
+            }
+        }
+
     }
 }
 }

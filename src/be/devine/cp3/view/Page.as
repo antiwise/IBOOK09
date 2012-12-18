@@ -20,41 +20,9 @@ package be.devine.cp3.view
             appModel = AppModel.getInstance();
 
 
-            var yPos:int = 0;
-
-
-            for each(var elementVO:ElementVO in pageVO.elements)
-            {
-                var element:Element;
-                var updatePositions:Boolean = true;
-
-                switch(elementVO.type)
-                {
-                    case "image":
-                        element = createImage(elementVO as ImageElementVO);
-                        break;
-                    case "text":
-                        element = createText(elementVO as TextElementVO);
-                        break;
-
-                    case "column":
-                        var vo:ColumnElementVO = elementVO as ColumnElementVO;
-                        element =  createColumn(vo);
-                        updatePositions = (vo.position !== "left");
-                        break;
-                }
-
-                addChild(element);
-                element.y = element.y + yPos;
-
-                if (updatePositions)
-                {
-                    yPos = element.y + element.height;
-                }
-            }
         }
 
-        public function renderPage()
+        public function renderPage():void
         {
             var yPos:int = 0;
             for each(var elementVO:ElementVO in pageVO.elements)

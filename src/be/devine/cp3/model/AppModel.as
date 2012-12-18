@@ -1,30 +1,37 @@
 package be.devine.cp3.model
 {
 import be.devine.cp3.view.Book;
+import be.devine.cp3.view.BookCover;
+import be.devine.cp3.vo.BookVO;
+import be.devine.cp3.vo.PageVO;
 
 import flash.events.Event;
     import flash.events.EventDispatcher;
 
     public class AppModel extends EventDispatcher
     {
+        //TODO: Public vars veranderen door getters en setters
         private static var instance:AppModel;
-        public var pageVOS:Array,
+        public var pageVOS:Vector.<PageVO>,
                    pages:Array,
                    thumbnailPages:Array,
-                   bookVOS:Array,
-                    selectedBook:Book,
-                   books:Array;
+                   bookVOS:Vector.<BookVO>,
+                   selectedBook:Book,
+                   books:Vector.<Book>,
+                   covers:Vector.<BookCover>;
         private var _currentPage:uint,
                 _amountOfPages:uint,
                 _direction:String = "next",
                 _showTimeline:Boolean = false,
                 _showBookPreview:Boolean = true,
-                _showPages:Boolean = false;
+                _showPages:Boolean = false,
+                _selectedCover:BookCover;
 
         public static const PAGE_CHANGED:String = "PageChanged";
         public static const TIMELINE_CHANGED:String = "TimelineChanged";
         public static const BOOKPREVIEW_CHANGED:String = "BookPreviewChanged";
         public static const SHOWPAGES_CHANGED:String = "ShowPagesChanged";
+        public static const SELECTEDCOVER_CHANGED:String = "SelectedCoverChanged";
 
 
 
@@ -158,6 +165,17 @@ import flash.events.Event;
 
 
 
+            }
+        }
+
+        public function get selectedCover():BookCover {
+            return _selectedCover;
+        }
+
+        public function set selectedCover(value:BookCover):void {
+            if(_selectedCover != value){
+                _selectedCover = value
+                dispatchEvent(new Event(SELECTEDCOVER_CHANGED));
             }
         }
     }

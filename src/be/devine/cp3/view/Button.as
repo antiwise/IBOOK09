@@ -1,6 +1,6 @@
 package be.devine.cp3.view
 {
-    import starling.display.Image;
+import starling.display.Image;
     import starling.display.Sprite;
     import starling.textures.Texture;
     import starling.textures.TextureAtlas;

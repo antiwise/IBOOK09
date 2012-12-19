@@ -1,6 +1,6 @@
 package be.devine.cp3.view
 {
-    import be.devine.cp3.model.AppModel;
+import be.devine.cp3.model.AppModel;
     import be.devine.cp3.vo.ColumnElementVO;
     import be.devine.cp3.vo.ElementVO;
     import be.devine.cp3.vo.ImageElementVO;
@@ -10,18 +10,13 @@ package be.devine.cp3.view
 
     public class Page extends Sprite
     {
-        private var appModel:AppModel,
-                    pageVO:PageVO;
+        private var pageVO:PageVO;
 
         public function Page(pageVO:PageVO)
         {
             this.pageVO = pageVO;
 
-            appModel = AppModel.getInstance();
-
             renderPage();
-
-
         }
 
         public function renderPage():void

@@ -39,8 +39,6 @@ import starling.textures.Texture;
                     return container;
 
                 case "fullscreen":
-
-
                     var maskedDisplayObjectFullScreen:PixelMaskDisplayObject = maskImages(img, 512, 718);
                     maskedDisplayObjectFullScreen.x = 0;
                     maskedDisplayObjectFullScreen.y = 0;
@@ -56,15 +54,16 @@ import starling.textures.Texture;
                     container.addChild(qCover);
                     var maskedDisplayObjectCover:PixelMaskDisplayObject = maskImages(img, 285, 400);
                     container.addChild(maskedDisplayObjectCover);
+
                     return container;
 
                 case "thumbnail":
-                     var thumbnailcontainer:Sprite = new Sprite();
-                     var thumb:Image = new Image(config.texture);
+                    var thumb:Image = new Image(config.texture);
                     thumb.width = 128;
                     thumb.height = 128;
-                    thumbnailcontainer.addChild(thumb);
-                    return thumbnailcontainer ;
+                    container.addChild(thumb);
+
+                    return container ;
             }
             return null;
         }

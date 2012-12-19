@@ -1,6 +1,6 @@
 package be.devine.cp3.view
 {
-    import be.devine.cp3.vo.ColumnElementVO;
+import be.devine.cp3.vo.ColumnElementVO;
 import be.devine.cp3.vo.TextElementVO;
 
     public class ColumnElement extends Element

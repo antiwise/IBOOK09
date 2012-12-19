@@ -1,6 +1,6 @@
 package be.devine.cp3.factory.vo
 {
-    import be.devine.cp3.vo.PageVO;
+import be.devine.cp3.vo.PageVO;
 
     public class PageVOFactory
     {

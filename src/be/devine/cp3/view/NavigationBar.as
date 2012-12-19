@@ -1,6 +1,6 @@
 package be.devine.cp3.view
 {
-    import be.devine.cp3.factory.view.TextFieldFactory;
+import be.devine.cp3.factory.view.TextFieldFactory;
     import be.devine.cp3.model.AppModel;
 
 import flash.events.Event;
@@ -26,9 +26,7 @@ import starling.textures.Texture;
         private var appModel:AppModel,
                     buttonPrev:Button,
                     buttonNext:Button,
-                    buttonContainer:Sprite,
-                    pageNumberTextfield:Sprite,
-                    buttonHome:Button;
+                    pageNumberTextfield:Sprite;
 
         public function NavigationBar()
         {
@@ -37,7 +35,7 @@ import starling.textures.Texture;
             var bg:Quad = new Quad(1024,50,0x182c49);
             addChild(bg);
 
-            buttonContainer = new Sprite();
+            var buttonContainer:Sprite = new Sprite();
 
             addChild(buttonContainer);
 
@@ -49,7 +47,7 @@ import starling.textures.Texture;
             buttonPrev.addEventListener(TouchEvent.TOUCH,previous);
             buttonContainer.addChild(buttonPrev);
 
-            buttonHome = new Button(textureAtlas,"home.png");
+            var buttonHome:Button = new Button(textureAtlas,"home.png");
             buttonHome.addEventListener(TouchEvent.TOUCH, goHome);
             buttonContainer.addChild(buttonHome);
 
@@ -79,22 +77,8 @@ import starling.textures.Texture;
 
         public function checkNextPrevious():void
         {
-            if(appModel.currentPage +2 >= appModel.amountOfPages)
-            {
-                buttonNext.visible = false;
-            }
-            else
-            {
-                buttonNext.visible = true;
-            }
-            if(appModel.currentPage == 0)
-            {
-                buttonPrev.visible = false;
-            }
-            else
-            {
-                buttonPrev.visible = true;
-            }
+            appModel.currentPage +2 >= appModel.amountOfPages ?  buttonNext.visible = false : buttonNext.visible = true;
+            appModel.currentPage == 0 ? buttonPrev.visible = false : buttonPrev.visible = true;
         }
 
         private function next(event:TouchEvent):void
@@ -114,7 +98,7 @@ import starling.textures.Texture;
                 this.removeChild(pageNumberTextfield);
             }
 
-                var pageLeft:uint = appModel.currentPage + 1
+                var pageLeft:uint = appModel.currentPage + 1;
                 var pageRight:uint = appModel.currentPage + 2;
                 pageNumberTextfield = TextFieldFactory.createTextField({
                     text: "Page  " + pageLeft.toString() + " - " + pageRight.toString(),
@@ -126,8 +110,8 @@ import starling.textures.Texture;
                 addChild(pageNumberTextfield);
         }
 
-        private function goHome(event:TouchEvent):void {
-
+        private function goHome(event:TouchEvent):void
+        {
             var touch:Touch = event.getTouch(stage);
 
             if(touch != null)
@@ -137,14 +121,8 @@ import starling.textures.Texture;
                     appModel.currentPage = 0;
                     appModel.showPages = false;
                     appModel.direction = "next"
-
-
-
-
                 }
             }
-
-
         }
     }
 }

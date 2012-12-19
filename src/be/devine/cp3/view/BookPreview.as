@@ -70,7 +70,7 @@ public class BookPreview extends Sprite{
         var book:Book = event.currentTarget as Book;
         _bookClicked = book;
 
-        if(touch && touch.phase == "began")
+        if(touch.phase == "began")
         {
             dispatchEvent(new starling.events.Event(BOOK_CLICKED))
         }

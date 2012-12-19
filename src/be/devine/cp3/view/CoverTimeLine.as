@@ -141,7 +141,7 @@ public class CoverTimeLine extends Sprite{
         };
     }
 
-    public function updateCoverTimeline()
+    public function updateCoverTimeline():void
     {
         trace("updateCoverTimeline")
 

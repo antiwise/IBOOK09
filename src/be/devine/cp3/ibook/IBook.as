@@ -226,10 +226,10 @@ public class IBook extends Sprite
 
     private function resizeHandler(event:Event):void
     {
-        var x = (Starling.current.nativeStage.stageWidth - Starling.current.stage.stageWidth) >> 1;
-        var y = (Starling.current.nativeStage.stageHeight - Starling.current.stage.stageHeight) >> 1;
-        var currentStageHeight = Starling.current.stage.stageHeight;
-        var currentStageWidth = Starling.current.stage.stageWidth;
+        var x:uint = (Starling.current.nativeStage.stageWidth - Starling.current.stage.stageWidth) >> 1;
+        var y:uint = (Starling.current.nativeStage.stageHeight - Starling.current.stage.stageHeight) >> 1;
+        var currentStageHeight:uint = Starling.current.stage.stageHeight;
+        var currentStageWidth:uint = Starling.current.stage.stageWidth;
 
         Starling.current.viewPort = new Rectangle(x, y, currentStageWidth, currentStageHeight);
         bgQuad.width = currentStageWidth;

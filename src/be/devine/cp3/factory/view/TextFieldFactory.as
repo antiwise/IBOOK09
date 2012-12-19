@@ -14,17 +14,17 @@ package be.devine.cp3.factory.view
             {
                 case "h1":
                     var containerh1:Sprite = setTextfieldSettings(460,100,config.text,"Helvetica",35,0x182C49,false);
-                    var q:Quad = new Quad( 100,  6, 0x182C49);
-                    q.y = containerh1.height ;
-                    containerh1.addChild(q);
+                    var qh1:Quad = new Quad( 100,  6, 0x182C49);
+                    qh1.y = containerh1.height ;
+                    containerh1.addChild(qh1);
                     return(containerh1);
 
                 case "h1-white":
-                    var containerh1:Sprite = setTextfieldSettings(512,100,config.text,"Helvetica",60,0xFFFFFF,false);
-                    var q:Quad = new Quad( 100,  6, 0xFFFFFF);
-                    q.y = containerh1.height ;
-                    containerh1.addChild(q);
-                    return(containerh1);
+                    var containerh1white:Sprite = setTextfieldSettings(512,100,config.text,"Helvetica",60,0xFFFFFF,false);
+                    var qh1White:Quad = new Quad( 100,  6, 0xFFFFFF);
+                    qh1White.y = containerh1white.height ;
+                    containerh1white.addChild(qh1White);
+                    return(containerh1white);
 
                 case "h2":
                     var containerh2:starling.display.Sprite = setTextfieldSettings(210,100,config.text,"Helvetica",25,0xdd464e,false);

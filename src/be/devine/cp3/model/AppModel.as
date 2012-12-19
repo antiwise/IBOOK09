@@ -83,7 +83,6 @@ import flash.events.Event;
 
         public function gotoPage(pageNumber:uint):void
         {
-            trace("[GOTOPAGE]" + currentPage);
             if (currentPage < pageNumber)
             {
                 direction = "next";

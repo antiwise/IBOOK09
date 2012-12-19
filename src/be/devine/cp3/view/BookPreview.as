@@ -100,11 +100,9 @@ public class BookPreview extends Sprite{
         }
     }
 
-    private function coverChangedHandler(event:flash.events.Event):void {
-
-        trace("selected cover" + appModel.selectedCover);
-        updateBookPreview()
-
+    private function coverChangedHandler(event:flash.events.Event):void
+    {
+        updateBookPreview();
     }
 
     private function updateBookPreview():void{

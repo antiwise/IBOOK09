@@ -33,7 +33,6 @@ public class BookCover extends Sprite{
         var imageElementVO:ImageElementVO = new ImageElementVO();
         imageElementVO.style = "cover";
         imageElementVO.url = bookVo.cover;
-        trace( imageElementVO.url);
 
         var cover:ImageElement = new ImageElement(imageElementVO);
         addChild(cover);

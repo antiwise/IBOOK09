@@ -22,46 +22,25 @@ import starling.display.DisplayObject;
         public function Thumbnail(thumbnailPreview:PageVO)
         {
             this.appModel = AppModel.getInstance();
-           this.thumbnail = thumbnailPreview;
-
+            this.thumbnail = thumbnailPreview;
 
             var imageElementVO:ImageElementVO = new ImageElementVO();
             imageElementVO.style = "thumbnail";
             imageElementVO.url = thumbnailPreview.cover;
-            //trace( imageElementVO.url);
 
             var cover:ImageElement = new ImageElement(imageElementVO);
             addChild(cover);
-            //cover.scaleX = cover.scaleY = .5;
-
 
             this.useHandCursor = true;
 
-
-
-           /* _q = new Quad(103,143,0xffffff);
-            addChild(_q);  */
-
-
-           // var textElement:TextElement
-
-
-            /*
-            var q:Quad = new Quad(100,143,0xffffff);
-            addChild(q);
-                          */
-           // thumbnail.scaleX = thumbnail.scaleY = 0.2;
-
-            //cover.addEventListener(TouchEvent.TOUCH, showTimeLine);
             cover.addEventListener(TouchEvent.TOUCH, showTimeLine);
 
-           // addChild(cover);
 
             this.useHandCursor = true;
             this.addEventListener(TouchEvent.TOUCH,touchEventHandler);
 
-            _hoverEffect = new Quad(103,10, 0x182c49);
-            _hoverEffect.y = 143;
+            _hoverEffect = new Quad(91,10, 0x182c49);
+            _hoverEffect.y = 128;
             addChild(_hoverEffect);
             _hoverEffect.visible = false;
 
@@ -76,9 +55,6 @@ import starling.display.DisplayObject;
 
         public function isActive()
         {
-            /*var q:Quad = new Quad(thumbnail.width,3,0xffffff);
-            q.y = this.y = this.height;
-            addChild(q);    */
             q.color = 0x182c49;
         }
 

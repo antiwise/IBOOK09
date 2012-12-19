@@ -69,8 +69,6 @@ public class Book extends Sprite{
         var datum:TextElement = new TextElement(datumTextElementVO);
         addChild(datum);
 
-        trace( bookVo.title);
-
         var descriptionTextElementVO:TextElementVO = new TextElementVO();
         descriptionTextElementVO.text = bookVo.description;
         descriptionTextElementVO.textType = "p-normal-white";

@@ -65,8 +65,6 @@ import starling.textures.Texture;
             buttonContainer.y = 7;
 
             setPageNumber();
-
-            this.addEventListener(TouchEvent.TOUCH,TouchEventHandler);
         }
 
         private function previous(event:TouchEvent):void
@@ -128,12 +126,6 @@ import starling.textures.Texture;
                 addChild(pageNumberTextfield);
         }
 
-
-        private function TouchEventHandler(event:TouchEvent):void
-        {
-            event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appModel.showTimeline = true :  appModel.showTimeline = false;
-        }
-
         private function goHome(event:TouchEvent):void {
 
             var touch:Touch = event.getTouch(stage);
@@ -143,6 +135,7 @@ import starling.textures.Texture;
                 if(touch.phase == "began")
                 {
                     appModel.showPages = false;
+
 
                 }
             }

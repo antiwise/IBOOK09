@@ -33,8 +33,6 @@ import starling.display.Sprite;
             ldr.dataFormat = URLLoaderDataFormat.BINARY;
             ldr.addEventListener(Event.COMPLETE, imageLoadedHandler);
             ldr.load(new URLRequest("assets/images/"+imageElementVO.url));
-
-            trace("assets/images/"+imageElementVO.url);
         }
 
         private function imageLoadedHandler(e:Event)

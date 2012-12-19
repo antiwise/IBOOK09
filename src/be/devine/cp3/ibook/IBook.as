@@ -54,9 +54,7 @@ public class IBook extends Sprite
         bookService.addEventListener(BookService.XML_LOADED, XMLLoadedHandler) ;
         bookService.loadBook();
 
-        navigationBar = new NavigationBar();
-        navigationBar.y = 718;
-        navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
+
 
         appModel.addEventListener(AppModel.BOOKPREVIEW_CHANGED, bookPreviewChangedHandler);
 
@@ -90,7 +88,9 @@ public class IBook extends Sprite
         navigationBar.setPageNumber();
 
         setChildIndex(navigationBar,numChildren-1);
+        timeLine.posTimeline = appModel.currentPage;
          timeLine.updateThumbnails();
+
 
         setChildIndex(timeLine,numChildren-1);
     }
@@ -117,10 +117,22 @@ public class IBook extends Sprite
 
 
             var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
-            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
             var leftPage:Page = new Page(leftPageVO);
-            var rightPage:Page = new Page(rightPageVO);
-            leftPage.renderPage();
+
+            trace("[IBook]" + appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1));
+
+            if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >=0)
+            {
+
+                var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+                var rightPage:Page = new Page(rightPageVO);
+            }
+
+
+
+
+
+
 
             leftPage.x = 1024;
             pageContainer.addChild(leftPage);
@@ -130,7 +142,7 @@ public class IBook extends Sprite
 
             if(rightPage != null)
             {
-                rightPage.renderPage();
+
                 rightPage.x = 1024 + 512;
                 pageContainer.addChild(rightPage);
                 var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
@@ -157,11 +169,15 @@ public class IBook extends Sprite
             addChild(pageContainer);
 
             var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
-            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
             var leftPage:Page = new Page(leftPageVO);
-            var rightPage:Page = new Page(rightPageVO);
 
-            leftPage.renderPage();
+            if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >=0)
+            {
+                var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+                var rightPage:Page = new Page(rightPageVO);
+            }
+
+
             leftPage.x = -1024;
             pageContainer.addChild(leftPage);
             var tweenPageLeft:Tween = new Tween(leftPage, .5, Transitions.EASE_IN);
@@ -170,7 +186,7 @@ public class IBook extends Sprite
 
             if(rightPage != null)
             {
-                rightPage.renderPage();
+
                 rightPage.x = -512;
                 pageContainer.addChild(rightPage);
                 var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
@@ -246,12 +262,13 @@ public class IBook extends Sprite
             appModel.showTimeline = false;
 
         }
+
     }
 
     private function bookClickedHandler(event:starling.events.Event):void
     {
-        addChild(navigationBar);
-        setChildIndex(navigationBar,numChildren-1);
+       /* addChild(navigationBar);
+        setChildIndex(navigationBar,numChildren-1);  */
         appModel.selectedBook = bookPreview.bookClicked;
 
         var countPages:uint = 0;
@@ -266,12 +283,17 @@ public class IBook extends Sprite
         }
         appModel.amountOfPages = countPages;
 
+        navigationBar = new NavigationBar();
+        navigationBar.y = 718;
+        navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
+        addChild(navigationBar);
+
         timeLine= new TimeLine();
         timeLine.x = Starling.current.stage.stageWidth/2 - timeLine.width/2;
         timeLine.y = Starling.current.stage.stageHeight - timeLine.height - 27;
         addChild(timeLine);
 
-        appModel.amountOfPages = countPages;
+
         appModel.currentPage = 0;
 
         Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
@@ -288,11 +310,11 @@ public class IBook extends Sprite
             }
             if(timeLine != null)
             {
-                removeChild(timeLine, true);
+                removeChild(timeLine);
             }
             if(navigationBar != null)
             {
-                removeChild(navigationBar, true);
+                removeChild(navigationBar);
             }
         }
     }

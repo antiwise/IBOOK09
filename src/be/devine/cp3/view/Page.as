@@ -19,6 +19,8 @@ package be.devine.cp3.view
 
             appModel = AppModel.getInstance();
 
+            renderPage();
+
 
         }
 

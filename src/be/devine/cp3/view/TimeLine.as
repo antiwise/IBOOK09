@@ -24,6 +24,7 @@ import starling.textures.Texture;
         public static const ButtonTexture:Class;
 
         private var appmodel:AppModel,
+                    amountOfThumbnails:uint,
 
                     _thumbnailContainer:Sprite,
                     _posTimeline:uint,
@@ -64,14 +65,21 @@ import starling.textures.Texture;
 
             for each(var thumbnailPreview:PageVO in appmodel.selectedBook.bookVo.pages)
             {
-                //var page:Page = new Page(thumbnailPreview);
-                trace(thumbnailPreview.cover);
                 var thumbnail:Thumbnail = new Thumbnail(thumbnailPreview);
                 arrThumbnails.push(thumbnail);
                 thumbnail.addEventListener(TouchEvent.TOUCH, TouchEventHandler);
                 thumbnail.addEventListener(TouchEvent.TOUCH, showTimeLine);
-
             }
+
+            if(appmodel.amountOfPages < 6)
+            {
+                amountOfThumbnails = appmodel.amountOfPages;
+            }
+            else
+            {
+                amountOfThumbnails = 6;
+            }
+
 
             updateThumbnails();
 
@@ -88,8 +96,9 @@ import starling.textures.Texture;
 
             _thumbnailContainer = new Sprite();
 
+
             var xPos:uint = 0;
-            for(var i:uint = 0; i<6;i++)
+            for(var i:uint = 0; i<amountOfThumbnails;i++)
             {
                 var thumbnail:Thumbnail = arrThumbnails[_posTimeline + i];
 

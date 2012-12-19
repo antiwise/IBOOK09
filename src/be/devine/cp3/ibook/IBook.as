@@ -96,101 +96,50 @@ public class IBook extends Sprite
         setChildIndex(timeLine,numChildren-1);
     }
 
+    private function createTween(direction):void
+    {
+        //if
 
+
+    }
 
     private function updatePageView():void
     {
-        if (appModel.direction == "next")
+        if(pageContainer.numChildren > 0)
         {
-            if(pageContainer.numChildren > 0)
-            {
-                //removeChild(pageContainer);
-                var tweenPageContainer:Tween = new Tween(pageContainer, .5, Transitions.EASE_IN);
-                tweenPageContainer.animate("x", -1024);
-                tweenPageContainer.onComplete = onTweenComplete;
-                tweenPageContainer.onCompleteArgs = [pageContainer];
-                Starling.juggler.add(tweenPageContainer);
-
-            }
-            pageContainer = new Sprite();
-
-            addChild(pageContainer);
-
-            trace("[IBook] appModel.currentpage" + appModel.currentPage);
-
-            var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
-            var leftPage:Page = new Page(leftPageVO);
-
-            if(appModel.currentPage + 1 < appModel.amountOfPages)
-            {
-                var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
-                var rightPage:Page = new Page(rightPageVO);
-            }
-
-            leftPage.x = 1024;
-            pageContainer.addChild(leftPage);
-            var tweenPageLeft:Tween = new Tween(leftPage, .5, Transitions.EASE_IN);
-            tweenPageLeft.animate("x", 0);
-            Starling.juggler.add(tweenPageLeft);
-
-            if(rightPage != null)
-            {
-
-                rightPage.x = 1024 + 512;
-                pageContainer.addChild(rightPage);
-                var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
-                tweenPageRight.animate("x", 512);
-                Starling.juggler.add(tweenPageRight);
-            }
-
-
-            setChildIndex(timeLine,numChildren-1);
+            var tweenPageContainer:Tween = new Tween(pageContainer, .5, Transitions.EASE_IN);
+            appModel.direction == "next" ?   tweenPageContainer.animate("x", -1024) : tweenPageContainer.animate("x", 1024);
+            tweenPageContainer.onComplete = onTweenComplete;
+            tweenPageContainer.onCompleteArgs = [pageContainer];
+            Starling.juggler.add(tweenPageContainer);
         }
-        else
+
+        pageContainer = new Sprite();
+        addChild(pageContainer);
+
+        var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
+        var leftPage:Page = new Page(leftPageVO);
+
+        if(appModel.currentPage + 1 < appModel.amountOfPages)
         {
-            if(pageContainer.numChildren > 0)
-            {
-                // pageContainer.removeChildren();
-                var tweenPageContainer:Tween = new Tween(pageContainer, .5, Transitions.EASE_IN);
-                tweenPageContainer.animate("x", 1024);
-                tweenPageContainer.onComplete = onTweenComplete;
-                tweenPageContainer.onCompleteArgs = [pageContainer];
-                Starling.juggler.add(tweenPageContainer);
-
-            }
-            pageContainer = new Sprite();
-            addChild(pageContainer);
-
-            var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
-            var leftPage:Page = new Page(leftPageVO);
-
-            if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >=0)
-            {
-
-            }
             var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
             var rightPage:Page = new Page(rightPageVO);
-
-            leftPage.x = -1024;
-            pageContainer.addChild(leftPage);
-            var tweenPageLeft:Tween = new Tween(leftPage, .5, Transitions.EASE_IN);
-            tweenPageLeft.animate("x", 0);
-            Starling.juggler.add(tweenPageLeft);
-
-            if(rightPage != null)
-            {
-
-                rightPage.x = -512;
-                pageContainer.addChild(rightPage);
-                var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
-                tweenPageRight.animate("x", 512);
-                Starling.juggler.add(tweenPageRight);
-            }
-
-
-            setChildIndex(timeLine,numChildren-1);
         }
 
+        appModel.direction == "next" ? leftPage.x = 1024 : leftPage.x = -1024;
+        pageContainer.addChild(leftPage);
+        var tweenPageLeft:Tween = new Tween(leftPage, .5, Transitions.EASE_IN);
+        tweenPageLeft.animate("x", 0);
+        Starling.juggler.add(tweenPageLeft);
+
+        if(rightPage != null)
+        {
+            appModel.direction == "next" ? rightPage.x = 1024 + 512 : rightPage.x = -512;
+            pageContainer.addChild(rightPage);
+            var tweenPageRight:Tween = new Tween(rightPage, .5, Transitions.EASE_IN);
+            tweenPageRight.animate("x", 512);
+            Starling.juggler.add(tweenPageRight);
+        }
         pageContainer.addEventListener(TouchEvent.TOUCH,TouchEventHandler);
     }
 

@@ -6,22 +6,13 @@
  * To change this template use File | Settings | File Templates.
  */
 package be.devine.cp3.view {
-import be.devine.cp3.factory.view.ImageFactory;
-import be.devine.cp3.factory.view.TextFieldFactory;
 import be.devine.cp3.model.AppModel;
 import be.devine.cp3.vo.BookVO;
 import be.devine.cp3.vo.ImageElementVO;
 import be.devine.cp3.vo.TextElementVO;
 
-import flash.display3D.textures.Texture;
-import flash.events.Event;
-
 import starling.display.Quad;
-
-
 import starling.display.Sprite;
-import starling.events.Touch;
-import starling.events.TouchEvent;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
 
@@ -42,7 +33,9 @@ public class Book extends Sprite{
         this.bookVo = bookVo;
         appModel = AppModel.getInstance();
 
-        var texture:starling.textures.Texture = starling.textures.Texture.fromBitmap(new ButtonTexture);
+
+
+        var texture:Texture = Texture.fromBitmap(new ButtonTexture);
         var xml:XML = XML(new ButtonXml());
         var textureAtlas:TextureAtlas = new TextureAtlas(texture, xml);
 

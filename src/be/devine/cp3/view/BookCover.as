@@ -10,14 +10,7 @@ import be.devine.cp3.model.AppModel;
 import be.devine.cp3.vo.BookVO;
 import be.devine.cp3.vo.ImageElementVO;
 
-import flash.events.Event;
-
-import starling.display.DisplayObject;
-
-import starling.display.Quad;
 import starling.display.Sprite;
-import starling.events.TouchEvent;
-import starling.events.TouchPhase;
 
 public class BookCover extends Sprite{
 

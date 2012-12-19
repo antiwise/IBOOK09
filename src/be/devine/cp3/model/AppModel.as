@@ -12,14 +12,14 @@ import flash.events.Event;
     {
         //TODO: Public vars veranderen door getters en setters
         private static var instance:AppModel;
-        public var pageVOS:Vector.<PageVO>,
-                   pages:Array,
-                   thumbnailPages:Array,
-                   bookVOS:Vector.<BookVO>,
-                   selectedBook:Book,
-                   books:Vector.<Book>,
-                   covers:Vector.<BookCover>;
-        private var _currentPage:uint,
+        private var _pageVOS:Vector.<PageVO>,
+                _pages:Array,
+                _thumbnailPages:Array,
+                _bookVOS:Vector.<BookVO>,
+                _selectedBook:Book,
+                _books:Vector.<Book>,
+                _covers:Vector.<BookCover>,
+                _currentPage:uint,
                 _amountOfPages:uint,
                 _direction:String = "next",
                 _showTimeline:Boolean = false,
@@ -173,6 +173,20 @@ import flash.events.Event;
             }
         }
 
+        public function nextCover():void{
+            if((covers.indexOf(selectedCover, 0)) +1 != covers.length){
+                var nextCover:uint = (covers.indexOf(selectedCover, 0)) +1;
+                selectedCover = covers[nextCover];
+            }
+        }
+
+        public function prevCover():void{
+            if((covers.indexOf(selectedCover, 0)) != 0){
+                var prevCover:uint = (covers.indexOf(selectedCover, 0)) -1;
+                selectedCover = covers[prevCover];
+            }
+        }
+
         public function get selectedCover():BookCover {
             return _selectedCover;
         }
@@ -181,6 +195,78 @@ import flash.events.Event;
             if(_selectedCover != value){
                 _selectedCover = value
                 dispatchEvent(new Event(SELECTEDCOVER_CHANGED));
+            }
+        }
+
+        public function get pageVOS():Vector.<PageVO> {
+            return _pageVOS;
+        }
+
+        public function set pageVOS(value:Vector.<PageVO>):void {
+            if(_pageVOS != value){
+                _pageVOS = value;
+            }
+
+        }
+
+        public function get pages():Array {
+            return _pages;
+        }
+
+        public function set pages(value:Array):void {
+
+            if(_pages != value) {
+                _pages = value;
+            }
+        }
+
+        public function get thumbnailPages():Array {
+            return _thumbnailPages;
+        }
+
+        public function set thumbnailPages(value:Array):void {
+            if(_thumbnailPages != value){
+                _thumbnailPages = value;
+            }
+        }
+
+        public function get bookVOS():Vector.<BookVO> {
+            return _bookVOS;
+        }
+
+        public function set bookVOS(value:Vector.<BookVO>):void {
+            if (_bookVOS != value){
+                _bookVOS = value;
+            }
+        }
+
+        public function get selectedBook():Book {
+            return _selectedBook;
+        }
+
+        public function set selectedBook(value:Book):void {
+            if(_selectedBook != value){
+                _selectedBook = value;
+            }
+        }
+
+        public function get books():Vector.<Book> {
+            return _books;
+        }
+
+        public function set books(value:Vector.<Book>):void {
+            if(_books != value){
+                _books = value;
+            }
+        }
+
+        public function get covers():Vector.<BookCover> {
+            return _covers;
+        }
+
+        public function set covers(value:Vector.<BookCover>):void {
+            if(_covers != value){
+                _covers = value;
             }
         }
     }

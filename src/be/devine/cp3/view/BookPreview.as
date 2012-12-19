@@ -12,9 +12,7 @@ import be.devine.cp3.vo.BookVO;
 import flash.events.Event;
 
 import starling.core.Starling;
-
 import starling.display.Quad;
-
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.events.Touch;
@@ -48,7 +46,7 @@ public class BookPreview extends Sprite{
         {
             book = new Book(bookVO);
             appModel.books.push(book);
-            book.y = 20;
+            book.y = 40;
             book.useHandCursor = true;
             book.addEventListener(TouchEvent.TOUCH, bookClickedHandler)
 
@@ -57,9 +55,7 @@ public class BookPreview extends Sprite{
 
         }
 
-
-
-        coverTimeLine = new CoverTimeLine();
+       coverTimeLine = new CoverTimeLine();
         addChild(coverTimeLine);
         coverTimeLine.x = Starling.current.stage.stageWidth - 200;
         coverTimeLine.y = 25;

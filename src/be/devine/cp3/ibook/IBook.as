@@ -173,9 +173,12 @@ import starling.events.TouchPhase;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "hover")
+            if(touch != null)
             {
-                appModel.showTimeline = false;
+                if(touch.phase == "hover")
+                {
+                    appModel.showTimeline = false;
+                }
             }
         }
 

@@ -59,13 +59,18 @@ import flash.events.Event;
 
         public function set currentPage(value:uint):void
         {
-            _currentPage = value;
-            dispatchEvent(new Event(PAGE_CHANGED));
+
+            if(currentPage < amountOfPages && currentPage >= 0)
+            {
+                _currentPage = value;
+                dispatchEvent(new Event(PAGE_CHANGED));
+            }
+
         }
 
         public function nextPage():void
         {
-            if(currentPage +2 != amountOfPages)
+            if(currentPage +2 < amountOfPages)
             { direction = "next";
                 currentPage += 2;
 

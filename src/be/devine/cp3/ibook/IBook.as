@@ -115,24 +115,16 @@ public class IBook extends Sprite
 
             addChild(pageContainer);
 
+            trace("[IBook] appModel.currentpage" + appModel.currentPage);
 
             var leftPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage];
             var leftPage:Page = new Page(leftPageVO);
 
-            trace("[IBook]" + appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1));
-
-            if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >= 0)
+            if(appModel.currentPage + 1 < appModel.amountOfPages)
             {
-
-
+                var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+                var rightPage:Page = new Page(rightPageVO);
             }
-
-            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
-            var rightPage:Page = new Page(rightPageVO);
-
-
-
-
 
             leftPage.x = 1024;
             pageContainer.addChild(leftPage);
@@ -215,7 +207,6 @@ public class IBook extends Sprite
                 break;
             case Keyboard.RIGHT:
             case Keyboard.SPACE:
-                //TODO: ervoor zorgen dat deze keyboard events gedisabled worden in bookpreview, anders crasht die!
                 appModel.nextPage();
                 break;
             case Keyboard.F:

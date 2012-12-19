@@ -95,25 +95,32 @@ import starling.textures.Texture;
             }
 
             _thumbnailContainer = new Sprite();
+               /*
 
+            if(_posTimeline + amountOfThumbnails  >=  appmodel.amountOfPages )
 
+            {
+               _posTimeline = _posTimeline - amountOfThumbnails;
+            }
+                */
             var xPos:uint = 0;
             for(var i:uint = 0; i<amountOfThumbnails;i++)
             {
                 var thumbnail:Thumbnail = arrThumbnails[_posTimeline + i];
 
-
-                if(arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i]  )
-                {
-                    thumbnail.hoverEffect.visible = true;
-                }
-                else
-                {
-                    thumbnail.hoverEffect.visible = false;
-                }
-
                 if(thumbnail != null)
                 {
+
+                    if(arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i]  )
+                    {
+                        thumbnail.hoverEffect.visible = true;
+                    }
+                    else
+                    {
+                        thumbnail.hoverEffect.visible = false;
+                    }
+
+
                     thumbnail.x = xPos;
 
 

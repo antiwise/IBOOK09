@@ -44,6 +44,8 @@ public class Main extends Sprite
         preloader = new Preloader();
 
         var helveticaNeueContainer:HelveticaNeueContainer = new HelveticaNeueContainer();
+
+
         var fonts:Array = Font.enumerateFonts();
         for each(var f:Font in fonts)
         {

@@ -32,25 +32,25 @@ import starling.events.TouchPhase;
 public class IBook extends Sprite
 {
     private var appModel:AppModel,
+            bookService:BookService,
             pageContainer:Sprite,
             navigationBar:NavigationBar,
             timeLine:TimeLine,
             bgQuad:Quad,
             bookPreview:BookPreview;
 
-
     public function IBook()
     {
         appModel = AppModel.getInstance();
 
         bgQuad = new Quad(1024, 768, 0xe9eaeb);
-        addChild(bgQuad);
+        addChild(bgQuad)
 
 
 
         Starling.current.nativeStage.addEventListener(ResizeEvent.RESIZE,resizeHandler);
 
-        var bookService:BookService = new BookService();
+        bookService = new BookService();
         bookService.addEventListener(BookService.XML_LOADED, XMLLoadedHandler) ;
         bookService.loadBook();
 
@@ -94,6 +94,13 @@ public class IBook extends Sprite
 
 
         setChildIndex(timeLine,numChildren-1);
+    }
+
+    private function createTween(direction):void
+    {
+        //if
+
+
     }
 
     private function updatePageView():void
@@ -199,13 +206,18 @@ public class IBook extends Sprite
 
     }
 
-    private function bookClickedHandler():void
+    private function bookClickedHandler(event:starling.events.Event):void
     {
-
+       /* addChild(navigationBar);
+        setChildIndex(navigationBar,numChildren-1);  */
         appModel.selectedBook = bookPreview.bookClicked;
+
+
         var countPages:uint = 0;
+
         appModel.showBookPreview = false;
         appModel.showPages = true;
+
 
         for each(var pageVO:PageVO in appModel.selectedBook.bookVo.pages )
         {

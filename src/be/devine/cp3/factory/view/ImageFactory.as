@@ -54,10 +54,7 @@ import starling.textures.Texture;
 
                     var qCover:Quad = new Quad( 333,  448, 0xFFFFFF);
                     container.addChild(qCover);
-
-
                     var maskedDisplayObjectCover:PixelMaskDisplayObject = maskImages(img, 285, 400);
-
                     container.addChild(maskedDisplayObjectCover);
                     return container;
 
@@ -66,7 +63,6 @@ import starling.textures.Texture;
                      var thumb:Image = new Image(config.texture);
                     thumb.width = 128;
                     thumb.height = 128;
-
                     thumbnailcontainer.addChild(thumb);
                     return thumbnailcontainer ;
             }
@@ -77,13 +73,10 @@ import starling.textures.Texture;
         {
             var maskedDisplayObject:PixelMaskDisplayObject = new PixelMaskDisplayObject();
             var myCustomMaskDisplayObject:Quad = new Quad(width,height);
-
             maskedDisplayObject.addChild(img);
             maskedDisplayObject.x = 12;
             maskedDisplayObject.y = 12;
-
             maskedDisplayObject.mask = myCustomMaskDisplayObject;
-
             return  maskedDisplayObject
         }
     }

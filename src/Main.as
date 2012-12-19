@@ -32,9 +32,7 @@ public class Main extends Sprite
     [Embed(source='assets/fonts/Bitter-Italic/Bitter-Italic.ttf', fontName="Bitter-Italic", mimeType="application/x-font-truetype", embedAsCFF=false)]
     private static const BitterItalic:Class;
 
-    private var _iBook:IBook,
-            helveticaNeueContainer:HelveticaNeueContainer,
-            _starling:Starling,
+    private var _starling:Starling,
             preloader:Preloader,
             myDelay:Timer;
 
@@ -45,14 +43,13 @@ public class Main extends Sprite
 
         preloader = new Preloader();
 
+        var helveticaNeueContainer:HelveticaNeueContainer = new HelveticaNeueContainer();
         var fonts:Array = Font.enumerateFonts();
         for each(var f:Font in fonts)
         {
             trace(f.fontName, f.fontStyle, f.fontType);
         }
 
-
-        trace("pushtest trace");
 
         stage.nativeWindow.visible = true;
         stage.nativeWindow.width = 1024;
@@ -65,10 +62,8 @@ public class Main extends Sprite
         _starling = new Starling(IBook,stage);
 
         myDelay = new Timer(7500);
-        //myDelay = new Timer(1);
         myDelay.addEventListener(TimerEvent.TIMER, startStarling);
         myDelay.start();
-
         addChild(preloader);
     }
 

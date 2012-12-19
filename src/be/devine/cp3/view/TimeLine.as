@@ -234,7 +234,7 @@ import starling.textures.Texture;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "hover")
+            if(touch && touch.phase == "hover")
             {
                 appmodel.showTimeline = true;
             }

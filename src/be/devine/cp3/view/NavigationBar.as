@@ -135,6 +135,8 @@ import starling.textures.Texture;
                 if(touch.phase == "began")
                 {
                     appModel.showPages = false;
+                    appModel.direction = "next"
+
 
 
                 }

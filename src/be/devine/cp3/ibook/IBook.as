@@ -262,6 +262,7 @@ public class IBook extends Sprite
         setChildIndex(navigationBar,numChildren-1);  */
         appModel.selectedBook = bookPreview.bookClicked;
 
+
         var countPages:uint = 0;
 
         appModel.showBookPreview = false;

@@ -27,7 +27,7 @@ import starling.textures.Texture;
                     amountOfThumbnails:uint,
 
                     _thumbnailContainer:Sprite,
-                    _posTimeline:uint,
+                    _posTimeline:int,
                     arrThumbnails:Array,
                     buttonPrev:Button,
                     buttonNext:Button;
@@ -95,14 +95,39 @@ import starling.textures.Texture;
             }
 
             _thumbnailContainer = new Sprite();
-               /*
 
-            if(_posTimeline + amountOfThumbnails  >=  appmodel.amountOfPages )
 
+
+
+
+
+
+
+           if(_posTimeline >= appmodel.amountOfPages - amountOfThumbnails )
             {
-               _posTimeline = _posTimeline - amountOfThumbnails;
+                _posTimeline = appmodel.amountOfPages - amountOfThumbnails;
+
             }
-                */
+
+
+            /*
+
+
+
+
+        if(_posTimeline + amountOfThumbnails  >=  appmodel.amountOfPages )
+
+        {
+           _posTimeline = _posTimeline - amountOfThumbnails;
+        }
+
+
+
+            */
+
+
+
+
             var xPos:uint = 0;
             for(var i:uint = 0; i<amountOfThumbnails;i++)
             {
@@ -196,7 +221,15 @@ import starling.textures.Texture;
 
         public function set posTimeline(value:uint):void
         {
+            trace("[TIMELINE] _posTimeline" + _posTimeline);
+
+
+
+
             _posTimeline = value;
+
+
+
             updateThumbnails();
         }
 
@@ -250,6 +283,10 @@ import starling.textures.Texture;
             {
                 this.visible = false;
             }
+        }
+
+        public function get posTimeline():uint {
+            return _posTimeline;
         }
     }
 }

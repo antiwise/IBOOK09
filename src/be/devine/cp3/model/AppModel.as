@@ -1,39 +1,35 @@
 package be.devine.cp3.model
 {
-import be.devine.cp3.view.Book;
-import be.devine.cp3.view.BookCover;
-import be.devine.cp3.vo.BookVO;
-import be.devine.cp3.vo.PageVO;
-
-import flash.events.Event;
+    import be.devine.cp3.view.Book;
+    import be.devine.cp3.view.BookCover;
+    import be.devine.cp3.vo.BookVO;
+    import be.devine.cp3.vo.PageVO;
+    import flash.events.Event;
     import flash.events.EventDispatcher;
 
     public class AppModel extends EventDispatcher
     {
-        //TODO: Public vars veranderen door getters en setters
         private static var instance:AppModel;
         private var _pageVOS:Vector.<PageVO>,
-                _pages:Array,
-                _thumbnailPages:Array,
-                _bookVOS:Vector.<BookVO>,
-                _selectedBook:Book,
-                _books:Vector.<Book>,
-                _covers:Vector.<BookCover>,
-                _currentPage:uint,
-                _amountOfPages:uint,
-                _direction:String = "next",
-                _showTimeline:Boolean = false,
-                _showBookPreview:Boolean = true,
-                _showPages:Boolean = false,
-                _selectedCover:BookCover;
+                   // _pages:Array,
+                   // _thumbnailPages:Array,
+                    _bookVOS:Vector.<BookVO>,
+                    _selectedBook:Book,
+                    _books:Vector.<Book>,
+                    _covers:Vector.<BookCover>,
+                    _currentPage:uint,
+                    _amountOfPages:uint,
+                    _direction:String = "next",
+                    _showTimeline:Boolean = false,
+                    _showBookPreview:Boolean = true,
+                    _showPages:Boolean = false,
+                    _selectedCover:BookCover;
 
         public static const PAGE_CHANGED:String = "PageChanged";
         public static const TIMELINE_CHANGED:String = "TimelineChanged";
         public static const BOOKPREVIEW_CHANGED:String = "BookPreviewChanged";
         public static const SHOWPAGES_CHANGED:String = "ShowPagesChanged";
         public static const SELECTEDCOVER_CHANGED:String = "SelectedCoverChanged";
-
-
 
         public function AppModel(e:Enforcer)
         {
@@ -52,28 +48,12 @@ import flash.events.Event;
             return instance;
         }
 
-        public function get currentPage():uint
-        {
-            return _currentPage;
-        }
-
-        public function set currentPage(value:uint):void
-        {
-
-            if(currentPage < amountOfPages && currentPage >= 0)
-            {
-                _currentPage = value;
-                dispatchEvent(new Event(PAGE_CHANGED));
-            }
-
-        }
-
         public function nextPage():void
         {
             if(currentPage +2 < amountOfPages)
-            { direction = "next";
+            {
+                direction = "next";
                 currentPage += 2;
-
             }
         }
 
@@ -88,7 +68,7 @@ import flash.events.Event;
 
         public function gotoPage(pageNumber:uint):void
         {
-            if (currentPage < pageNumber)
+            if(currentPage < pageNumber)
             {
                 direction = "next";
             }
@@ -99,12 +79,31 @@ import flash.events.Event;
 
             currentPage = pageNumber;
 
-            if (currentPage%2 != 0)
+            if(currentPage%2 != 0)
             {
                 currentPage = currentPage -1;
             }
         }
 
+        public function nextCover():void
+        {
+            if((covers.indexOf(selectedCover, 0)) +1 != covers.length)
+            {
+                var nextCover:uint = (covers.indexOf(selectedCover, 0)) +1;
+                selectedCover = covers[nextCover];
+            }
+        }
+
+        public function prevCover():void
+        {
+            if((covers.indexOf(selectedCover, 0)) != 0)
+            {
+                var prevCover:uint = (covers.indexOf(selectedCover, 0)) -1;
+                selectedCover = covers[prevCover];
+            }
+        }
+
+        /* GETTERS & SETTERS */
 
         public function get amountOfPages():uint
         {
@@ -126,7 +125,6 @@ import flash.events.Event;
             _direction = value;
         }
 
-
         public function get showTimeline():Boolean
         {
             return _showTimeline;
@@ -141,12 +139,13 @@ import flash.events.Event;
             }
         }
 
-        public function get showBookPreview():Boolean {
+        public function get showBookPreview():Boolean
+        {
             return _showBookPreview;
         }
 
-        public function set showBookPreview(value:Boolean):void {
-            //trace("showBooKPreview " + value);
+        public function set showBookPreview(value:Boolean):void
+        {
             if (value != _showBookPreview)
             {
                 _showBookPreview = value;
@@ -155,117 +154,139 @@ import flash.events.Event;
             }
         }
 
-        public function get showPages():Boolean {
+        public function get showPages():Boolean
+        {
             return _showPages;
         }
 
-        public function set showPages(value:Boolean):void {
-            //trace("showpages " + value);
+        public function set showPages(value:Boolean):void
+        {
             if (value != _showPages)
             {
-               // trace ("in appmodel: showpages")
                 _showPages = value;
                 _showPages != _showBookPreview;
                 dispatchEvent(new Event(SHOWPAGES_CHANGED));
-
-
-
             }
         }
 
-        public function nextCover():void{
-            if((covers.indexOf(selectedCover, 0)) +1 != covers.length){
-                var nextCover:uint = (covers.indexOf(selectedCover, 0)) +1;
-                selectedCover = covers[nextCover];
+        public function get currentPage():uint
+        {
+            return _currentPage;
+        }
+
+        public function set currentPage(value:uint):void
+        {
+            if(currentPage < amountOfPages && currentPage >= 0)
+            {
+                _currentPage = value;
+                dispatchEvent(new Event(PAGE_CHANGED));
             }
         }
 
-        public function prevCover():void{
-            if((covers.indexOf(selectedCover, 0)) != 0){
-                var prevCover:uint = (covers.indexOf(selectedCover, 0)) -1;
-                selectedCover = covers[prevCover];
-            }
-        }
-
-        public function get selectedCover():BookCover {
+        public function get selectedCover():BookCover
+        {
             return _selectedCover;
         }
 
-        public function set selectedCover(value:BookCover):void {
-            if(_selectedCover != value){
+        public function set selectedCover(value:BookCover):void
+        {
+            if(_selectedCover != value)
+            {
                 _selectedCover = value
                 dispatchEvent(new Event(SELECTEDCOVER_CHANGED));
             }
         }
 
-        public function get pageVOS():Vector.<PageVO> {
+        public function get pageVOS():Vector.<PageVO>
+        {
             return _pageVOS;
         }
 
-        public function set pageVOS(value:Vector.<PageVO>):void {
-            if(_pageVOS != value){
+        public function set pageVOS(value:Vector.<PageVO>):void
+        {
+            if(_pageVOS != value)
+            {
                 _pageVOS = value;
             }
 
         }
 
-        public function get pages():Array {
+       /* public function get pages():Array
+        {
             return _pages;
         }
 
-        public function set pages(value:Array):void {
-
-            if(_pages != value) {
+        public function set pages(value:Array):void
+        {
+            if(_pages != value)
+            {
                 _pages = value;
             }
         }
 
-        public function get thumbnailPages():Array {
+        public function get thumbnailPages():Array
+        {
             return _thumbnailPages;
         }
 
-        public function set thumbnailPages(value:Array):void {
-            if(_thumbnailPages != value){
+        public function set thumbnailPages(value:Array):void
+        {
+            if(_thumbnailPages != value)
+            {
                 _thumbnailPages = value;
             }
         }
-
-        public function get bookVOS():Vector.<BookVO> {
+        */
+        public function get bookVOS():Vector.<BookVO>
+        {
             return _bookVOS;
         }
 
-        public function set bookVOS(value:Vector.<BookVO>):void {
-            if (_bookVOS != value){
+        public function set bookVOS(value:Vector.<BookVO>):void
+        {
+            if (_bookVOS != value)
+            {
                 _bookVOS = value;
             }
         }
 
-        public function get selectedBook():Book {
+
+
+        public function get selectedBook():Book
+        {
             return _selectedBook;
         }
 
-        public function set selectedBook(value:Book):void {
-            if(_selectedBook != value){
+        public function set selectedBook(value:Book):void
+        {
+            if(_selectedBook != value)
+            {
                 _selectedBook = value;
             }
         }
 
-        public function get books():Vector.<Book> {
+        public function get books():Vector.<Book>
+        {
             return _books;
         }
 
-        public function set books(value:Vector.<Book>):void {
-            if(_books != value){
+        public function set books(value:Vector.<Book>):void
+        {
+            if(_books != value)
+            {
                 _books = value;
             }
         }
 
-        public function get covers():Vector.<BookCover> {
+        public function get covers():Vector.<BookCover>
+        {
             return _covers;
         }
 
-        public function set covers(value:Vector.<BookCover>):void {
-            if(_covers != value){
+        public function set covers(value:Vector.<BookCover>):void
+        {
+            if(_covers != value)
+            {
                 _covers = value;
             }
         }

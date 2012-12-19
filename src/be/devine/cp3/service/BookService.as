@@ -1,12 +1,10 @@
 package be.devine.cp3.service
 {
-import be.devine.cp3.factory.vo.BookVOFactory;
-import be.devine.cp3.factory.vo.PageVOFactory;
+    import be.devine.cp3.factory.vo.BookVOFactory;
     import be.devine.cp3.model.AppModel;
-import be.devine.cp3.vo.BookVO;
-import be.devine.cp3.vo.PageVO;
-
-import flash.events.Event;
+    import be.devine.cp3.vo.BookVO;
+    import be.devine.cp3.vo.PageVO;
+    import flash.events.Event;
     import flash.events.EventDispatcher;
     import flash.net.URLLoader;
     import flash.net.URLRequest;
@@ -36,11 +34,11 @@ import flash.events.Event;
             appModel.bookVOS = new Vector.<BookVO>;
             appModel.pageVOS = new Vector.<PageVO>;
 
-            for each (var bookXML:XML in booksXML.book){
-                    appModel.bookVOS.push(BookVOFactory.createBookVOFromXML(bookXML))
+            for each (var bookXML:XML in booksXML.book)
+            {
+                appModel.bookVOS.push(BookVOFactory.createBookVOFromXML(bookXML));
 
             }
-
 
             dispatchEvent(new Event(XML_LOADED));
         }

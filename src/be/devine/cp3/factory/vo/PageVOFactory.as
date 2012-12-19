@@ -8,6 +8,7 @@ package be.devine.cp3.factory.vo
         {
             var pageVO:PageVO = new PageVO(pageXML.@template);
             pageVO.cover = pageXML.@cover;
+
             for each(var elementXML:XML in pageXML.element)
             {
                 pageVO.elements.push(ElementVOFactory.createElementVOFromXML(elementXML));

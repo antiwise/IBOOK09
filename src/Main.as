@@ -67,6 +67,7 @@ public class Main extends Sprite
         myDelay.addEventListener(TimerEvent.TIMER, startStarling);
         myDelay.start();
         addChild(preloader);
+
     }
 
     private function startStarling(event:TimerEvent):void

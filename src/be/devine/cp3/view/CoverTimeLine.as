@@ -70,7 +70,7 @@ import starling.textures.TextureAtlas;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch && touch.phase == "began")
             {
                 var selectedCover:BookCover = event.currentTarget as BookCover;
 
@@ -87,7 +87,7 @@ import starling.textures.TextureAtlas;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch && touch.phase == "began")
             {
                 appmodel.nextCover();
 
@@ -105,7 +105,7 @@ import starling.textures.TextureAtlas;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch && touch.phase == "began")
             {
                 appmodel.prevCover();
                 if(_posTimeline != 0)

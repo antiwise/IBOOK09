@@ -2,7 +2,6 @@ package be.devine.cp3.ibook
 {
 import be.devine.cp3.model.AppModel;
 import be.devine.cp3.service.BookService;
-import be.devine.cp3.view.Book;
 import be.devine.cp3.view.BookPreview;
 import be.devine.cp3.view.NavigationBar;
 import be.devine.cp3.view.Page;
@@ -173,13 +172,11 @@ import starling.events.TouchPhase;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch != null)
+            if(touch && touch.phase == "hover")
             {
-                if(touch.phase == "hover")
-                {
-                    appModel.showTimeline = false;
-                }
+                appModel.showTimeline = false;
             }
+
         }
 
         private function bookClickedHandler():void

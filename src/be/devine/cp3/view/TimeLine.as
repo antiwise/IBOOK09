@@ -130,7 +130,7 @@ import starling.textures.Texture;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch && touch.phase == "began")
             {
                 var pageNumber:uint = arrThumbnails.indexOf(event.currentTarget as Thumbnail);
 
@@ -150,7 +150,7 @@ import starling.textures.Texture;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch && touch.phase == "began")
             {
                 if(_posTimeline != 0)
                 {
@@ -164,7 +164,7 @@ import starling.textures.Texture;
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "began")
+            if(touch && touch.phase == "began")
             {
                 if(_posTimeline <= appmodel.amountOfPages - 7)
                 {

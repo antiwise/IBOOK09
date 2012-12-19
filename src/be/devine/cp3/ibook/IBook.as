@@ -88,7 +88,7 @@ public class IBook extends Sprite
         navigationBar.setPageNumber();
 
         setChildIndex(navigationBar,numChildren-1);
-        timeLine.posTimeline = appModel.currentPage;
+       // timeLine.posTimeline = appModel.currentPage;
          timeLine.updateThumbnails();
 
 
@@ -121,14 +121,14 @@ public class IBook extends Sprite
 
             trace("[IBook]" + appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1));
 
-            if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >=0)
+            if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >= 0)
             {
 
-                var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
-                var rightPage:Page = new Page(rightPageVO);
+
             }
 
-
+            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+            var rightPage:Page = new Page(rightPageVO);
 
 
 
@@ -173,10 +173,10 @@ public class IBook extends Sprite
 
             if(appModel.selectedBook.bookVo.pages.indexOf(appModel.currentPage +1) >=0)
             {
-                var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
-                var rightPage:Page = new Page(rightPageVO);
-            }
 
+            }
+            var rightPageVO:PageVO = appModel.selectedBook.bookVo.pages[appModel.currentPage +1];
+            var rightPage:Page = new Page(rightPageVO);
 
             leftPage.x = -1024;
             pageContainer.addChild(leftPage);

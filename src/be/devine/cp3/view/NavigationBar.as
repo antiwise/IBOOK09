@@ -134,7 +134,9 @@ import starling.textures.Texture;
             {
                 if(touch.phase == "began")
                 {
+                    appModel.currentPage = 0;
                     appModel.showPages = false;
+
 
 
                 }

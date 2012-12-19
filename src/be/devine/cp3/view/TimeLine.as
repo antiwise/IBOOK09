@@ -96,37 +96,11 @@ import starling.textures.Texture;
 
             _thumbnailContainer = new Sprite();
 
-
-
-
-
-
-
-
-           if(_posTimeline >= appmodel.amountOfPages - amountOfThumbnails )
+            if(_posTimeline >= appmodel.amountOfPages - amountOfThumbnails )
             {
                 _posTimeline = appmodel.amountOfPages - amountOfThumbnails;
 
             }
-
-
-            /*
-
-
-
-
-        if(_posTimeline + amountOfThumbnails  >=  appmodel.amountOfPages )
-
-        {
-           _posTimeline = _posTimeline - amountOfThumbnails;
-        }
-
-
-
-            */
-
-
-
 
             var xPos:uint = 0;
             for(var i:uint = 0; i<amountOfThumbnails;i++)

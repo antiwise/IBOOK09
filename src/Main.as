@@ -63,7 +63,7 @@ public class Main extends Sprite
 
         _starling = new Starling(IBook,stage);
 
-        myDelay = new Timer(7500);
+        myDelay = new Timer(9500);
         myDelay.addEventListener(TimerEvent.TIMER, startStarling);
         myDelay.start();
         addChild(preloader);

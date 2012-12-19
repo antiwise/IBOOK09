@@ -202,7 +202,7 @@ import starling.textures.Texture;
 
         public function checkNextPrevious():void
         {
-            if(_posTimeline >= arrThumbnails.length/2 )
+            if(_posTimeline >= appmodel.amountOfPages - amountOfThumbnails )
             {
                 buttonNext.visible = false;
             }

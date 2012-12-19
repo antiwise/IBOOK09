@@ -17,7 +17,7 @@ package be.devine.cp3.model
                     _selectedBook:Book,
                     _books:Vector.<Book>,
                     _covers:Vector.<BookCover>,
-                    _currentPage:uint,
+                    _currentPage:uint = 0,
                     _amountOfPages:uint,
                     _direction:String = "next",
                     _showTimeline:Boolean = false,

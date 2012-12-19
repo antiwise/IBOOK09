@@ -75,13 +75,14 @@ public class IBook extends Sprite
         bookPreview = new BookPreview();
         bookPreview.visible = true;
         addChild(bookPreview);
-        bookPreview.addEventListener(BookPreview.BOOK_CLICKED, bookClickedHandler );
+        bookPreview.addEventListener(BookPreview.BOOK_CLICKED, bookClickedHandler);
 
 
     }
 
     private function pageChangedHandler(event:Event):void
     {
+
         updatePageView();
 
         navigationBar.checkNextPrevious();
@@ -275,6 +276,8 @@ public class IBook extends Sprite
         }
         appModel.amountOfPages = countPages;
 
+
+
         navigationBar = new NavigationBar();
         navigationBar.y = 718;
         navigationBar.addEventListener(TouchEvent.TOUCH, showTimeLine);
@@ -287,6 +290,8 @@ public class IBook extends Sprite
 
 
         appModel.currentPage = 0;
+
+        trace("[IBook]" + appModel.currentPage);
 
         Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
     }
@@ -315,6 +320,7 @@ public class IBook extends Sprite
     {
         if(appModel.showBookPreview)
         {
+            setChildIndex(bookPreview,numChildren-1);
             Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
 
         }

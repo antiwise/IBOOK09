@@ -193,6 +193,7 @@ package be.devine.cp3.model
             if(_selectedCover != value)
             {
                 _selectedCover = value
+                trace("selected cover changed");
                 dispatchEvent(new Event(SELECTEDCOVER_CHANGED));
             }
         }

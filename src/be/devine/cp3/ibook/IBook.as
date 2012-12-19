@@ -96,13 +96,6 @@ public class IBook extends Sprite
         setChildIndex(timeLine,numChildren-1);
     }
 
-    private function createTween(direction):void
-    {
-        //if
-
-
-    }
-
     private function updatePageView():void
     {
         if(pageContainer.numChildren > 0)
@@ -208,8 +201,7 @@ public class IBook extends Sprite
 
     private function bookClickedHandler(event:starling.events.Event):void
     {
-       /* addChild(navigationBar);
-        setChildIndex(navigationBar,numChildren-1);  */
+
         appModel.selectedBook = bookPreview.bookClicked;
 
 
@@ -218,12 +210,7 @@ public class IBook extends Sprite
         appModel.showBookPreview = false;
         appModel.showPages = true;
 
-
-        for each(var pageVO:PageVO in appModel.selectedBook.bookVo.pages )
-        {
-            countPages++;
-        }
-        appModel.amountOfPages = countPages;
+        appModel.amountOfPages = appModel.selectedBook.bookVo.pages.length;
 
 
 

@@ -194,6 +194,7 @@ import flash.events.Event;
         public function set selectedCover(value:BookCover):void {
             if(_selectedCover != value){
                 _selectedCover = value
+                trace("selected cover changed");
                 dispatchEvent(new Event(SELECTEDCOVER_CHANGED));
             }
         }

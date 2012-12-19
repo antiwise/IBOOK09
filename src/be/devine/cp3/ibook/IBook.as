@@ -66,7 +66,7 @@ public class IBook extends Sprite
 
         appModel.addEventListener(AppModel.PAGE_CHANGED,pageChangedHandler);
         appModel.addEventListener(AppModel.SHOWPAGES_CHANGED, showHidePages);
-
+        Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
 
     }
 
@@ -200,26 +200,31 @@ public class IBook extends Sprite
 
     private function keyboardHandler(event:KeyboardEvent):void
     {
-        switch (event.keyCode)
-        {
-            case Keyboard.LEFT:
-                appModel.previousPage();
-                break;
-            case Keyboard.RIGHT:
-            case Keyboard.SPACE:
-                appModel.nextPage();
-                break;
-            case Keyboard.F:
-                if(Starling.current.nativeStage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE)
-                {
-                    Starling.current.nativeStage.displayState = StageDisplayState.NORMAL;
-                }
-                else
-                {
-                    Starling.current.nativeStage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
-                }
-                break;
+
+        if(!appModel.showBookPreview){
+            switch (event.keyCode)
+            {
+                case Keyboard.LEFT:
+                    appModel.previousPage();
+                    break;
+                case Keyboard.RIGHT:
+                case Keyboard.SPACE:
+                    appModel.nextPage();
+                    break;
+                case Keyboard.F:
+                    if(Starling.current.nativeStage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE)
+                    {
+                        Starling.current.nativeStage.displayState = StageDisplayState.NORMAL;
+                    }
+                    else
+                    {
+                        Starling.current.nativeStage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+                    }
+                    break;
+            }
         }
+
+
     }
 
 
@@ -287,7 +292,7 @@ public class IBook extends Sprite
 
         appModel.currentPage = 0;
 
-        Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
+
     }
 
     private function showHidePages(event:Event):void
@@ -311,7 +316,7 @@ public class IBook extends Sprite
     }
 
     private function bookPreviewChangedHandler(event:Event):void
-    {
+    {/*
         if(appModel.showBookPreview)
         {
             Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
@@ -320,7 +325,7 @@ public class IBook extends Sprite
         else
         {
             Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyboardHandler);
-        }
+        }*/
     }
 }
 

@@ -73,6 +73,7 @@ public class CoverTimeLine extends Sprite{
         buttonNext.addEventListener(TouchEvent.TOUCH, showNextCover);
         addChild(buttonNext);
         checkNextPrevious();
+
     }
 
     private function coverSelectedHandler(event:TouchEvent):void {
@@ -93,7 +94,7 @@ public class CoverTimeLine extends Sprite{
 
     }
 
-    private function showNextCover(event:TouchEvent):void {
+    public function showNextCover(event:TouchEvent):void {
 
 
         var touch:Touch = event.getTouch(stage);
@@ -113,7 +114,7 @@ public class CoverTimeLine extends Sprite{
 
     }
 
-    private function showPrevCover(event:TouchEvent):void {
+    public function showPrevCover(event:TouchEvent):void {
         var touch:Touch = event.getTouch(stage);
 
         if(touch.phase == "began")
@@ -146,9 +147,6 @@ public class CoverTimeLine extends Sprite{
 
         trace(_posTimeline);
         bookCoverContainer.y = -(_posTimeline*235)
-
-
-
     }
 
     public function checkNextPrevious():void

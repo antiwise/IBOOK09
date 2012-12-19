@@ -1,6 +1,6 @@
 package be.devine.cp3.view
 {
-    import be.devine.cp3.factory.view.ImageFactory;
+import be.devine.cp3.factory.view.ImageFactory;
     import be.devine.cp3.vo.ImageElementVO;
 
     import flash.display.Bitmap;
@@ -28,7 +28,6 @@ import starling.display.Sprite;
             super(imageElementVO);
             this.imageElementVO = imageElementVO;
 
-
             ldr = new URLLoader();
             ldr.dataFormat = URLLoaderDataFormat.BINARY;
             ldr.addEventListener(Event.COMPLETE, imageLoadedHandler);
@@ -43,8 +42,6 @@ import starling.display.Sprite;
                 texture: texture
             });
             addChild(img);
-
-
         }
     }
 }

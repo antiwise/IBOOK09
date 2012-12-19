@@ -25,14 +25,11 @@ import starling.textures.Texture;
 
         private var appmodel:AppModel,
                     amountOfThumbnails:uint,
-
                     _thumbnailContainer:Sprite,
                     _posTimeline:int,
                     arrThumbnails:Array,
                     buttonPrev:Button,
                     buttonNext:Button;
-
-
 
         public function TimeLine()
         {
@@ -80,7 +77,6 @@ import starling.textures.Texture;
                 amountOfThumbnails = 6;
             }
 
-
             updateThumbnails();
 
             this.addEventListener(TouchEvent.TOUCH, showTimeLine);
@@ -99,7 +95,6 @@ import starling.textures.Texture;
             if(_posTimeline >= appmodel.amountOfPages - amountOfThumbnails )
             {
                 _posTimeline = appmodel.amountOfPages - amountOfThumbnails;
-
             }
 
             var xPos:uint = 0;
@@ -109,19 +104,9 @@ import starling.textures.Texture;
 
                 if(thumbnail != null)
                 {
-
-                    if(arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i]  )
-                    {
-                        thumbnail.hoverEffect.visible = true;
-                    }
-                    else
-                    {
-                        thumbnail.hoverEffect.visible = false;
-                    }
-
+                    arrThumbnails[appmodel.currentPage] == arrThumbnails[_posTimeline + i] || arrThumbnails[appmodel.currentPage + 1] == arrThumbnails[_posTimeline + i] ? thumbnail.hoverEffect.visible = true : thumbnail.hoverEffect.visible = false;
 
                     thumbnail.x = xPos;
-
 
                     _thumbnailContainer.addChild(thumbnail);
                     if (arrThumbnails.indexOf(thumbnail)%2 == 1)
@@ -131,9 +116,7 @@ import starling.textures.Texture;
                     {
                         xPos += 91;
                     }
-
                 }
-
             }
 
             _thumbnailContainer.x = this.width/2 - _thumbnailContainer.width/2;
@@ -161,8 +144,6 @@ import starling.textures.Texture;
                     appmodel.gotoPage(pageNumber);
                 }
             }
-
-
         }
 
         private function previous(event:TouchEvent):void
@@ -195,32 +176,15 @@ import starling.textures.Texture;
 
         public function set posTimeline(value:uint):void
         {
-            trace("[TIMELINE] _posTimeline" + _posTimeline);
             _posTimeline = value;
             updateThumbnails();
         }
 
         public function checkNextPrevious():void
         {
-            if(_posTimeline >= appmodel.amountOfPages - amountOfThumbnails )
-            {
-                buttonNext.visible = false;
-            }
-            else
-            {
-                buttonNext.visible = true;
-            }
-            if(_posTimeline == 0)
-            {
-                buttonPrev.visible = false;
-            }
-            else
-            {
-                buttonPrev.visible = true;
-            }
+            _posTimeline >= appmodel.amountOfPages - amountOfThumbnails ? buttonNext.visible = false :  buttonNext.visible = true;
+            _posTimeline == 0 ? buttonPrev.visible = false : buttonPrev.visible = true;
         }
-
-
 
         private function showTimeLine(event:TouchEvent):void
         {
@@ -234,16 +198,7 @@ import starling.textures.Texture;
 
         private function timeLineHandler(event:flash.events.Event):void
         {
-            if (appmodel.showTimeline)
-            {
-                this.visible = true;
-            }
-            else
-            {
-                this.visible = false;
-            }
+            appmodel.showTimeline ? this.visible = true : this.visible = false;
         }
-
-
     }
 }

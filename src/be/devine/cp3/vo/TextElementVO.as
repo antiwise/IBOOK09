@@ -6,7 +6,6 @@ package be.devine.cp3.vo
                    textType:String;
 
         public function TextElementVO()
-        {
-        }
+        {}
     }
 }

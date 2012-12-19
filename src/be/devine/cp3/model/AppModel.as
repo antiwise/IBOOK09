@@ -10,10 +10,7 @@ package be.devine.cp3.model
     public class AppModel extends EventDispatcher
     {
         private static var instance:AppModel;
-        private var _pageVOS:Vector.<PageVO>,
-                   // _pages:Array,
-                   // _thumbnailPages:Array,
-                    _bookVOS:Vector.<BookVO>,
+        private var _bookVOS:Vector.<BookVO>,
                     _selectedBook:Book,
                     _books:Vector.<Book>,
                     _covers:Vector.<BookCover>,
@@ -149,7 +146,7 @@ package be.devine.cp3.model
             if (value != _showBookPreview)
             {
                 _showBookPreview = value;
-                _showBookPreview != _showPages;
+                //_showBookPreview != _showPages;
                 dispatchEvent(new Event(BOOKPREVIEW_CHANGED));
             }
         }
@@ -164,7 +161,7 @@ package be.devine.cp3.model
             if (value != _showPages)
             {
                 _showPages = value;
-                _showPages != _showBookPreview;
+                //_showPages != _showBookPreview;
                 dispatchEvent(new Event(SHOWPAGES_CHANGED));
             }
         }
@@ -179,7 +176,6 @@ package be.devine.cp3.model
             if(currentPage < amountOfPages && currentPage >= 0)
             {
                 _currentPage = value;
-                trace("current page", _currentPage)
                 dispatchEvent(new Event(PAGE_CHANGED));
             }
         }
@@ -193,52 +189,13 @@ package be.devine.cp3.model
         {
             if(_selectedCover != value)
             {
-                _selectedCover = value
-                trace("selected cover changed");
+                _selectedCover = value;
                 dispatchEvent(new Event(SELECTEDCOVER_CHANGED));
             }
         }
 
-        public function get pageVOS():Vector.<PageVO>
-        {
-            return _pageVOS;
-        }
 
-        public function set pageVOS(value:Vector.<PageVO>):void
-        {
-            if(_pageVOS != value)
-            {
-                _pageVOS = value;
-            }
 
-        }
-
-       /* public function get pages():Array
-        {
-            return _pages;
-        }
-
-        public function set pages(value:Array):void
-        {
-            if(_pages != value)
-            {
-                _pages = value;
-            }
-        }
-
-        public function get thumbnailPages():Array
-        {
-            return _thumbnailPages;
-        }
-
-        public function set thumbnailPages(value:Array):void
-        {
-            if(_thumbnailPages != value)
-            {
-                _thumbnailPages = value;
-            }
-        }
-        */
         public function get bookVOS():Vector.<BookVO>
         {
             return _bookVOS;
@@ -251,8 +208,6 @@ package be.devine.cp3.model
                 _bookVOS = value;
             }
         }
-
-
 
         public function get selectedBook():Book
         {
@@ -295,4 +250,4 @@ package be.devine.cp3.model
     }
 }
 
-internal class Enforcer{};
+internal class Enforcer{}

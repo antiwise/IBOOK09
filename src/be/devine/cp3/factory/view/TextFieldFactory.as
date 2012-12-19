@@ -1,10 +1,10 @@
 package be.devine.cp3.factory.view
 {
-    import starling.display.Quad;
-    import starling.display.Sprite;
-    import starling.text.TextField;
-    import starling.utils.HAlign;
-    import starling.utils.VAlign;
+import starling.display.Quad;
+import starling.display.Sprite;
+import starling.text.TextField;
+import starling.utils.HAlign;
+import starling.utils.VAlign;
 
     public class TextFieldFactory
     {

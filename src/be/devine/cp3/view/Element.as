@@ -1,6 +1,6 @@
 package be.devine.cp3.view
 {
-    import be.devine.cp3.vo.ElementVO;
+import be.devine.cp3.vo.ElementVO;
     import starling.display.Sprite;
 
     public class Element extends Sprite

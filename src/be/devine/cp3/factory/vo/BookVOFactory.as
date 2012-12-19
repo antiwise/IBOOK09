@@ -1,12 +1,10 @@
 package be.devine.cp3.factory.vo
 {
-    import be.devine.cp3.model.AppModel;
-    import be.devine.cp3.vo.BookVO;
+import be.devine.cp3.model.AppModel;
+import be.devine.cp3.vo.BookVO;
 
     public class BookVOFactory
     {
-        private var appModel:AppModel;
-
         public static function createBookVOFromXML(bookXml:XML):BookVO
         {
             var bookVO:BookVO = new BookVO(bookXml.@edition);

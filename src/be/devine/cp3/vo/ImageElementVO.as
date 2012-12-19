@@ -6,8 +6,6 @@ package be.devine.cp3.vo
                     style:String;
 
         public function ImageElementVO()
-        {
-
-        }
+        {}
     }
 }

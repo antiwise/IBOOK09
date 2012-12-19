@@ -1,9 +1,9 @@
 package be.devine.cp3.factory.vo
 {
-    import be.devine.cp3.vo.ColumnElementVO;
-    import be.devine.cp3.vo.ElementVO;
-    import be.devine.cp3.vo.ImageElementVO;
-    import be.devine.cp3.vo.TextElementVO;
+import be.devine.cp3.vo.ColumnElementVO;
+import be.devine.cp3.vo.ElementVO;
+import be.devine.cp3.vo.ImageElementVO;
+import be.devine.cp3.vo.TextElementVO;
 
     public class ElementVOFactory
     {

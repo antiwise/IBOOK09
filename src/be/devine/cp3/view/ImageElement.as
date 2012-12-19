@@ -35,7 +35,7 @@ import starling.display.Sprite;
             ldr.load(new URLRequest("assets/images/"+imageElementVO.url));
         }
 
-        private function imageLoadedHandler(e:Event)
+        private function imageLoadedHandler(e:Event):void
         {
             var texture:Texture = Texture.fromAtfData(ldr.data as ByteArray);
             var img:Sprite =  ImageFactory.createImage({

@@ -179,6 +179,7 @@ package be.devine.cp3.model
             if(currentPage < amountOfPages && currentPage >= 0)
             {
                 _currentPage = value;
+                trace("current page", _currentPage)
                 dispatchEvent(new Event(PAGE_CHANGED));
             }
         }

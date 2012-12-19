@@ -32,7 +32,7 @@ import starling.textures.Texture;
                     buttonPrev:Button,
                     buttonNext:Button;
 
-        public static const THUMBNAIL_CLICKED:String = "ThumbnailClicked";
+
 
         public function TimeLine()
         {
@@ -87,7 +87,7 @@ import starling.textures.Texture;
             appmodel.addEventListener(AppModel.TIMELINE_CHANGED, timeLineHandler);
         }
 
-        public function updateThumbnails()
+        public function updateThumbnails():void
         {
             if(_thumbnailContainer.numChildren > 0)
             {
@@ -220,21 +220,13 @@ import starling.textures.Texture;
             }
         }
 
-        public function get thumbnailContainer():Sprite
-        {
-            return _thumbnailContainer;
-        }
 
-        public function set thumbnailContainer(value:Sprite):void
-        {
-            _thumbnailContainer = value;
-        }
 
         private function showTimeLine(event:TouchEvent):void
         {
             var touch:Touch = event.getTouch(stage);
 
-            if(touch.phase == "hover")
+            if(touch && touch.phase == "hover")
             {
                 appmodel.showTimeline = true;
             }
@@ -252,8 +244,6 @@ import starling.textures.Texture;
             }
         }
 
-        public function get posTimeline():uint {
-            return _posTimeline;
-        }
+
     }
 }

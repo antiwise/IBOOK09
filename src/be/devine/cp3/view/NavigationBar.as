@@ -136,6 +136,8 @@ import starling.textures.Texture;
                 {
                     appModel.currentPage = 0;
                     appModel.showPages = false;
+                    appModel.direction = "next"
+
 
 
 

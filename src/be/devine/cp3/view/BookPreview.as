@@ -29,10 +29,10 @@ public class BookPreview extends Sprite{
 
     public function BookPreview() {
 
-        var bgQuad = new Quad(1024, 768, 0x182C49);
+        var bgQuad:Quad = new Quad(1024, 768, 0x182C49);
         bgQuad.x = 0;
         bgQuad.y = 0;
-        addChild(bgQuad)
+        addChild(bgQuad);
 
         appModel = AppModel.getInstance();
 
@@ -48,14 +48,14 @@ public class BookPreview extends Sprite{
             appModel.books.push(book);
             book.y = 40;
             book.useHandCursor = true;
-            book.addEventListener(TouchEvent.TOUCH, bookClickedHandler)
+            book.addEventListener(TouchEvent.TOUCH, bookClickedHandler);
 
             addChild(book);
             book.visible = false;
 
         }
 
-       coverTimeLine = new CoverTimeLine();
+        coverTimeLine = new CoverTimeLine();
         addChild(coverTimeLine);
         coverTimeLine.x = Starling.current.stage.stageWidth - 200;
         coverTimeLine.y = 25;
@@ -81,9 +81,7 @@ public class BookPreview extends Sprite{
         return _bookClicked;
     }
 
-    public function set bookClicked(value:Book):void {
-        _bookClicked = value;
-    }
+
 
     private function showHideBookPreview(event:flash.events.Event):void {
         if (appModel.showBookPreview)

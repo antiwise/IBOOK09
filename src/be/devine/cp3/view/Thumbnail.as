@@ -37,7 +37,7 @@ import starling.display.DisplayObject;
 
 
             this.useHandCursor = true;
-            this.addEventListener(TouchEvent.TOUCH,touchEventHandler);
+
 
             _hoverEffect = new Quad(91,10, 0x182c49);
             _hoverEffect.y = 128;
@@ -53,20 +53,9 @@ import starling.display.DisplayObject;
             event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  appModel.showTimeline = true :  appModel.showTimeline  = false;
         }
 
-        public function isActive()
-        {
-            q.color = 0x182c49;
-        }
 
-        public function isHide()
-        {
-            q.color = 0xffffff;
-        }
 
-        private function touchEventHandler(event:TouchEvent):void
-        {
-           // event.getTouch(event.target as DisplayObject, TouchPhase.HOVER) ?  showHoverEffect(); :  hideHoverEffect;
-        }
+
 
         public function get q():Quad {
             return _q;
@@ -80,8 +69,6 @@ import starling.display.DisplayObject;
             return _hoverEffect;
         }
 
-        public function set hoverEffect(value:Quad):void {
-            _hoverEffect = value;
-        }
+
     }
 }

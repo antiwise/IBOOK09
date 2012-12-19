@@ -22,29 +22,29 @@ import starling.textures.Texture;
             switch (config.style)
             {
                 case "wide":
-                    var q:Quad = new Quad( 441,  260, 0xFFFFFF);
-                    container.addChild(q);
+                    var qWide:Quad = new Quad( 441,  260, 0xFFFFFF);
+                    container.addChild(qWide);
 
-                    var maskedDisplayObject:PixelMaskDisplayObject = maskImages(img, 393, 212);
-                    container.addChild(maskedDisplayObject);
+                    var maskedDisplayObjectWide:PixelMaskDisplayObject = maskImages(img, 393, 212);
+                    container.addChild(maskedDisplayObjectWide);
 
                     return container;
 
                 case "portrait":
-                    var q:Quad = new Quad( 234,  314, 0xFFFFFF);
-                    container.addChild(q);
+                    var qPortrait:Quad = new Quad( 234,  314, 0xFFFFFF);
+                    container.addChild(qPortrait);
 
-                    var maskedDisplayObject:PixelMaskDisplayObject = maskImages(img, 188, 268);
-                    container.addChild(maskedDisplayObject);
+                    var maskedDisplayObjectPortrait:PixelMaskDisplayObject = maskImages(img, 188, 268);
+                    container.addChild(maskedDisplayObjectPortrait);
                     return container;
 
                 case "fullscreen":
 
-                    var myCustomMaskDisplayObject:Quad = new Quad(512,718);
-                    var maskedDisplayObject:PixelMaskDisplayObject = maskImages(img, 512, 718);
-                    maskedDisplayObject.x = 0;
-                    maskedDisplayObject.y = 0;
-                    container.addChild(maskedDisplayObject);
+
+                    var maskedDisplayObjectFullScreen:PixelMaskDisplayObject = maskImages(img, 512, 718);
+                    maskedDisplayObjectFullScreen.x = 0;
+                    maskedDisplayObjectFullScreen.y = 0;
+                    container.addChild(maskedDisplayObjectFullScreen);
 
                     return container;
 
@@ -52,23 +52,23 @@ import starling.textures.Texture;
                     img.width = 550;
                     img.height = 550;
 
-                    var q:Quad = new Quad( 333,  448, 0xFFFFFF);
-                    container.addChild(q);
+                    var qCover:Quad = new Quad( 333,  448, 0xFFFFFF);
+                    container.addChild(qCover);
 
-                    var myCustomMaskDisplayObject:Quad = new Quad(285,400);
-                    var maskedDisplayObject:PixelMaskDisplayObject = maskImages(img, 285, 400);
 
-                    container.addChild(maskedDisplayObject);
+                    var maskedDisplayObjectCover:PixelMaskDisplayObject = maskImages(img, 285, 400);
+
+                    container.addChild(maskedDisplayObjectCover);
                     return container;
 
                 case "thumbnail":
-                     var container:Sprite = new Sprite();
-                     var img:Image = new Image(config.texture);
-                    img.width = 128;
-                    img.height = 128;
+                     var thumbnailcontainer:Sprite = new Sprite();
+                     var thumb:Image = new Image(config.texture);
+                    thumb.width = 128;
+                    thumb.height = 128;
 
-                    container.addChild(img);
-                    return container ;
+                    thumbnailcontainer.addChild(thumb);
+                    return thumbnailcontainer ;
             }
             return null;
         }

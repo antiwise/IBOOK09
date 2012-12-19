@@ -88,7 +88,7 @@ public class IBook extends Sprite
         navigationBar.setPageNumber();
 
         setChildIndex(navigationBar,numChildren-1);
-       // timeLine.posTimeline = appModel.currentPage;
+        timeLine.posTimeline = appModel.currentPage;
          timeLine.updateThumbnails();
 
 

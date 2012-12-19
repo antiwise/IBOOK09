@@ -222,14 +222,7 @@ import starling.textures.Texture;
         public function set posTimeline(value:uint):void
         {
             trace("[TIMELINE] _posTimeline" + _posTimeline);
-
-
-
-
             _posTimeline = value;
-
-
-
             updateThumbnails();
         }
 
